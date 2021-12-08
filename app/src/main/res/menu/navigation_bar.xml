@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_customer"
+        android:icon="@drawable/icon_search_black"
+        android:title="Customer"
+        />
+    <item
+        android:id="@+id/nav_to_pay"
+        android:icon="@drawable/icon_search_black"
+        android:title="Pay"/>
+</menu>
