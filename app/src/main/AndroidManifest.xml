@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
         <activity
+            android:name=".ActivityAddCustomer"
+            android:exported="false" />
+        <activity
             android:name=".ActivityShopProfile"
             android:exported="false" />
         <activity
