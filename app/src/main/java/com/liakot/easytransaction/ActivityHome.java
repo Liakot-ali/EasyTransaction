@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,12 +18,15 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ActivityHome extends AppCompatActivity {
 
     int selectColor, deselectColor;
     LinearLayout customerLay, toPayLay;
     Toolbar toolbar;
     FloatingActionButton homeFab;
+    CircleImageView shopPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,13 @@ public class ActivityHome extends AppCompatActivity {
                 Toast.makeText(ActivityHome.this, "Fab Clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+        shopPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this, ActivityShopProfile.class));
+            }
+        });
     }
 
     //-----Out of main section--------
@@ -70,6 +81,7 @@ public class ActivityHome extends AppCompatActivity {
         customerLay = findViewById(R.id.homeCustomerLayout);
         toPayLay = findViewById(R.id.homeToPayLayout);
         homeFab = findViewById(R.id.homeFab);
+        shopPicture = findViewById(R.id.homeShopPicture);
 
         selectColor = getResources().getColor(R.color.purple_200);
         deselectColor = getResources().getColor(R.color.white_gray);

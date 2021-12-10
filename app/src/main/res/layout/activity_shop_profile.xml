@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityShopProfile">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/shopProfileToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_gray"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Shop Profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/toolbar_text" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|bottom"
+                android:orientation="vertical"
+                android:padding="@dimen/lay_pad">
+
+                <LinearLayout
+                    android:id="@+id/pictureLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/shopProfilePicture"
+                        android:layout_width="@dimen/profile_picture"
+                        android:layout_height="@dimen/profile_picture"
+                        android:src="@drawable/icon_profile_default_black"
+                        app:civ_border_color="@color/white_gray"
+                        app:civ_border_width="1sp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/shopProfileAddImage"
+                        android:layout_width="@dimen/toolbar_picture"
+                        android:layout_height="@dimen/toolbar_picture"
+                        android:layout_marginLeft="-30sp"
+                        android:layout_gravity="bottom|right"
+                        android:src="@drawable/icon_camera_black"
+                        app:civ_border_color="@color/white_gray"
+                        app:civ_border_width="1sp"
+                        tools:ignore="RtlHardcoded" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/inner_pad">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shopNameLayout"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/inner_pad"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25"
+                    app:endIconMode="clear_text"
+                    app:helperText="required*"
+                    app:helperTextTextColor="@color/red"
+                    app:startIconDrawable="@drawable/icon_shop_name_black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shopProfileShopName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Shop Name"
+                        android:maxLength="25"
+                        android:padding="@dimen/inner_pad"
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/inner_pad"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextColor="@color/red"
+                    app:startIconDrawable="@drawable/icon_profile_24">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shopProfileOwnerName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Owner Name"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:padding="@dimen/inner_pad"
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/inner_pad"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextColor="@color/red"
+                    app:startIconDrawable="@drawable/icon_category_black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shopProfileCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Category"
+                        android:inputType="text"
+                        android:maxLength="15"
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shopProfileAddress"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/inner_pad"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:helperText="required*"
+                    app:helperTextTextColor="@color/red"
+                    app:startIconDrawable="@drawable/icon_location_black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Address"
+                        android:inputType="textPostalAddress"
+                        android:maxLength="50"
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shopProfilePhoneLayout"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/inner_pad"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:endIconDrawable="@drawable/icon_verification_black"
+                    app:endIconMode="custom"
+                    app:endIconTint="@color/black"
+                    app:errorContentDescription="Verify"
+                    app:helperText="required*"
+                    app:helperTextTextColor="@color/red"
+                    app:prefixText="+880"
+                    app:startIconDrawable="@drawable/icon_phone_black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shopProfilePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="@dimen/normal_text"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/shopProfileUpdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/lay_pad"
+                android:layout_marginRight="@dimen/lay_pad"
+                android:text="Update Profile" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

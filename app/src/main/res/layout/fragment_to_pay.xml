@@ -7,14 +7,9 @@
     android:gravity="center"
     tools:context=".FragmentToPay">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To Pay Fragment" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test Button"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/toPayRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

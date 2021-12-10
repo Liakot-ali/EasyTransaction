@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_about_us_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_add_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_camera_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_delete_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_help_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_logout_black.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_profile_24.xml" value="0.2911458333333333" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_profile_default_black.xml" value="0.2911458333333333" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_search_24.xml" value="0.2911458333333333" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/drawable/icon_search_black.xml" value="0.2911458333333333" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/activity_home.xml" value="0.275" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/activity_main.xml" value="0.275" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/activity_shop_profile.xml" value="0.264" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/fragment_customer.xml" value="0.275" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/fragment_to_pay.xml" value="0.275" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/item_customer.xml" value="0.275" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/item_to_pay.xml" value="0.275" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/layout/layout_fab.xml" value="0.275" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/menu/home_menu.xml" value="0.275" />
         <entry key="..\:/All App/Databse Project/Easy Transaction/app/src/main/res/menu/navigation_bar.xml" value="0.275" />

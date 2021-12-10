@@ -2,15 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_help"
+        android:icon="@drawable/icon_help_black"
         android:visible="true"
         android:title="Help"
         />
     <item
         android:id="@+id/menu_about_us"
+        android:icon="@drawable/icon_about_us_black"
         android:visible="true"
         android:title="About Us"/>
     <item
         android:id="@+id/menu_log_out"
+        android:icon="@drawable/icon_logout_black"
         android:visible="true"
         android:title="Log Out"/>
 </menu>

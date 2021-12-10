@@ -10,6 +10,7 @@
 
     <color name="white_gray">#D5D5D5</color>
     <color name="dark_gray">#555555</color>
+    <color name="red">#BD0A0A</color>
 
 
     <dimen name="lay_pad">10sp</dimen>
@@ -17,8 +18,16 @@
 
     <dimen name="toolbar_text">20sp</dimen>
     <dimen name="headline_text">25sp</dimen>
+    <dimen name="normal_text">18sp</dimen>
     <dimen name="small_text">16sp</dimen>
 
     <dimen name="toolbar_picture">40sp</dimen>
+    <dimen name="profile_picture">90sp</dimen>
+
+    <style name="textInputLayoutStyle"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxStrokeWidth">2sp</item>
+    </style>
 
 </resources>

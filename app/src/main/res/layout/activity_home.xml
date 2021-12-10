@@ -21,7 +21,7 @@
             android:layout_height="@dimen/toolbar_picture"
             android:layout_marginEnd="@dimen/lay_pad"
             android:layout_gravity="start"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@drawable/icon_profile_default_black" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,10 +39,10 @@
                 android:textSize="@dimen/toolbar_text" />
 
             <TextView
-                android:id="@+id/homeShopPhone"
+                android:id="@+id/homeTotalAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone"
+                android:text="total_amount"
                 android:textColor="@color/black"
                 android:textSize="@dimen/small_text" />
         </LinearLayout>
@@ -112,15 +112,7 @@
                 android:layout_height="match_parent" />
         </FrameLayout>
 
-
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    </LinearLayout>
 
 
 </LinearLayout>
