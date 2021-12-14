@@ -34,24 +34,10 @@
     <dimen name="button_text">20</dimen>
 
 
+    <dimen name="picture_border">2sp</dimen>
+
     <dimen name="toolbar_picture">40sp</dimen>
     <dimen name="profile_picture">90sp</dimen>
     <dimen name="list_picture">50sp</dimen>
-
-
-    <!-- Style Section !-->
-    <style name="textInputLayoutStyle"
-        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeWidth">2sp</item>
-        <item name="android:padding">@dimen/inner_pad</item>
-
-        <item name="boxStrokeColor">@color/layout_border</item>
-        <item name="hintTextColor">@color/black</item>
-        <item name="prefixTextColor">@color/black</item>
-        <item name="helperTextTextColor">@color/red</item>
-
-
-        <item name="prefixTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
-    </style>
 
 </resources>

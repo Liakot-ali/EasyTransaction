@@ -2,4 +2,9 @@
     <string name="app_name">Easy Transaction</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="CustomerType">
+        <item>Customer</item>
+        <item>To Pay</item>
+    </string-array>
 </resources>

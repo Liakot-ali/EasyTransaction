@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--   Application theme style-->
+
+    <style name="CustomAppTheme"
+        parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/toolbar_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+
+    <!--   EditText style -->
+    <style name="textInputLayoutStyle"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeWidth">2sp</item>
+        <item name="android:padding">@dimen/inner_pad</item>
+        <item name="counterEnabled">true</item>
+
+        <item name="boxStrokeColor">@color/layout_border</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="prefixTextColor">@color/black</item>
+        <item name="helperTextTextColor">@color/red</item>
+
+
+        <item name="prefixTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
+    </style>
+
+
+    <!-- Custom Button Style -->
+    <style name="CustomeButtonStyle" parent="@style/Widget.AppCompat.Button.Small">
+        <item name="android:textSize">@dimen/button_text</item>
+        <item name="backgroundColor">@color/white_gray</item>
+    </style>
+</resources>

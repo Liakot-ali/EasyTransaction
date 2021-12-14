@@ -21,6 +21,7 @@
             android:layout_height="@dimen/toolbar_picture"
             android:layout_marginEnd="@dimen/lay_pad"
             android:layout_gravity="start"
+            app:civ_border_width="@dimen/picture_border"
             android:src="@drawable/icon_profile_default_black" />
 
         <LinearLayout

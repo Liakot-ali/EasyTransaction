@@ -52,18 +52,20 @@
                         android:layout_width="@dimen/profile_picture"
                         android:layout_height="@dimen/profile_picture"
                         android:src="@drawable/icon_profile_default_black"
-                        app:civ_border_color="@color/white_gray"
-                        app:civ_border_width="1sp" />
+                        app:civ_border_color="@color/picture_border"
+                        app:civ_border_width="@dimen/picture_border"
+                        />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/shopProfileAddImage"
                         android:layout_width="@dimen/toolbar_picture"
                         android:layout_height="@dimen/toolbar_picture"
+                        android:padding="@dimen/inner_pad"
                         android:layout_marginLeft="-30sp"
                         android:layout_gravity="bottom|right"
                         android:src="@drawable/icon_camera_black"
                         app:civ_border_color="@color/white_gray"
-                        app:civ_border_width="1sp"
+                        app:civ_border_width="@dimen/picture_border"
                         tools:ignore="RtlHardcoded" />
 
                 </LinearLayout>
@@ -81,7 +83,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
+
                     app:counterMaxLength="25"
                     app:endIconMode="clear_text"
                     app:helperText="required*"
@@ -103,7 +105,6 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
                     app:counterMaxLength="25"
                     app:endIconMode="clear_text"
                     app:helperTextTextColor="@color/red"
@@ -125,7 +126,6 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
                     app:counterMaxLength="15"
                     app:endIconMode="clear_text"
                     app:helperTextTextColor="@color/red"
@@ -147,7 +147,6 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
                     app:counterMaxLength="50"
                     app:endIconMode="clear_text"
                     app:helperText="required*"
@@ -169,12 +168,10 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterEnabled="true"
                     app:counterMaxLength="10"
                     app:endIconDrawable="@drawable/icon_verification_black"
                     app:endIconMode="custom"
                     app:endIconTint="@color/black"
-                    app:errorContentDescription="Verify"
                     app:helperText="required*"
                     app:prefixText="+880"
                     app:startIconDrawable="@drawable/icon_phone_black">
