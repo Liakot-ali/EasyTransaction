@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity
+            android:name=".Signup"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAddCustomer"
             android:exported="false" />
         <activity
