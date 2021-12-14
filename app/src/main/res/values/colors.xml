@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Color Section !-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -12,7 +14,15 @@
     <color name="dark_gray">#555555</color>
     <color name="red">#BD0A0A</color>
 
+    <color name="toolbar_text">#FF000000</color>
+    <color name="toolbar_background">#D5D5D5</color>
+    <color name="button_text">#FFFFFFFF</color>
 
+    <color name="picture_border">#FF000000</color>
+    <color name="layout_border">#FF000000</color>
+
+
+    <!-- Dimen Section !-->
     <dimen name="lay_pad">10sp</dimen>
     <dimen name="inner_pad">5sp</dimen>
 
@@ -21,13 +31,27 @@
     <dimen name="normal_text">18sp</dimen>
     <dimen name="small_text">16sp</dimen>
 
+    <dimen name="button_text">20</dimen>
+
+
     <dimen name="toolbar_picture">40sp</dimen>
     <dimen name="profile_picture">90sp</dimen>
+    <dimen name="list_picture">50sp</dimen>
 
+
+    <!-- Style Section !-->
     <style name="textInputLayoutStyle"
         parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">@color/black</item>
         <item name="boxStrokeWidth">2sp</item>
+        <item name="android:padding">@dimen/inner_pad</item>
+
+        <item name="boxStrokeColor">@color/layout_border</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="prefixTextColor">@color/black</item>
+        <item name="helperTextTextColor">@color/red</item>
+
+
+        <item name="prefixTextAppearance">@style/TextAppearance.AppCompat.Medium</item>
     </style>
 
 </resources>

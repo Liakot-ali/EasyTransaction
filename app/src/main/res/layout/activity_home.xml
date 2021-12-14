@@ -11,7 +11,7 @@
         android:id="@+id/homeToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white_gray"
+        android:background="@color/toolbar_background"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Shop_name"
-                android:textColor="@color/black"
+                android:textColor="@color/toolbar_text"
                 android:textSize="@dimen/toolbar_text" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="total_amount"
-                android:textColor="@color/black"
+                android:textColor="@color/toolbar_text"
                 android:textSize="@dimen/small_text" />
         </LinearLayout>
 

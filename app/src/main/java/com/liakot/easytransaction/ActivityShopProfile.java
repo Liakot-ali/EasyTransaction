@@ -24,7 +24,7 @@ public class ActivityShopProfile extends AppCompatActivity {
         phoneLayout = findViewById(R.id.shopProfilePhoneLayout);
         toolbar = findViewById(R.id.shopProfileToolbar);
         setSupportActionBar(toolbar);
-        getActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         phoneLayout.setEndIconOnClickListener(new View.OnClickListener() {
             @Override

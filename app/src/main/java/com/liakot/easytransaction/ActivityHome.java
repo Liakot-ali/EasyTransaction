@@ -56,7 +56,7 @@ public class ActivityHome extends AppCompatActivity {
         homeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityHome.this, "Fab Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ActivityHome.this, ActivityAddCustomer.class));
             }
         });
 
