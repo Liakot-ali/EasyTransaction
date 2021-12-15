@@ -39,8 +39,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/inner_pad"
                 app:counterEnabled="false"
                 android:hint="Type"
+                app:helperText="*"
+                app:helperTextTextColor="@color/red"
                 app:hintTextColor="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:startIconDrawable="@drawable/icon_about_us_black">
@@ -91,7 +94,7 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="25"
+                app:counterMaxLength="@integer/shop_name"
                 app:endIconMode="clear_text"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_profile_24">
@@ -101,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
-                    android:maxLength="25"
+                    android:maxLength="@integer/shop_name"
                     android:inputType="text"
                     android:textSize="@dimen/normal_text"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -112,9 +115,9 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="10"
+                app:counterMaxLength="@integer/phone_number"
                 app:endIconMode="clear_text"
-                app:prefixText="+880"
+                app:prefixText="@string/prefix_number"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_phone_black">
 
@@ -123,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone"
-                    android:maxLength="10"
+                    android:maxLength="@integer/phone_number"
                     android:inputType="number"
                     android:textSize="@dimen/normal_text"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -134,7 +137,7 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="50"
+                app:counterMaxLength="@integer/address"
                 app:endIconMode="clear_text"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_location_black">
@@ -144,7 +147,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
-                    android:maxLength="50"
+                    android:maxLength="@integer/address"
                     android:textSize="@dimen/normal_text"
                     android:inputType="textPostalAddress"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
