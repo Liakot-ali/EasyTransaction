@@ -35,7 +35,7 @@
             android:orientation="vertical" >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addCustomerTypelayout"
+                android:id="@+id/addCustomerTypeLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/addCustomerType"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="none"
                     android:dropDownHeight="wrap_content"
                     android:text="Select Type"
@@ -84,8 +84,6 @@
                     android:layout_gravity="bottom|right"
                     android:layout_marginLeft="-30sp"
                     android:src="@drawable/icon_camera_black"
-                    app:civ_border_color="@color/white_gray"
-                    app:civ_border_width="@dimen/picture_border"
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
