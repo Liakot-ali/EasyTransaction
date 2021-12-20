@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ActivityTransaction">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/toolbar_picture"
+        android:layout_height="@dimen/toolbar_picture"
+        android:src="@drawable/icon_profile_24"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
+
+            <TextView
+                android:id="@+id/transa_CustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Customer_Name"
+                android:textColor="@color/toolbar_text"
+                android:textSize="@dimen/toolbar_text" />
+
+            <TextView
+                android:id="@+id/transa_RemainingAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remaining_amount "
+                android:textColor="@color/toolbar_text"
+                android:textSize="@dimen/small_text" />
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/Details_btn"
+            android:layout_width="100sp"
+            android:layout_height="48dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10sp"
+            android:textColor="@color/toolbar_text"
+            android:text="Details"
+
+/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:text="Expense Money">
+
+    </EditText>
+
+    <EditText
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Get Money"
+        ></EditText>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="408dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="385dp"
+                android:layout_height="wrap_content"
+                android:hint="Explanation" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>
