@@ -61,14 +61,17 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:text="Expense Money">
+        android:text="Expense Money"
+        android:textAlignment="center">
 
     </EditText>
+
 
     <EditText
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:text="Get Money"
+        android:textAlignment="center"
         ></EditText>
 
     <LinearLayout
@@ -80,9 +83,17 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="385dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:hint="Explanation" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Submit"
+                android:gravity="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
