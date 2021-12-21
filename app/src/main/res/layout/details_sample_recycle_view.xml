@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:weightSum="8"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:weightSum="2"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/explanation_sample_details"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="10-12-2021"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:background="@color/teal_200"
+                />
+            <TextView
+                android:id="@+id/Explanation_sample_details"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="Rice butter"
+                android:padding="5dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@color/teal_200"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/Expensemoney_sample_details"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="10000000"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/purple_200"
+            />
+
+        <TextView
+            android:id="@+id/getmoney_sample_details"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="500909"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/teal_200"
+            />
+
+        <TextView
+            android:id="@+id/remain_sample_details"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="35768989"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/purple_200"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
