@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".ActivityTransaction">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,12 +14,13 @@
         android:layout_height="wrap_content"
         android:background="@color/toolbar_background"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" >
+        android:theme="?attr/actionBarTheme">
 
         <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="@dimen/toolbar_picture"
-        android:layout_height="@dimen/toolbar_picture"
-        android:src="@drawable/icon_profile_24"/>
+            android:layout_width="@dimen/toolbar_picture"
+            android:layout_height="@dimen/toolbar_picture"
+            android:src="@drawable/icon_profile_24" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -44,71 +46,88 @@
 
 
         </LinearLayout>
+
         <Button
             android:id="@+id/Details_btn"
             android:layout_width="100sp"
             android:layout_height="48dp"
             android:layout_gravity="right"
             android:layout_marginRight="10sp"
-            android:textColor="@color/toolbar_text"
             android:text="Details"
+            android:textColor="@color/toolbar_text"
 
-/>
+            />
 
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-
-        <EditText
-            android:layout_width="210dp"
-            android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
-            android:text="Expense Money"
-            android:textAlignment="center">
-
-        </EditText>
-
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text="Get Money"
-            android:textAlignment="center"></EditText>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="52dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="408dp"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="Explanation" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Submit" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/lay_pad">
+
+
+            <EditText
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="Expense Money"
+
+                android:textAlignment="center">
+
+            </EditText>
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Get Money"
+                android:textAlignment="center"></EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/lay_pad"
+            android:layout_marginTop="@dimen/lay_pad">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="150sp"
+                    android:hint="Explanation"
+
+                    android:textSize="@dimen/normal_text"
+                    android:gravity="bottom"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:text="Submit" />
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

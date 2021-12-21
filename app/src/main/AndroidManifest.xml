@@ -16,6 +16,12 @@
             android:name=".ActivitySignUp"
             android:exported="false" />
         <activity
+            android:name=".ActivitySignIn"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityCustomerDetails"
+            android:exported="false" />
+        <activity
             android:name=".ActivityAddCustomer"
             android:exported="false" />
         <activity
