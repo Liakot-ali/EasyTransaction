@@ -85,6 +85,7 @@
                   android:padding="5dp"
                   android:textSize="20sp"
                   android:background="@color/teal_200"
+                        
                   />
               <TextView
                   android:id="@+id/Explanation_details"
