@@ -13,6 +13,7 @@
     <color name="white_gray">#D5D5D5</color>
     <color name="dark_gray">#555555</color>
     <color name="red">#BD0A0A</color>
+    <color name="green">#047C41</color>
 
     <color name="toolbar_text">#FF000000</color>
     <color name="toolbar_background">#D5D5D5</color>

@@ -77,6 +77,10 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     typeLayout.setErrorEnabled(false);
                     ClassAddCustomer newCustomer = new ClassAddCustomer(type, name, phone, address, picture);
 
+                    ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityAddCustomer.this);
+                    helper.AddNewCustomer(newCustomer);
+
+
 
 
                     Toast.makeText(ActivityAddCustomer.this, "New customer Added", Toast.LENGTH_SHORT).show();

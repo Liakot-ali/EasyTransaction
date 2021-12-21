@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
        homeBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               startActivity(new Intent(MainActivity.this, sign_in.class));
+               startActivity(new Intent(MainActivity.this, ActivitySignIn.class));
            }
        });
     }

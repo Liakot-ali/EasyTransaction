@@ -10,7 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity
+            android:name=".ActivityTransaction"
+            android:exported="false" />
+        <activity
             android:name=".ActivitySignUp"
+            android:exported="false" />
+        <activity
+            android:name=".ActivitySignIn"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityCustomerDetails"
             android:exported="false" />
         <activity
             android:name=".ActivityAddCustomer"

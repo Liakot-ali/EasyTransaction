@@ -73,8 +73,8 @@
                     android:layout_height="@dimen/profile_picture"
                     android:layout_gravity="center"
                     android:src="@drawable/icon_profile_24"
-                    app:civ_border_width="@dimen/picture_border"
-                    app:civ_border_color="@color/picture_border"/>
+                    app:civ_border_color="@color/picture_border"
+                    app:civ_border_width="@dimen/picture_border" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/addCustomerAddPicture"
@@ -102,8 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
-                    android:maxLength="@integer/shop_name"
                     android:inputType="text"
+                    android:maxLength="@integer/shop_name"
                     android:textSize="@dimen/normal_text"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>

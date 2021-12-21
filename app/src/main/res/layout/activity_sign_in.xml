@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".sign_in">
+    tools:context=".ActivitySignIn">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/sign_inToolbar"
@@ -39,8 +39,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/signinlogo"
-                android:layout_width="110sp"
-                android:layout_height="110sp"
+                android:layout_width="@dimen/profile_picture"
+                android:layout_height="@dimen/profile_picture"
                 android:layout_gravity="center"
                 android:src="@drawable/icon_profile_24"
                 app:civ_border_width="@dimen/picture_border"
@@ -96,7 +96,7 @@
 
             <Button
                 android:id="@+id/signinBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Sign In" />
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Don't Have An Accoumt?"
+                android:text="Don't Have An Account?"
                 android:textSize="20sp"
 
                 />
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Sign UP"
+                android:text="Sign Up"
                 android:textColor="@color/purple_500"
                 android:textSize="20sp"
                 android:textStyle="bold" />
