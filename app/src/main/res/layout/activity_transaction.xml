@@ -60,8 +60,9 @@
     <EditText
         android:layout_width="320dp"
         android:layout_height="wrap_content"
+        android:minHeight="48dp"
         android:paddingBottom="10dp"
-        android:text="Expense Money"
+        android:hint="Expense Money"
         android:textAlignment="center">
 
     </EditText>
@@ -70,32 +71,32 @@
     <EditText
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="Get Money"
-        android:textAlignment="center"
-        ></EditText>
-
+        android:minHeight="48dp"
+        android:hint="Get Money"
+        android:textAlignment="center"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="408dp"
+            style="@style/textInputLayoutStyle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="Explanation" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Submit"
-                android:gravity="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Submit" />
 
 
     </LinearLayout>

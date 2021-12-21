@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:text="SignUp"
+            android:text="Sign Up"
             android:textColor="@color/toolbar_text"
             android:textSize="@dimen/toolbar_text" />
     </androidx.appcompat.widget.Toolbar>
@@ -146,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/normal_text"
-                    android:textColor="@color/green"
+                    android:textColor="@color/purple_700"
                     android:textStyle="bold"
                     android:text="Sign In" />
             </LinearLayout>

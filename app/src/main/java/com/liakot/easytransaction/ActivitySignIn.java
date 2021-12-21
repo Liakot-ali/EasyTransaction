@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class sign_in extends AppCompatActivity {
+public class ActivitySignIn extends AppCompatActivity {
 
     CircleImageView logo;
     TextInputEditText signin_phonenumber,signin_password;
@@ -30,7 +30,7 @@ public class sign_in extends AppCompatActivity {
         signin_signup .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(sign_in.this, ActivitySignUp.class));
+                startActivity(new Intent(ActivitySignIn.this, ActivitySignUp.class));
             }
         });
 
