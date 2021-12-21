@@ -11,6 +11,19 @@ public class ClassAddCustomer {
         this.picture = picture;
     }
 
+
+    //---------For show the value together-------
+    @Override
+    public String toString() {
+        return "ClassAddCustomer{" +
+                "type='" + type + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", picture='" + picture + '\'' +
+                '}';
+    }
+
     public String getType() {
         return type;
     }
