@@ -57,26 +57,34 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <EditText
-        android:layout_width="320dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:text="Expense Money"
-        android:textAlignment="center">
-
-    </EditText>
+        android:orientation="horizontal"
+        >
 
 
-    <EditText
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:text="Get Money"
-        android:textAlignment="center"
-        ></EditText>
+        <EditText
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="Expense Money"
+            android:textAlignment="center">
+
+        </EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Get Money"
+            android:textAlignment="center"></EditText>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="52dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="408dp"
@@ -87,13 +95,6 @@
                 android:layout_height="match_parent"
                 android:hint="Explanation" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Submit"
-                android:gravity="center"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -101,8 +102,13 @@
     </LinearLayout>
 
 
-
-
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:text="Submit" />
 
 
 </LinearLayout>
