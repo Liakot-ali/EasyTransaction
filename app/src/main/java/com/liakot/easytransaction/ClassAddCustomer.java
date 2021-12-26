@@ -1,14 +1,15 @@
 package com.liakot.easytransaction;
 
 public class ClassAddCustomer {
-    String type, name, phone, address, picture;
+    String name, address, picture;
+    long phone, amount;
 
-    public ClassAddCustomer(String type, String name, String phone, String address, String picture) {
-        this.type = type;
+    public ClassAddCustomer(String name, long phone, String address, String picture, long amount) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.picture = picture;
+        this.amount = amount;
     }
 
 
@@ -16,20 +17,20 @@ public class ClassAddCustomer {
     @Override
     public String toString() {
         return "ClassAddCustomer{" +
-                "type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", picture='" + picture + '\'' +
+                ", amount='" + amount + '\'' +
                 '}';
     }
 
-    public String getType() {
-        return type;
+    public long getAmount() {
+        return amount;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAmount(long amount) {
+        this.amount = amount;
     }
 
     public String getName() {
@@ -40,11 +41,11 @@ public class ClassAddCustomer {
         this.name = name;
     }
 
-    public String getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
