@@ -1,8 +1,12 @@
 package com.liakot.easytransaction;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,10 +16,17 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ActivityAddCustomer extends AppCompatActivity {
+
+    public final int PICK_IMAGE = 1;
 
     AutoCompleteTextView customerType;
     CircleImageView customerPicture, addPicture;
@@ -23,6 +34,8 @@ public class ActivityAddCustomer extends AppCompatActivity {
     TextInputLayout nameLayout, phoneLayout, addressLayout, typeLayout;
     Button recordBtn;
     ArrayAdapter<String> adapter;
+    Uri imageUri = null;
+    byte[] imageByte;
 
 
     @Override
@@ -31,6 +44,20 @@ public class ActivityAddCustomer extends AppCompatActivity {
         setContentView(R.layout.activity_add_customer);
 
         InitializeAll();
+
+        //-------for dropDown menu------------
+        adapter = new ArrayAdapter<>(ActivityAddCustomer.this, R.layout.item_customer_type_dropdown, getResources().getStringArray(R.array.CustomerType));
+        customerType.setAdapter(adapter);
+        customerType.setText("Select Type", false);
+
+        addPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, PICK_IMAGE);
+            }
+        });
 
         recordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,8 +69,17 @@ public class ActivityAddCustomer extends AppCompatActivity {
                 phone = customerPhone.getText().toString();
                 address = customerAddress.getText().toString();
 
-                //TODO--get Picture url ---------
-                picture = customerPicture.getResources().toString();
+                //----------convert imageUri to byte array to store as BLOB---------
+                if(imageUri!=null)
+                {
+                    try{
+                        InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                        imageByte = getByte(inputStream);
+                    }catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
 
                 long number = 2000000000;
                 if (!phone.isEmpty() && !phone.contains("%") && !phone.contains(":") && !phone.contains(" ") && !phone.contains(".")) {
@@ -88,14 +124,15 @@ public class ActivityAddCustomer extends AppCompatActivity {
 
                         if (cursor.getCount() == 0) {
                             //---------add the customer to database--------
-                            ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, picture, 0);
+                            ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewCustomer(newCustomer);
                             if (helper.customerAdd) {
                                 customerName.setText("");
                                 customerPhone.setText("");
                                 customerAddress.setText("");
                                 customerType.setText("Select Type", false);
-                                //TODO----set default picture------
+                                customerPicture.setImageResource(R.drawable.icon_profile_24);
+//                                Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
 
                             }
                         } else {
@@ -109,14 +146,15 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             }
                             if (!exist) {
                                 //------Add the customer to database--------
-                                ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, picture, 0);
+                                ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewCustomer(newCustomer);
                                 if (helper.customerAdd) {
                                     customerName.setText("");
                                     customerPhone.setText("");
                                     customerAddress.setText("");
                                     customerType.setText("Select Type", false);
-                                    //TODO----set default picture------
+                                    customerPicture.setImageResource(R.drawable.icon_profile_24);
+//                                    Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
 
                                 }
                             }
@@ -127,14 +165,15 @@ public class ActivityAddCustomer extends AppCompatActivity {
                         Cursor cursor = helper.showToPay();
                         if (cursor.getCount() == 0) {
                             //------Add the To Pay to database--------
-                            ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, picture, 0);
+                            ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewToPay(newCustomer);
                             if (helper.toPayAdd) {
                                 customerName.setText("");
                                 customerPhone.setText("");
                                 customerAddress.setText("");
                                 customerType.setText("Select Type", false);
-                                //TODO----set default picture------
+                                customerPicture.setImageResource(R.drawable.icon_profile_24);
+//                                Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
 
                             }
                         } else {
@@ -148,14 +187,15 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             }
                             if (!exist) {
                                 //------Add the customer to database--------
-                                ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, picture, 0);
+                                ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewToPay(newCustomer);
                                 if (helper.toPayAdd) {
                                     customerName.setText("");
                                     customerPhone.setText("");
                                     customerAddress.setText("");
                                     customerType.setText("Select Type", false);
-                                    //TODO----set default picture------
+                                    customerPicture.setImageResource(R.drawable.icon_profile_24);
+//                                    Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
 
                                 }
                             }
@@ -169,6 +209,8 @@ public class ActivityAddCustomer extends AppCompatActivity {
 
 
     }
+
+
 
     //-----Out of main section-----------
     private void InitializeAll() {
@@ -188,13 +230,37 @@ public class ActivityAddCustomer extends AppCompatActivity {
 
     }
 
+    //------convert Uri to byte array--------
+    private byte[] getByte(InputStream inputStream) throws IOException {
+
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data.getData() != null) {
+            imageUri = data.getData();
+            Picasso.get().load(imageUri).into(customerPicture);
+        }
+        else{
+            imageUri = null;
+        }
+    }
 
     //-------For drop down menu---------
     @Override
     protected void onResume() {
         super.onResume();
-        adapter = new ArrayAdapter<>(ActivityAddCustomer.this, R.layout.item_customer_type_dropdown, getResources().getStringArray(R.array.CustomerType));
-        customerType.setAdapter(adapter);
-        customerType.setText("Select Type", false);
+
     }
 }

@@ -1,10 +1,11 @@
 package com.liakot.easytransaction;
 
 public class ClassAddCustomer {
-    String name, address, picture;
+    String name, address;
+    byte[] picture;
     long phone, amount;
 
-    public ClassAddCustomer(String name, long phone, String address, String picture, long amount) {
+    public ClassAddCustomer(String name, long phone, String address, byte[] picture, long amount) {
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -57,11 +58,11 @@ public class ClassAddCustomer {
         this.address = address;
     }
 
-    public String getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 }
