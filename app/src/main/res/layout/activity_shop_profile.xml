@@ -31,6 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/lay_pad"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -83,8 +84,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    app:counterMaxLength="25"
+                    app:counterMaxLength="@integer/shop_name"
                     app:endIconMode="clear_text"
                     app:helperText="required*"
                     app:startIconDrawable="@drawable/icon_shop_name_black">
@@ -94,7 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Shop Name"
-                        android:maxLength="25"
+                        android:maxLength="@integer/shop_name"
                         android:padding="@dimen/inner_pad"
                         android:textSize="@dimen/normal_text"
                         android:inputType="text"
@@ -105,7 +105,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterMaxLength="25"
+                    app:counterMaxLength="@integer/owner_name"
                     app:endIconMode="clear_text"
                     app:helperTextTextColor="@color/red"
                     app:startIconDrawable="@drawable/icon_profile_24">
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Owner Name"
                         android:inputType="text"
-                        android:maxLength="25"
+                        android:maxLength="@integer/owner_name"
                         android:padding="@dimen/inner_pad"
                         android:textSize="@dimen/normal_text"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -126,7 +126,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterMaxLength="15"
+                    app:counterMaxLength="@integer/category"
                     app:endIconMode="clear_text"
                     app:helperTextTextColor="@color/red"
                     app:startIconDrawable="@drawable/icon_category_black">
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Category"
                         android:inputType="text"
-                        android:maxLength="15"
+                        android:maxLength="@integer/category"
                         android:textSize="@dimen/normal_text"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -147,7 +147,7 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterMaxLength="50"
+                    app:counterMaxLength="@integer/address"
                     app:endIconMode="clear_text"
                     app:helperText="required*"
                     app:helperTextTextColor="@color/red"
@@ -158,7 +158,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Address"
                         android:inputType="textPostalAddress"
-                        android:maxLength="50"
+                        android:maxLength="@integer/address"
                         android:textSize="@dimen/normal_text"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -168,12 +168,12 @@
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:counterMaxLength="10"
+                    app:counterMaxLength="@integer/phone_number"
                     app:endIconDrawable="@drawable/icon_verification_black"
                     app:endIconMode="custom"
                     app:endIconTint="@color/black"
                     app:helperText="required*"
-                    app:prefixText="+880"
+                    app:prefixText="@string/prefix_number"
                     app:startIconDrawable="@drawable/icon_phone_black">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -183,7 +183,7 @@
                         android:gravity="center_vertical"
                         android:hint="Phone Number"
                         android:inputType="number"
-                        android:maxLength="10"
+                        android:maxLength="@integer/phone_number"
                         android:textSize="@dimen/normal_text"
                         tools:ignore="TouchTargetSizeCheck" />
                 </com.google.android.material.textfield.TextInputLayout>

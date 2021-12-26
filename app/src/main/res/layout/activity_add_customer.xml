@@ -35,12 +35,15 @@
             android:orientation="vertical" >
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/addCustomerTypelayout"
+                android:id="@+id/addCustomerTypeLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/inner_pad"
                 app:counterEnabled="false"
                 android:hint="Type"
+                app:helperText="*"
+                app:helperTextTextColor="@color/red"
                 app:hintTextColor="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:startIconDrawable="@drawable/icon_about_us_black">
@@ -48,7 +51,7 @@
                 <AutoCompleteTextView
                     android:id="@+id/addCustomerType"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="none"
                     android:dropDownHeight="wrap_content"
                     android:text="Select Type"
@@ -70,8 +73,8 @@
                     android:layout_height="@dimen/profile_picture"
                     android:layout_gravity="center"
                     android:src="@drawable/icon_profile_24"
-                    app:civ_border_width="@dimen/picture_border"
-                    app:civ_border_color="@color/picture_border"/>
+                    app:civ_border_color="@color/picture_border"
+                    app:civ_border_width="@dimen/picture_border" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/addCustomerAddPicture"
@@ -81,8 +84,6 @@
                     android:layout_gravity="bottom|right"
                     android:layout_marginLeft="-30sp"
                     android:src="@drawable/icon_camera_black"
-                    app:civ_border_color="@color/white_gray"
-                    app:civ_border_width="@dimen/picture_border"
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
@@ -91,7 +92,7 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="25"
+                app:counterMaxLength="@integer/shop_name"
                 app:endIconMode="clear_text"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_profile_24">
@@ -101,8 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
-                    android:maxLength="25"
                     android:inputType="text"
+                    android:maxLength="@integer/shop_name"
                     android:textSize="@dimen/normal_text"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -112,9 +113,9 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="10"
+                app:counterMaxLength="@integer/phone_number"
                 app:endIconMode="clear_text"
-                app:prefixText="+880"
+                app:prefixText="@string/prefix_number"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_phone_black">
 
@@ -123,7 +124,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone"
-                    android:maxLength="10"
+                    android:maxLength="@integer/phone_number"
                     android:inputType="number"
                     android:textSize="@dimen/normal_text"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -134,7 +135,7 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="50"
+                app:counterMaxLength="@integer/address"
                 app:endIconMode="clear_text"
                 app:helperText="*"
                 app:startIconDrawable="@drawable/icon_location_black">
@@ -144,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
-                    android:maxLength="50"
+                    android:maxLength="@integer/address"
                     android:textSize="@dimen/normal_text"
                     android:inputType="textPostalAddress"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
