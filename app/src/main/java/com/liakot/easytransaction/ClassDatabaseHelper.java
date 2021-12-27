@@ -58,6 +58,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean customerAdd = true;
     public boolean toPayAdd = true;
+    public boolean transactionAdd = true;
 
 
     public ClassDatabaseHelper(@Nullable Context context) {
@@ -164,5 +165,28 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
         return cursor;
+    }
+
+    public void addTransaction(ClassAddTransaction transaction)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(transDate, transaction.getDate());
+        cv.put(transCustomerPhone, transaction.getPhone());
+        cv.put(transExplanation, transaction.getExplanation());
+        cv.put(transTotalExpense, transaction.getExpense());
+        cv.put(transGetMoney, transaction.getGetMoney());
+        cv.put(transRemain, transaction.getRemain());
+        long result = database.insert(allTransactionTable, null, cv);
+        if(result == -1)
+        {
+            Toast.makeText(context, "Transaction not added", Toast.LENGTH_SHORT).show();
+            transactionAdd = false;
+        }
+        else{
+            Toast.makeText(context, "Transaction added", Toast.LENGTH_SHORT).show();
+            transactionAdd = true;
+        }
+
     }
 }

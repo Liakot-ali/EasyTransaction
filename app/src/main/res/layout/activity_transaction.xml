@@ -19,6 +19,8 @@
             android:id="@+id/transPicture"
             android:layout_width="@dimen/toolbar_picture"
             android:layout_height="@dimen/toolbar_picture"
+            android:layout_gravity="start"
+            android:layout_marginRight="@dimen/lay_pad"
             android:src="@drawable/icon_profile_24" />
 
         <LinearLayout
@@ -32,8 +34,8 @@
                 android:id="@+id/transCustomerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Customer_Name"
                 android:gravity="center"
+                android:text="Customer_Name"
                 android:textColor="@color/toolbar_text"
                 android:textSize="@dimen/toolbar_text" />
 
@@ -41,8 +43,8 @@
                 android:id="@+id/transRemainingAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Remaining_amount "
                 android:gravity="center"
+                android:text="Remain_amount"
                 android:textColor="@color/green"
                 android:textSize="@dimen/small_text" />
 
@@ -51,10 +53,10 @@
 
         <Button
             android:id="@+id/transDetailsBtn"
-            android:layout_width="100sp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginRight="10sp"
+            android:layout_marginEnd="@dimen/lay_pad"
             android:text="Details"
             android:textColor="@color/white"
 
@@ -62,76 +64,96 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/lay_pad">
-
-
-            <EditText
-                android:layout_width="210dp"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="Expense Money"
-
-                android:textAlignment="center"
-                tools:ignore="TouchTargetSizeCheck">
-
-            </EditText>
-
-            <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Get Money"
-                android:textAlignment="center"
-                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
-
-        </LinearLayout>
-
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="@dimen/lay_pad"
-            android:layout_marginTop="@dimen/lay_pad">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:padding="@dimen/lay_pad"
+            android:layout_marginTop="-56sp"
+            android:orientation="vertical">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/textInputLayoutStyle"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lay_pad">
 
-                <com.google.android.material.textfield.TextInputEditText
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/transExpenseLayout"
+                    style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="150sp"
-                    android:hint="Explanation"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:counterEnabled="false">
 
-                    android:textSize="@dimen/normal_text"
-                    android:gravity="bottom"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/transExpense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Expense"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/transGetMoneyLayout"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:counterEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/transGetMoney"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Get money"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/lay_pad"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/transExplanationLayout"
+                    style="@style/textInputLayoutStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:counterEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/transExplanation"
+                        android:layout_width="match_parent"
+                        android:layout_height="100sp"
+                        android:gravity="bottom"
+                        android:hint="Explanation"
+                        android:textSize="@dimen/normal_text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/transAddTransactionBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:text="Add Transaction" />
 
 
         </LinearLayout>
-
-
-        <Button
-            android:id="@+id/transAddTransactionBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:gravity="center"
-            android:text="Submit" />
-
-
-    </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
