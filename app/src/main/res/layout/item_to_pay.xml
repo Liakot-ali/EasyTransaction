@@ -4,17 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/lay_pad">
+    android:paddingLeft="@dimen/inner_pad"
+    android:paddingRight="@dimen/inner_pad"
+    android:paddingTop="@dimen/inner_pad"
+    android:paddingBottom="@dimen/inner_pad">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="5sp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/inner_pad"
+        app:cardBackgroundColor="@color/white_gray"
+        app:cardElevation="10sp"
         app:cardCornerRadius="@dimen/inner_pad">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/inner_pad"
             android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -58,6 +64,7 @@
                 android:layout_weight="5"
                 android:gravity="center"
                 android:text="Amount"
+                android:textColor="@color/green"
                 android:textSize="@dimen/normal_text" />
         </LinearLayout>
 

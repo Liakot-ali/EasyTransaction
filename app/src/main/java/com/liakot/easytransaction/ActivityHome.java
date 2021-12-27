@@ -1,6 +1,7 @@
 package com.liakot.easytransaction;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -56,7 +57,8 @@ public class ActivityHome extends AppCompatActivity {
         homeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityHome.this, ActivityAddCustomer.class));
+                Intent intent = new Intent(ActivityHome.this, ActivityAddCustomer.class);
+                ActivityHome.this.startActivityForResult(intent, 1);
             }
         });
 
@@ -131,5 +133,13 @@ public class ActivityHome extends AppCompatActivity {
             Toast.makeText(ActivityHome.this, "Log Out Clicked", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode ==1) {
+            startActivity(new Intent(ActivityHome.this, ActivityHome.class));
+        }
     }
 }
