@@ -57,7 +57,7 @@ public class ActivityTransaction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerDetails.class);
-                intent.putExtra("name", name);
+                intent.putExtra("Name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
                 intent.putExtra("Picture", pictureByte);
