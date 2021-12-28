@@ -64,7 +64,7 @@
                 android:layout_weight="5"
                 android:gravity="center"
                 android:text="Amount"
-                android:textColor="@color/green"
+                android:textColor="@color/red"
                 android:textSize="@dimen/normal_text" />
         </LinearLayout>
 

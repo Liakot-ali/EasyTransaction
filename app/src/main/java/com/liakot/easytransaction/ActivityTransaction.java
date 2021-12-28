@@ -113,14 +113,15 @@ public class ActivityTransaction extends AppCompatActivity {
                         explanationLayout.setSelected(false);
                         amount = amount + remain;
                         amountTV.setText("Amount: " + amount);
-                        //---TODO----- add updated amount to database--------
+                        //----------add updated amount to database--------
+                        ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
+                        helper.updateCustomer(upCustomer, phone);
 
                     }
                 }
 
             }
         });
-
 
     }
 

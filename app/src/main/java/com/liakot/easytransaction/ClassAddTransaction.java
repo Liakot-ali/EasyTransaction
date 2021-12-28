@@ -2,6 +2,7 @@ package com.liakot.easytransaction;
 
 public class ClassAddTransaction {
 
+    long transactionNo;
     String date, explanation;
     long phone, expense, getMoney, remain;
 
@@ -12,6 +13,24 @@ public class ClassAddTransaction {
         this.expense = expense;
         this.getMoney = getMoney;
         this.remain = remain;
+    }
+
+    public ClassAddTransaction(long transactionNo, String date, String explanation, long phone, long expense, long getMoney, long remain) {
+        this.transactionNo = transactionNo;
+        this.date = date;
+        this.explanation = explanation;
+        this.phone = phone;
+        this.expense = expense;
+        this.getMoney = getMoney;
+        this.remain = remain;
+    }
+
+    public long getTransactionNo() {
+        return transactionNo;
+    }
+
+    public void setTransactionNo(long transactionNo) {
+        this.transactionNo = transactionNo;
     }
 
     public String getDate() {
