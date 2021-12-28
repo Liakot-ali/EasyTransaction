@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity
+            android:name=".Activity_customer_profile"
+            android:exported="false" />
+        <activity
             android:name=".ActivityTransaction"
             android:exported="false" />
         <activity

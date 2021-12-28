@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity_customer_profile">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/shopProfileToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="Customer Profile"
+            android:textColor="@color/toolbar_text"
+            android:textSize="@dimen/toolbar_text" />
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/lay_pad"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|bottom"
+            android:orientation="vertical"
+            android:padding="@dimen/lay_pad">
+
+            <LinearLayout
+                android:id="@+id/pictureLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/shopProfilePicture"
+                    android:layout_width="@dimen/profile_picture"
+                    android:layout_height="@dimen/profile_picture"
+                    android:src="@drawable/icon_profile_default_black"
+                    app:civ_border_color="@color/picture_border"
+                    app:civ_border_width="@dimen/picture_border" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/shopProfileAddImage"
+                    android:layout_width="@dimen/toolbar_picture"
+                    android:layout_height="@dimen/toolbar_picture"
+                    android:padding="@dimen/inner_pad"
+                    android:layout_marginLeft="-30sp"
+                    android:layout_gravity="bottom|right"
+                    android:src="@drawable/icon_camera_black"
+                    app:civ_border_color="@color/white_gray"
+                    app:civ_border_width="@dimen/picture_border"
+                    tools:ignore="RtlHardcoded" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20sp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CustomerProfileName"
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:counterMaxLength="50"
+                app:endIconMode="clear_text"
+                app:helperText="*required"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/icon_profile_24"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Customer Name"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:padding="@dimen/inner_pad"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CustomerProfileAddress"
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:counterMaxLength="@integer/address"
+                app:endIconMode="clear_text"
+                app:helperText="required*"
+                app:helperTextTextColor="@color/red"
+                app:startIconDrawable="@drawable/icon_location_black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Customer Address"
+                    android:inputType="textPostalAddress"
+                    android:maxLength="@integer/address"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/CustomerPhoneNumber"
+                style="@style/textInputLayoutStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:counterMaxLength="@integer/phone_number"
+                app:endIconDrawable="@drawable/icon_verification_black"
+                app:endIconMode="custom"
+                app:endIconTint="@color/black"
+                app:helperText="required*"
+                app:helperTextTextColor="@color/red"
+                app:prefixText="@string/prefix_number"
+                app:startIconDrawable="@drawable/icon_phone_black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone Number"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLength="@integer/phone_number"
+                    android:textSize="@dimen/normal_text"
+                    tools:ignore="TouchTargetSizeCheck"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/customerProfileUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/lay_pad"
+            android:layout_marginRight="@dimen/lay_pad"
+            android:text="Update Profile"
+            ></Button>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
