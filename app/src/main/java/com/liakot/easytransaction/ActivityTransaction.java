@@ -32,7 +32,6 @@ public class ActivityTransaction extends AppCompatActivity {
     long phone, amount;
     byte[] pictureByte;
 
-    long totalCustomerRemain, totalToPayRemain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +40,11 @@ public class ActivityTransaction extends AppCompatActivity {
 
         InitializeAll();
 
+        //---TODO------ Customer Profile have been create---------
         pictureCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityTransaction.this, Activity_customer_profile.class);
+                Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerDetails.class);
                 intent.putExtra("name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
@@ -116,18 +116,12 @@ public class ActivityTransaction extends AppCompatActivity {
                         explanationLayout.setSelected(false);
                         amount = amount + remain;
                         amountTV.setText("Amount: " + amount);
-                        //TODO-------- get the totalRemainAmount from shopDetails table-------
                         //----------add updated amount to database--------
-                        if(type.equals("Customer")) {
-
-                            //TODO----totalCustomerRemain amount will be changed-----
-                            totalCustomerRemain += amount;
+                        if(type == "Customer") {
                             ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
                             helper.updateCustomer(upCustomer, phone);
                         }
                         else{
-                            //TODO----totalToPayRemain amount will be changed-----
-                            totalToPayRemain += amount;
                             ClassAddCustomer upToPay = new ClassAddCustomer("", 0, "", null, amount);
                             helper.updateToPay(upToPay, phone);
                         }

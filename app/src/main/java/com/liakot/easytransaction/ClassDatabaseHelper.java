@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -140,15 +141,12 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //-------for update customer data----------
-    public void updateCustomer(ClassAddCustomer upCustomer, long phone)
-    {
+    public void updateCustomer(ClassAddCustomer upCustomer, long phone) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        if(upCustomer.name.isEmpty() && upCustomer.phone == 0 && upCustomer.address.isEmpty() && upCustomer.picture == null)
-        {
+        if (upCustomer.name.isEmpty() && upCustomer.phone == 0 && upCustomer.address.isEmpty() && upCustomer.picture == null) {
             cv.put(customerAmount, upCustomer.getAmount());
-        }
-        else{
+        } else {
             cv.put(customerName, upCustomer.getName());
             cv.put(customerPhone, upCustomer.getPhone());
             cv.put(customerAddress, upCustomer.getAddress());
@@ -156,12 +154,10 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
 
         long result = database.update(customerDetailsTable, cv, customerPhone + "=" + phone, null);
-        if(result == -1)
-        {
+        if (result == -1) {
             Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             customerUpdated = false;
-        }
-        else{
+        } else {
             Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
             customerUpdated = true;
         }
@@ -200,15 +196,12 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //-------for updated toPay data-----------
-    public void updateToPay(ClassAddCustomer upToPay, long phone)
-    {
+    public void updateToPay(ClassAddCustomer upToPay, long phone) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        if(upToPay.name.isEmpty() && upToPay.phone == 0 && upToPay.address.isEmpty() && upToPay.picture == null)
-        {
+        if (upToPay.name.isEmpty() && upToPay.phone == 0 && upToPay.address.isEmpty() && upToPay.picture == null) {
             cv.put(toPayAmount, upToPay.getAmount());
-        }
-        else{
+        } else {
             cv.put(toPayName, upToPay.getName());
             cv.put(toPayPhone, upToPay.getPhone());
             cv.put(toPayAddress, upToPay.getAddress());
@@ -216,20 +209,17 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
 
         long result = database.update(toPayDetailsTable, cv, toPayPhone + "=" + phone, null);
-        if(result == -1)
-        {
+        if (result == -1) {
             Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
             toPayUpdated = false;
-        }
-        else{
+        } else {
             Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
             toPayUpdated = true;
         }
     }
 
     //------for add the transaction to transaction table------------
-    public void addTransaction(ClassAddTransaction transaction)
-    {
+    public void addTransaction(ClassAddTransaction transaction) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(transDate, transaction.getDate());
@@ -240,29 +230,50 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(transRemain, transaction.getRemain());
         cv.put(transType, transaction.getType());
         long result = database.insert(allTransactionTable, null, cv);
-        if(result == -1)
-        {
+        if (result == -1) {
             Toast.makeText(context, "Transaction not added", Toast.LENGTH_SHORT).show();
             transactionAdd = false;
-        }
-        else{
+        } else {
             Toast.makeText(context, "Transaction added", Toast.LENGTH_SHORT).show();
             transactionAdd = true;
         }
     }
 
-    public Cursor showTransaction(long phone, String type)
-    {
+    public Cursor showTransaction(long phone, String type) {
         type = "'" + type + "'";
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "SELECT " + transDate + ", " + transExplanation + ", " + transTotalExpense + ", " +
                 transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerPhone + " = " + phone + " AND " + transType + " = " + type + ";";
 
-        if(database != null) {
-           cursor = database.rawQuery(query, null);
+        if (database != null) {
+            cursor = database.rawQuery(query, null);
         }
 
         return cursor;
+    }
+
+    //to check whether the user exists in the databasae
+    public Boolean checkphone(long Phone) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select * from user where Phone = ?", new String[]{customerPhone});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkphonepassword(String Phone, String password) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery("Select * from users where Phone = ? and password = ?", new String[]{customerPhone, password});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+
+        // Preferences
+        String PREFERENCE_FILE_NAME = "ActivitySignin";
+        String PREFERENCE_Phone = "email";
+        String PREFERENCE_PASSWORD = "password";
     }
 }
