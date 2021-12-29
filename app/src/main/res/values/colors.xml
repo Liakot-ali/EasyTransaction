@@ -15,6 +15,9 @@
     <color name="red">#BD0A0A</color>
     <color name="green">#047C41</color>
 
+    <color name="item_background">#F6F6F6</color>
+
+
     <color name="toolbar_text">#FF000000</color>
     <color name="toolbar_background">#D5D5D5</color>
     <color name="button_text">#FFFFFFFF</color>
@@ -37,8 +40,8 @@
 
     <dimen name="picture_border">2sp</dimen>
 
-    <dimen name="toolbar_picture">40sp</dimen>
-    <dimen name="profile_picture">90sp</dimen>
+    <dimen name="toolbar_picture">50sp</dimen>
+    <dimen name="profile_picture">100sp</dimen>
     <dimen name="list_picture">50sp</dimen>
 
 </resources>

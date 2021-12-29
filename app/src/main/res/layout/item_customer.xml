@@ -3,18 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:paddingLeft="@dimen/inner_pad"
     android:paddingRight="@dimen/inner_pad"
-    android:paddingTop="@dimen/inner_pad"
-    android:paddingBottom="@dimen/inner_pad"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white_gray"
+        app:cardBackgroundColor="@color/item_background"
+        android:layout_margin="@dimen/inner_pad"
         app:cardCornerRadius="@dimen/inner_pad"
-        app:cardElevation="10sp">
+        app:cardElevation="@dimen/inner_pad"
+        app:cardUseCompatPadding="false"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/customerPicture"
-                android:layout_width="@dimen/toolbar_picture"
-                android:layout_height="@dimen/toolbar_picture"
+                android:layout_width="@dimen/list_picture"
+                android:layout_height="@dimen/list_picture"
                 android:layout_gravity="center"
                 android:src="@drawable/icon_profile_24" />
 
@@ -63,7 +65,7 @@
                 android:gravity="center"
                 android:layout_weight="5"
                 android:text="Amount"
-                android:textColor="@color/red"
+                android:textColor="@color/green"
                 android:textSize="@dimen/normal_text"/>
         </LinearLayout>
 

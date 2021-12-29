@@ -66,7 +66,6 @@
                         android:layout_gravity="bottom|right"
                         android:src="@drawable/icon_camera_black"
                         app:civ_border_color="@color/white_gray"
-                        app:civ_border_width="@dimen/picture_border"
                         tools:ignore="RtlHardcoded" />
 
                 </LinearLayout>
@@ -156,8 +155,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Address"
                         android:inputType="textPostalAddress"
+                        android:hint="Address"
                         android:maxLength="@integer/address"
                         android:textSize="@dimen/normal_text"
                         tools:ignore="TouchTargetSizeCheck" />

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/explanation_sample_details"
+                android:id="@+id/detailsDate"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -30,7 +30,7 @@
                 android:background="@color/teal_200"
                 />
             <TextView
-                android:id="@+id/Explanation_sample_details"
+                android:id="@+id/detailsExplanation"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -43,7 +43,7 @@
 
         </LinearLayout>
         <TextView
-            android:id="@+id/Expensemoney_sample_details"
+            android:id="@+id/detailsExpenseMoney"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -55,7 +55,7 @@
             />
 
         <TextView
-            android:id="@+id/getmoney_sample_details"
+            android:id="@+id/detailsGetMoney"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -67,7 +67,7 @@
             />
 
         <TextView
-            android:id="@+id/remain_sample_details"
+            android:id="@+id/detailsRemain"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
