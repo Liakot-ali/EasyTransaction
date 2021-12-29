@@ -86,6 +86,7 @@ public class AdapterToPayList extends RecyclerView.Adapter<AdapterToPayList.View
                 intent.putExtra("Amount", arrayList.get(position).getAmount());
                 intent.putExtra("Address", arrayList.get(position).getAddress());
                 intent.putExtra("Picture", arrayList.get(position).getPicture());
+                intent.putExtra("Type", "ToPay");
                 activityContext.startActivity(intent);
             }
         });

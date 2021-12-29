@@ -55,6 +55,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     private final static String transTotalExpense = "Total_Expense";
     private final static String transGetMoney = "Get_Money";
     private final static String transRemain = "Remain";
+    private final static String transType = "Type";
 
     public boolean customerAdd = true;
     public boolean toPayAdd = true;
@@ -84,7 +85,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
         String allTransactionTableQuery = "CREATE TABLE " + allTransactionTable + " (" + transTransactionNo + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 transDate + " TEXT, " + transCustomerPhone + " INTEGER, " + transExplanation + " TEXT, " + transTotalExpense + " INTEGER, " +
-                transGetMoney + " INTEGER, " + transRemain + " INTEGER);";
+                transGetMoney + " INTEGER, " + transRemain + " INTEGER, " + transType + " TEXT);";
 
         db.execSQL(shopDetailsTableQuery);
         db.execSQL(customerDetailsTableQuery);
@@ -237,6 +238,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(transTotalExpense, transaction.getExpense());
         cv.put(transGetMoney, transaction.getGetMoney());
         cv.put(transRemain, transaction.getRemain());
+        cv.put(transType, transaction.getType());
         long result = database.insert(allTransactionTable, null, cv);
         if(result == -1)
         {
@@ -249,12 +251,13 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor showTransaction(long phone)
+    public Cursor showTransaction(long phone, String type)
     {
+        type = "'" + type + "'";
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "SELECT " + transDate + ", " + transExplanation + ", " + transTotalExpense + ", " +
-                transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerPhone + "==" + phone;
+                transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerPhone + " = " + phone + " AND " + transType + " = " + type + ";";
 
         if(database != null) {
            cursor = database.rawQuery(query, null);

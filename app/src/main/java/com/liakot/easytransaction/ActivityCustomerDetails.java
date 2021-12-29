@@ -20,7 +20,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     TextView emptyText;
 
-    String name, address;
+    String name, address, type;
     long phone, amount;
     byte[] picture;
 
@@ -36,7 +36,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
 
         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerDetails.this);
-        cursor = helper.showTransaction(phone);
+        cursor = helper.showTransaction(phone, type);
         if(cursor.getCount() == 0)
         {
             //TODO----show empty text-------
@@ -54,7 +54,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
                 getMoney = cursor.getInt(3);
                 remain = cursor.getInt(4);
 
-                ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, expense, getMoney, remain);
+                ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, expense, getMoney, remain, type);
                 arrayList.add(transaction);
             }
 
@@ -71,6 +71,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
         phone = getIntent().getLongExtra("Phone", 0);
         amount = getIntent().getLongExtra("Amount", 0);
         picture = getIntent().getByteArrayExtra("Picture");
+        type = getIntent().getStringExtra("Type");
 
         layoutManager = new LinearLayoutManager(ActivityCustomerDetails.this);
 

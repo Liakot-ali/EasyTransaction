@@ -3,19 +3,20 @@ package com.liakot.easytransaction;
 public class ClassAddTransaction {
 
     long transactionNo;
-    String date, explanation;
+    String date, explanation, type;
     long phone, expense, getMoney, remain;
 
-    public ClassAddTransaction(String date, String explanation, long phone, long expense, long getMoney, long remain) {
+    public ClassAddTransaction(String date, String explanation, long phone, long expense, long getMoney, long remain, String type) {
         this.date = date;
         this.explanation = explanation;
         this.phone = phone;
         this.expense = expense;
         this.getMoney = getMoney;
         this.remain = remain;
+        this.type = type;
     }
 
-    public ClassAddTransaction(long transactionNo, String date, String explanation, long phone, long expense, long getMoney, long remain) {
+    public ClassAddTransaction(long transactionNo, String date, String explanation, long phone, long expense, long getMoney, long remain, String  type) {
         this.transactionNo = transactionNo;
         this.date = date;
         this.explanation = explanation;
@@ -23,6 +24,7 @@ public class ClassAddTransaction {
         this.expense = expense;
         this.getMoney = getMoney;
         this.remain = remain;
+        this.type = type;
     }
 
     public long getTransactionNo() {
@@ -79,5 +81,13 @@ public class ClassAddTransaction {
 
     public void setRemain(long remain) {
         this.remain = remain;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
