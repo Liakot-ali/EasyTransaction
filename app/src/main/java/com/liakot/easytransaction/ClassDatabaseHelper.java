@@ -271,9 +271,6 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
 
-        // Preferences
-        String PREFERENCE_FILE_NAME = "ActivitySignin";
-        String PREFERENCE_Phone = "email";
-        String PREFERENCE_PASSWORD = "password";
+
     }
 }

@@ -6,7 +6,7 @@ public class ClassAddTransaction {
     String date, explanation;
     long phone, expense, getMoney, remain;
 
-    public ClassAddTransaction(String date, String explanation, long phone, long expense, long getMoney, long remain) {
+    public ClassAddTransaction(String date, String explanation, long phone, long expense, long getMoney, long remain, String type) {
         this.date = date;
         this.explanation = explanation;
         this.phone = phone;

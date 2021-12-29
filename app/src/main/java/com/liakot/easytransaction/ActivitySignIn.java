@@ -67,13 +67,13 @@ public class ActivitySignIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String user = signin_phonenumber.getText().toString();
+                String phone = signin_phonenumber.getText().toString();
                 String pass = signin_password.getText().toString();
 
-                if(user.equals("")||pass.equals(""))
+                if(phone.equals("")||pass.equals(""))
                     Toast.makeText( ActivitySignIn.this, "Please enter all fields", Toast.LENGTH_SHORT).show();
                  else {
-                    Boolean checkuserpass = DB.checkphonepassword(user, pass);
+                    Boolean checkuserpass = DB.checkphonepassword(phone, pass);
                     if (checkuserpass) {
                         Toast.makeText(ActivitySignIn.this, "Sign in Successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), ActivityHome.class);
