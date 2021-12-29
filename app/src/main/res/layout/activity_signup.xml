@@ -36,6 +36,16 @@
             android:padding="@dimen/lay_pad"
             android:orientation="vertical" >
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/signUpAppLogo"
+                android:layout_width="@dimen/profile_picture"
+                android:layout_height="@dimen/profile_picture"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/inner_pad"
+                android:src="@drawable/icon_profile_24"
+                app:civ_border_width="@dimen/picture_border"
+                app:civ_border_color="@color/black"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/shopNameLayout"
                 style="@style/textInputLayoutStyle"

@@ -28,7 +28,7 @@ public class ActivityTransaction extends AppCompatActivity {
     Button detailsBtn, addTransactionBtn;
 
 
-    String name, address;
+    String name, address, type;
     long phone, amount;
     byte[] pictureByte;
 
@@ -49,6 +49,8 @@ public class ActivityTransaction extends AppCompatActivity {
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
                 intent.putExtra("Picture", pictureByte);
+                intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
                 startActivity(intent);
             }
         });
@@ -62,6 +64,7 @@ public class ActivityTransaction extends AppCompatActivity {
                 intent.putExtra("Address", address);
                 intent.putExtra("Picture", pictureByte);
                 intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
                 startActivity(intent);
                 Toast.makeText(ActivityTransaction.this, "Details button clicked", Toast.LENGTH_SHORT).show();
             }
@@ -100,7 +103,7 @@ public class ActivityTransaction extends AppCompatActivity {
 
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityTransaction.this);
 
-                    ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, totalExpense, totalGet, remain);
+                    ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, totalExpense, totalGet, remain, type);
                     helper.addTransaction(transaction);
                     if(helper.transactionAdd)
                     {
@@ -114,8 +117,14 @@ public class ActivityTransaction extends AppCompatActivity {
                         amount = amount + remain;
                         amountTV.setText("Amount: " + amount);
                         //----------add updated amount to database--------
-                        ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
-                        helper.updateCustomer(upCustomer, phone);
+                        if(type == "Customer") {
+                            ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
+                            helper.updateCustomer(upCustomer, phone);
+                        }
+                        else{
+                            ClassAddCustomer upToPay = new ClassAddCustomer("", 0, "", null, amount);
+                            helper.updateToPay(upToPay, phone);
+                        }
 
                     }
                 }
@@ -144,6 +153,7 @@ public class ActivityTransaction extends AppCompatActivity {
         address = getIntent().getStringExtra("Address");
         amount = getIntent().getLongExtra("Amount", 0);
         pictureByte = getIntent().getByteArrayExtra("Picture");
+        type = getIntent().getStringExtra("Type");
 
         Bitmap bitmap;
         if(pictureByte != null) {

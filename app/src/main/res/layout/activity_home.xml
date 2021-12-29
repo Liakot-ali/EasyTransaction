@@ -50,10 +50,10 @@
 
         <ImageView
             android:id="@+id/homeSearchBar"
-            android:layout_width="@dimen/toolbar_picture"
-            android:layout_height="@dimen/toolbar_picture"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
             android:layout_gravity="right"
-            android:layout_marginRight="@dimen/lay_pad"
+            android:layout_marginRight="@dimen/inner_pad"
             android:padding="@dimen/inner_pad"
             android:src="@drawable/icon_search_black" />
 

@@ -87,6 +87,13 @@
                     tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="* picture size must be less than 500kB"
+                android:textColor="@color/red"
+                />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addCustomerNameLayout"
                 style="@style/textInputLayoutStyle"

@@ -92,6 +92,7 @@ public class AdapterCustomerList extends RecyclerView.Adapter<AdapterCustomerLis
                 intent.putExtra("Address", arrayList.get(position).getAddress());
                 intent.putExtra("Amount", arrayList.get(position).getAmount());
                 intent.putExtra("Picture", arrayList.get(position).getPicture());
+                intent.putExtra("Type", "Customer");
 
                 activityContext.startActivity(intent);
             }

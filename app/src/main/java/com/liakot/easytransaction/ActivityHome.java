@@ -139,7 +139,11 @@ public class ActivityHome extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode ==1) {
-            startActivity(new Intent(ActivityHome.this, ActivityHome.class));
+            Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
     }
 }
