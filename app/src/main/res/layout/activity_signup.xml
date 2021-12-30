@@ -137,6 +137,7 @@
                 android:id="@+id/signUpBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/button_text"
                 android:text="Sign Up" />
 
             <LinearLayout
@@ -158,7 +159,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/normal_text"
                     android:textColor="@color/purple_700"
-                    android:textStyle="bold"
                     android:text="Sign In" />
             </LinearLayout>
         </LinearLayout>

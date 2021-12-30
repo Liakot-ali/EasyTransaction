@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -58,7 +59,7 @@ public class ActivityHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityHome.this, ActivityAddCustomer.class);
-                ActivityHome.this.startActivityForResult(intent, 1);
+               startActivity(intent);
             }
         });
 
@@ -135,15 +136,22 @@ public class ActivityHome extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode ==1) {
+//            Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==1) {
-            Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }
+    protected void onRestart() {
+        super.onRestart();
+        Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
+        startActivity(intent);
+        finish();
+//        Toast.makeText(ActivityHome.this, "Activity restart", Toast.LENGTH_SHORT).show();
     }
 }
