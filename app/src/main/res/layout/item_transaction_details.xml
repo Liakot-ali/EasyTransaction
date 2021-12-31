@@ -1,86 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Jannatul Ferdouse, ID : 1702010-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:weightSum="8"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="8">
 
 
         <LinearLayout
-            android:layout_weight="2"
             android:layout_width="0dp"
-            android:weightSum="2"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/detailsDate"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="10-12-2021"
-                android:textStyle="bold"
-                android:padding="5dp"
-                android:textSize="15sp"
+                android:layout_weight="1"
                 android:background="@color/teal_200"
-                />
+                android:padding="@dimen/inner_pad"
+                android:text="10-12-2021"
+                android:textSize="@dimen/small_text"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/detailsExplanation"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="Rice butter"
-                android:padding="5dp"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:layout_weight="1"
                 android:background="@color/teal_200"
-                />
+                android:padding="@dimen/inner_pad"
+                android:text="Rice butter"
+                android:textSize="@dimen/small_text"
+                android:textStyle="bold" />
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/detailsExpenseMoney"
-            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="10000000"
-            android:padding="5dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_weight="2"
             android:background="@color/purple_200"
-            />
+            android:padding="@dimen/inner_pad"
+            android:text="10000000"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailsGetMoney"
-            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="500909"
-            android:padding="5dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_weight="2"
             android:background="@color/teal_200"
-            />
+            android:padding="@dimen/inner_pad"
+            android:text="500909"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailsRemain"
-            android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="35768989"
-            android:padding="5dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_weight="2"
             android:background="@color/purple_200"
-            />
+            android:padding="@dimen/inner_pad"
+            android:text="35768989"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
 
     </LinearLayout>
-
-
-
 
 </LinearLayout>

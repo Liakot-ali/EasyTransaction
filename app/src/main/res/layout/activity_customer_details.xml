@@ -1,142 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Jannatul Fersouse, ID : 1702010-->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ActivityCustomerDetails">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_details"
+        android:id="@+id/detailsToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/toolbar_background"
-        android:theme="?attr/actionBarTheme"
-        android:minHeight="?attr/actionBarSize">
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/custromerpicture_details"
-             android:layout_width="40sp"
-            android:layout_height="40sp"
-            android:layout_marginEnd="10sp"
+            android:id="@+id/detailsCustomerPicture"
+            android:layout_width="@dimen/toolbar_picture"
+            android:layout_height="@dimen/toolbar_picture"
             android:layout_gravity="start"
-            app:civ_border_width="2sp"
-            android:src="@drawable/icon_profile_default_black"/>
+            android:layout_marginEnd="@dimen/lay_pad"
+            android:src="@drawable/icon_profile_default_black"
+            app:civ_border_width="@dimen/picture_border" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            tools:ignore="RtlHardcoded"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
             <TextView
-                android:id="@+id/customarname_details"
+                android:id="@+id/detailsCustomerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Customer Name"
-                android:textSize="20sp"
                 android:textColor="@color/toolbar_text"
+                android:textSize="@dimen/toolbar_text"
 
                 />
+
             <TextView
-                android:id="@+id/phonenumber_details"
+                android:id="@+id/detailsPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
-                android:textSize="16sp"
                 android:textColor="@color/toolbar_text"
-                />
+                android:textSize="@dimen/small_text" />
         </LinearLayout>
-         <ImageView
-         android:id="@+id/delete_details"
-          android:layout_width="40sp"
-         android:layout_height="40sp"
-         android:src="@drawable/ic_baseline_delete_outline_24"
-          android:layout_gravity="right"
-         android:padding="1dp"
-         android:layout_marginRight="10dp"
-         />
 
-       </androidx.appcompat.widget.Toolbar>
+        <ImageView
+            android:id="@+id/detailsDelete"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="@dimen/inner_pad"
+            android:padding="@dimen/inner_pad"
+            android:src="@drawable/ic_baseline_delete_outline_24" />
 
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="80dp"
-          android:weightSum="8"
-          android:orientation="horizontal">
+    </androidx.appcompat.widget.Toolbar>
 
 
-          <LinearLayout
-              android:layout_weight="2"
-              android:layout_width="0dp"
-              android:weightSum="2"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="8">
 
-              <TextView
-                  android:id="@+id/explanation_details"
-                  android:layout_weight="1"
-                  android:layout_width="match_parent"
-                  android:layout_height="0dp"
-                  android:text="Date"
-                  android:textStyle="bold"
-                  android:padding="5dp"
-                  android:textSize="20sp"
-                  android:background="@color/teal_200"
-                        
-                  />
-              <TextView
-                  android:id="@+id/Explanation_details"
-                  android:layout_weight="1"
-                  android:layout_width="match_parent"
-                  android:layout_height="0dp"
-                  android:text="Explanation"
-                  android:padding="5dp"
-                  android:textSize="15sp"
-                  android:textStyle="bold"
-                  android:background="@color/teal_200"
-                  />
 
-          </LinearLayout>
-          <TextView
-              android:id="@+id/Expensemoney_details"
-              android:layout_weight="2"
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:text="Expense Money"
-              android:padding="5dp"
-              android:textSize="20sp"
-              android:textStyle="bold"
-              android:background="@color/purple_200"
-              />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:weightSum="2">
 
-          <TextView
-              android:id="@+id/getmoney_details"
-              android:layout_weight="2"
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:text="Get Money"
-              android:padding="5dp"
-              android:textSize="20sp"
-              android:textStyle="bold"
-              android:background="@color/teal_200"
-              />
+            <TextView
+                android:id="@+id/explanation_details"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/teal_200"
+                android:padding="@dimen/inner_pad"
+                android:text="Date"
+                android:textSize="@dimen/normal_text"
+                android:textStyle="bold"
 
-          <TextView
-              android:id="@+id/remain_details"
-              android:layout_weight="2"
-              android:layout_width="0dp"
-              android:layout_height="match_parent"
-              android:text="Remain ammount"
-              android:padding="5dp"
-              android:textSize="20sp"
-              android:textStyle="bold"
-              android:background="@color/purple_200"
-              />
+                />
 
-      </LinearLayout>
+            <TextView
+                android:id="@+id/Explanation_details"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/teal_200"
+                android:padding="@dimen/inner_pad"
+                android:text="Explanation"
+                android:textSize="@dimen/small_text"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/Expensemoney_details"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/purple_200"
+            android:padding="@dimen/inner_pad"
+            android:text="Expense Money"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/getmoney_details"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/teal_200"
+            android:padding="@dimen/inner_pad"
+            android:text="Get Money"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/remain_details"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@color/purple_200"
+            android:padding="@dimen/inner_pad"
+            android:text="Remain amount"
+            android:textSize="@dimen/normal_text"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transDetailsRecyclerView"

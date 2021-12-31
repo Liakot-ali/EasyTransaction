@@ -1,5 +1,7 @@
 package com.liakot.easytransaction;
 
+//---------Liakot Ali Liton, ID : 1802035----------
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -44,7 +46,7 @@ public class ActivityTransaction extends AppCompatActivity {
         pictureCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityTransaction.this, Activity_customer_profile.class);
+                Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerProfile.class);
                 intent.putExtra("name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
