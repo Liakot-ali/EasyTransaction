@@ -41,7 +41,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/signinlogo"
+                android:id="@+id/signInLogo"
                 android:layout_width="@dimen/profile_picture"
                 android:layout_height="@dimen/profile_picture"
                 android:layout_gravity="center"
@@ -56,7 +56,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:counterMaxLength="@integer/shop_name"
-                app:endIconDrawable="@drawable/icon_verification_black"
                 app:endIconMode="custom"
                 android:layout_marginTop="30dp"
                 app:endIconTint="@color/black"
@@ -65,7 +64,7 @@
                 app:startIconDrawable="@drawable/icon_phone_black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/signinPhoneNumber"
+                    android:id="@+id/signInPhoneNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -98,21 +97,21 @@
 
 
             <Button
-                android:id="@+id/signinBtn"
+                android:id="@+id/signInBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Sign In" />
 
             <CheckBox
-                android:id="@+id/rememberme_sigin"
+                android:id="@+id/signInRememberMe"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/dark_gray"
                 android:text="Remember Me"
                 android:textSize="20sp"/>
             <TextView
-                android:id="@+id/forgetpassword_signin"
+                android:id="@+id/signInForgetPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -120,7 +119,7 @@
                 android:textSize="20sp"/>
 
             <TextView
-                android:id="@+id/haveaccount_signin"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -131,7 +130,7 @@
                 />
 
             <TextView
-                android:id="@+id/signup_signin"
+                android:id="@+id/signInSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

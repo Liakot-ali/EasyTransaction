@@ -25,6 +25,7 @@
             android:layout_marginEnd="@dimen/lay_pad"
             android:layout_gravity="start"
             app:civ_border_width="@dimen/picture_border"
+            app:civ_border_color="@color/picture_border"
             android:src="@drawable/icon_profile_default_black" />
 
         <LinearLayout

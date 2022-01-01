@@ -24,6 +24,7 @@
             android:layout_height="@dimen/toolbar_picture"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/lay_pad"
+            app:civ_border_color="@color/picture_border"
             android:src="@drawable/icon_profile_default_black"
             app:civ_border_width="@dimen/picture_border" />
 

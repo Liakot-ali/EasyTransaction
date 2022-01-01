@@ -138,22 +138,11 @@ public class ActivityHome extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode ==1) {
-//            Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
-
     @Override
     protected void onRestart() {
         super.onRestart();
         Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
         startActivity(intent);
         finish();
-//        Toast.makeText(ActivityHome.this, "Activity restart", Toast.LENGTH_SHORT).show();
     }
 }

@@ -18,10 +18,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ActivitySignIn extends AppCompatActivity {
 
     CircleImageView logo;
-    TextInputEditText signin_phonenumber,signin_password;
-    TextInputLayout phonenumberlayout,passwordlayout;
-    TextView signin_forgotpassword,signin_signup,signin_donthaveaccount;
-    Button signin_signin;
+    TextInputEditText signInPhoneNumber,signInPassword;
+    TextInputLayout phoneNumberLayout,passwordLayout;
+    TextView signInForgotPassword,signInSignUp;
+    Button signInBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,27 +29,22 @@ public class ActivitySignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         InitializeAll();
-        signin_signup .setOnClickListener(new View.OnClickListener() {
+        signInSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivitySignIn.this, ActivitySignUp.class));
             }
         });
-
     }
     private void InitializeAll() {
-        logo = findViewById(R.id.signinlogo);
 
-        signin_phonenumber = findViewById(R.id.signinPhoneNumber);
-        signin_password = findViewById(R.id.signInPassword);
-
-        phonenumberlayout = findViewById(R.id.SignInPhoneNumberLayout);
-        passwordlayout = findViewById(R.id.signInPasswordLayout);
-
-        signin_forgotpassword = findViewById(R.id.forgetpassword_signin);
-        signin_signup= findViewById(R.id.signup_signin);
-        signin_donthaveaccount = findViewById(R.id.haveaccount_signin);
-
-        signin_signin = findViewById(R.id.signinBtn);
+        logo = findViewById(R.id.signInLogo);
+        signInPhoneNumber = findViewById(R.id.signInPhoneNumber);
+        signInPassword = findViewById(R.id.signInPassword);
+        phoneNumberLayout = findViewById(R.id.SignInPhoneNumberLayout);
+        passwordLayout = findViewById(R.id.signInPasswordLayout);
+        signInForgotPassword = findViewById(R.id.signInForgetPassword);
+        signInSignUp= findViewById(R.id.signInSignUp);
+        signInBtn = findViewById(R.id.signInBtn);
     }
 }

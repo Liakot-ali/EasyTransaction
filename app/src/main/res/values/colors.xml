@@ -22,7 +22,7 @@
     <color name="toolbar_background">#D5D5D5</color>
     <color name="button_text">#FFFFFFFF</color>
 
-    <color name="picture_border">#FF000000</color>
+    <color name="picture_border">#FF3700B3</color>
     <color name="layout_border">#FF000000</color>
 
 
@@ -40,7 +40,7 @@
 
     <dimen name="picture_border">2sp</dimen>
 
-    <dimen name="toolbar_picture">50sp</dimen>
+    <dimen name="toolbar_picture">45sp</dimen>
     <dimen name="profile_picture">100sp</dimen>
     <dimen name="list_picture">50sp</dimen>
 

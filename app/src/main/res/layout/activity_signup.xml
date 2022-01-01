@@ -47,7 +47,7 @@
                 android:layout_margin="@dimen/inner_pad"
                 android:src="@drawable/icon_profile_24"
                 app:civ_border_width="@dimen/picture_border"
-                app:civ_border_color="@color/black"/>
+                app:civ_border_color="@color/picture_border"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/shopNameLayout"
