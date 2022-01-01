@@ -175,12 +175,5 @@ public class ActivityTransaction extends AppCompatActivity {
         nameTV.setText(name);
         amountTV.setText("Amount: " + amount);
     }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Intent intent = new Intent(ActivityTransaction.this, ActivityTransaction.class);
-        startActivity(intent);
-        finish();
-    }
+    //TODO---------- updated customer profile ----------
 }

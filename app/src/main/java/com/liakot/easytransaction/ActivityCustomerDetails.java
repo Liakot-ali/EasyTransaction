@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -50,6 +51,27 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         InitializeAll();
 
+        toolbarPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCustomerDetails.this, ActivityCustomerProfile.class);
+                intent.putExtra("Name", name);
+                intent.putExtra("Phone", phone);
+                intent.putExtra("Address", address);
+                intent.putExtra("Picture", picture);
+                intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
+                startActivity(intent);
+            }
+        });
+
+        detailsDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO---------delete all transaction of the customer--------------
+                Toast.makeText(ActivityCustomerDetails.this, "Delete button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerDetails.this);
         cursor = helper.showTransaction(phone, type);
@@ -82,7 +104,6 @@ public class ActivityCustomerDetails extends AppCompatActivity {
     }
 
     private void InitializeAll() {
-
 
         name = getIntent().getStringExtra("Name");
         address = getIntent().getStringExtra("Address");

@@ -31,6 +31,8 @@ public class ActivityCustomerProfile extends AppCompatActivity {
 
     TextInputLayout nameLay, phoneLay, addressLay;
 
+    String upName, upAddress, upPhone;
+
     String preName, preAddress, type;
     long prePhone, amount;
     byte[] pictureByte;
@@ -59,7 +61,6 @@ public class ActivityCustomerProfile extends AppCompatActivity {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String upName, upAddress, upPhone;
                 upName = cusName.getText().toString();
                 upAddress = cusAddress.getText().toString();
                 upPhone = cusPhone.getText().toString();
@@ -195,4 +196,5 @@ public class ActivityCustomerProfile extends AppCompatActivity {
         }
         return byteBuffer.toByteArray();
     }
+
 }
