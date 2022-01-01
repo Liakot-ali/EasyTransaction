@@ -7,14 +7,28 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ActivityCustomerDetails extends AppCompatActivity {
+
+    TextView detailsName, detailsPhone;
+    CircleImageView toolbarPicture;
+    ImageView detailsDelete;
+    LinearLayout fieldLayout;
+
 
     RecyclerView recyclerView;
     AdapterTransactionList adapter;
@@ -41,10 +55,12 @@ public class ActivityCustomerDetails extends AppCompatActivity {
         cursor = helper.showTransaction(phone, type);
         if(cursor.getCount() == 0)
         {
-            //TODO----show empty text-------
-            Toast.makeText(ActivityCustomerDetails.this, "No transaction", Toast.LENGTH_SHORT).show();
+            fieldLayout.setVisibility(View.GONE);
+            emptyText.setVisibility(View.VISIBLE);
         }
         else {
+            fieldLayout.setVisibility(View.VISIBLE);
+            emptyText.setVisibility(View.GONE);
             while (cursor.moveToNext())
             {
                 String date, explanation;
@@ -79,10 +95,29 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.transDetailsRecyclerView);
         arrayList =  new ArrayList<>();
+        detailsName = findViewById(R.id.detailsCustomerName);
+        detailsPhone = findViewById(R.id.detailsPhoneNumber);
+        detailsDelete = findViewById(R.id.detailsDelete);
+
+        emptyText = findViewById(R.id.detailsEmptyText);
+        fieldLayout = findViewById(R.id.detailsFieldHeadlineLayout);
+
+        toolbarPicture = findViewById(R.id.detailsCustomerPicture);
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        //--TODO---- set customer profile----
+        //------ set customer profile----
+        detailsName.setText(name);
+        detailsPhone.setText(String.valueOf(phone));
+        //--------set picture in circle image view--------------
+        Bitmap bitmap;
+        if(picture != null) {
+            bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+            toolbarPicture.setImageBitmap(bitmap);
+        }
+        else{
+            toolbarPicture.setImageResource(R.drawable.icon_profile_24);
+        }
     }
 }
