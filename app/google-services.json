@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "282444894382",
+    "project_id": "easy-transaction-692e5",
+    "storage_bucket": "easy-transaction-692e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282444894382:android:35063d8a782c52bbcb9d3f",
+        "android_client_info": {
+          "package_name": "com.liakot.easytransaction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282444894382-bknv8g9lv11abv4fr5ckh3k4meudjqr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2L8D2LmDHeBqfIzK4-OuE-45Ccg5NrR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282444894382-bknv8g9lv11abv4fr5ckh3k4meudjqr2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
