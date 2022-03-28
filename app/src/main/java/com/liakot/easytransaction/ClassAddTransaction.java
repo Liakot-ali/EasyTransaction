@@ -6,23 +6,23 @@ public class ClassAddTransaction {
 
     long transactionNo;
     String date, explanation, type;
-    long phone, expense, getMoney, remain;
+    long customerId, expense, getMoney, remain;
 
-    public ClassAddTransaction(String date, String explanation, long phone, long expense, long getMoney, long remain, String type) {
+    public ClassAddTransaction(String date, String explanation, long customerId, long expense, long getMoney, long remain, String type) {
         this.date = date;
         this.explanation = explanation;
-        this.phone = phone;
+        this.customerId = customerId;
         this.expense = expense;
         this.getMoney = getMoney;
         this.remain = remain;
         this.type = type;
     }
 
-    public ClassAddTransaction(long transactionNo, String date, String explanation, long phone, long expense, long getMoney, long remain, String  type) {
+    public ClassAddTransaction(long transactionNo, String date, String explanation, long customerId, long expense, long getMoney, long remain, String  type) {
         this.transactionNo = transactionNo;
         this.date = date;
         this.explanation = explanation;
-        this.phone = phone;
+        this.customerId = customerId;
         this.expense = expense;
         this.getMoney = getMoney;
         this.remain = remain;
@@ -53,12 +53,12 @@ public class ClassAddTransaction {
         this.explanation = explanation;
     }
 
-    public long getPhone() {
-        return phone;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setPhone(long phone) {
-        this.phone = phone;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
     public long getExpense() {

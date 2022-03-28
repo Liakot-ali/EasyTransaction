@@ -20,6 +20,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String customerDetailsTable = "CustomerDetails";
 
+    private final static String customerId = "ID";
     private final static String customerPhone = "Phone_Number";
     private final static String customerName = "Name";
     private final static String customerAddress = "Address";
@@ -28,6 +29,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String toPayDetailsTable = "ToPayDetails";
 
+    private final static String toPayId = "ID";
     private final static String toPayPhone = "Phone_Number";
     private final static String toPayName = "Name";
     private final static String toPayAddress = "Address";
@@ -50,9 +52,9 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String allTransactionTable = "AllTransaction";
 
-    private final static String transTransactionNo = "Transaction_No";
+    private final static String transTransactionNo = "Transaction_Id";
     private final static String transDate = "Date";
-    private final static String transCustomerPhone = "Customer_Phone";
+    private final static String transCustomerId = "Customer_ID";
     private final static String transExplanation = "Explanation";
     private final static String transTotalExpense = "Total_Expense";
     private final static String transGetMoney = "Get_Money";
@@ -79,14 +81,14 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
                 " TEXT, " + shopTotalRemain + " INTEGER, " + shopTotalPayble + " INTEGER, " + shopCustomerNumber + " INTEGER, " +
                 shopPaybleNumber + " INTEGER);";
 
-        String customerDetailsTableQuery = "CREATE TABLE " + customerDetailsTable + " (" + customerPhone + " INTEGER PRIMARY KEY, " +
+        String customerDetailsTableQuery = "CREATE TABLE " + customerDetailsTable + " (" + customerId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + customerPhone + " INTEGER UNIQUE, " +
                 customerName + " TEXT, " + customerAddress + " TEXT, " + customerPicture + " BLOB, " + customerAmount + " INTEGER);";
 
-        String toPayDetailsTableQuery = "CREATE TABLE " + toPayDetailsTable + " (" + toPayPhone + " INTEGER PRIMARY KEY, " +
+        String toPayDetailsTableQuery = "CREATE TABLE " + toPayDetailsTable + " (" + toPayId + " INTEGER PRIMARY KEY AUTOINCREMENT, " + toPayPhone + " INTEGER UNIQUE, " +
                 toPayName + " TEXT, " + toPayAddress + " TEXT, " + toPayPicture + " BLOB, " + toPayAmount + " INTEGER);";
 
         String allTransactionTableQuery = "CREATE TABLE " + allTransactionTable + " (" + transTransactionNo + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                transDate + " TEXT, " + transCustomerPhone + " INTEGER, " + transExplanation + " TEXT, " + transTotalExpense + " INTEGER, " +
+                transDate + " TEXT, " + transCustomerId + " INTEGER, " + transExplanation + " TEXT, " + transTotalExpense + " INTEGER, " +
                 transGetMoney + " INTEGER, " + transRemain + " INTEGER, " + transType + " TEXT);";
 
         db.execSQL(shopDetailsTableQuery);
@@ -153,7 +155,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return exist;
     }
 
-    //-------for update customer data----------
+    //-------for update customer data---------- TODO----change phone to ID-
     public void updateCustomer(ClassAddCustomer upCustomer, long phone) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -181,11 +183,12 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(customerPhone, customer.getPhone());
-        cv.put(customerName, customer.getName());
-        cv.put(customerAddress, customer.getAddress());
-        cv.put(customerPicture, customer.getPicture());
-        cv.put(customerAmount, customer.getAmount());
+        cv.put(toPayId, customer.getId());
+        cv.put(toPayPhone, customer.getPhone());
+        cv.put(toPayName, customer.getName());
+        cv.put(toPayAddress, customer.getAddress());
+        cv.put(toPayPicture, customer.getPicture());
+        cv.put(toPayAmount, customer.getAmount());
 
         long result = database.insert(toPayDetailsTable, null, cv);
         if (result == -1) {
@@ -220,7 +223,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return exist;
     }
 
-    //-------for updated toPay data-----------
+    //-------for updated toPay data----------- TODO-----change phone to ID---
     public void updateToPay(ClassAddCustomer upToPay, long phone) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -248,7 +251,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(transDate, transaction.getDate());
-        cv.put(transCustomerPhone, transaction.getPhone());
+        cv.put(transCustomerId, transaction.getCustomerId());
         cv.put(transExplanation, transaction.getExplanation());
         cv.put(transTotalExpense, transaction.getExpense());
         cv.put(transGetMoney, transaction.getGetMoney());
@@ -264,12 +267,12 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor showTransaction(long phone, String type) {
+    public Cursor showTransaction(long id, String type) {
         type = "'" + type + "'";
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "SELECT " + transDate + ", " + transExplanation + ", " + transTotalExpense + ", " +
-                transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerPhone + " = " + phone + " AND " + transType + " = " + type + ";";
+                transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerId + " = " + id + " AND " + transType + " = " + type + ";";
 
         if (database != null) {
             cursor = database.rawQuery(query, null);

@@ -5,9 +5,18 @@ package com.liakot.easytransaction;
 public class ClassAddCustomer {
     String name, address;
     byte[] picture;
-    long phone, amount;
+    long id, phone, amount;
 
     public ClassAddCustomer(String name, long phone, String address, byte[] picture, long amount) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.picture = picture;
+        this.amount = amount;
+    }
+
+    public ClassAddCustomer(long id, String name, long phone, String address, byte[] picture, long amount) {
+        this.id = id;
         this.name = name;
         this.phone = phone;
         this.address = address;
@@ -20,6 +29,7 @@ public class ClassAddCustomer {
     @Override
     public String toString() {
         return "ClassAddCustomer{" +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
@@ -28,6 +38,13 @@ public class ClassAddCustomer {
                 '}';
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
     public long getAmount() {
         return amount;
     }
