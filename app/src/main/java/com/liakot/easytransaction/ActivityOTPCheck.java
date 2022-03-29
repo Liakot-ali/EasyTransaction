@@ -57,11 +57,11 @@ public class ActivityOTPCheck extends AppCompatActivity {
                         if(task.isSuccessful()){
                             verifyBtn.setVisibility(View.GONE);
                             progressBar.setVisibility(View.VISIBLE);
-                            //-TODO------put the value in the shared preferences
+
                             ClassDatabaseHelper addShopValue = new ClassDatabaseHelper(ActivityOTPCheck.this);
                             ClassShop newShop = new ClassShop(nameSt, "", "", passwordSt, "", phoneLong, 0, 0, 0, 0 ,null);
-                            addShopValue.updateShopInfo(newShop);
-                            if(addShopValue.shopInfoUpdate){
+                            addShopValue.updateShop(newShop);
+                            if(addShopValue.shopInfoAdd){
                                 Intent intent = new Intent(ActivityOTPCheck.this, ActivityHome.class);
 //                                intent.putExtra("phone", phoneLong);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

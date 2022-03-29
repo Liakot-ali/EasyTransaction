@@ -84,7 +84,25 @@ public class ActivityHome extends AppCompatActivity {
         shopPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityHome.this, ActivityShopProfile.class));
+                ClassDatabaseHelper databaseHelper = new ClassDatabaseHelper(ActivityHome.this);
+                Cursor cursor = databaseHelper.showShopInfo();
+                cursor.moveToFirst();
+                Intent intent = new Intent(ActivityHome.this, ActivityShopProfile.class);
+
+                intent.putExtra("name", cursor.getString(0));
+                intent.putExtra("owner", cursor.getString(1));
+                intent.putExtra("category", cursor.getString(2));
+                intent.putExtra("password", cursor.getString(6));
+                intent.putExtra("address", cursor.getString(4));
+
+                intent.putExtra("phone", cursor.getLong(3));
+                intent.putExtra("totalRemain", cursor.getLong(7));
+                intent.putExtra("totalPayble", cursor.getLong(8));
+                intent.putExtra("customerNo", cursor.getLong(9));
+                intent.putExtra("paybleNo", cursor.getLong(10));
+
+                intent.putExtra("picture", cursor.getBlob(5));
+                startActivity(intent);
             }
         });
     }
@@ -201,6 +219,8 @@ public class ActivityHome extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Intent intent = new Intent(ActivityHome.this, ActivityHome.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

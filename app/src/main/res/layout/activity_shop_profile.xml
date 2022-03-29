@@ -82,7 +82,7 @@
                 android:padding="@dimen/inner_pad">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/shopNameLayout"
+                    android:id="@+id/shopProfileShopNameLayout"
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,6 +104,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shopProfileOwnerNameLayout"
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,6 +126,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shopProfileCategoryLayout"
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +147,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/shopProfileAddress"
+                    android:id="@+id/shopProfileAddressLayout"
                     style="@style/textInputLayoutStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,6 +158,7 @@
                     app:startIconDrawable="@drawable/icon_location_black">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/shopProfileAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPostalAddress"
