@@ -11,7 +11,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -167,7 +172,27 @@ public class ActivityHome extends AppCompatActivity {
         }
         else if(item.getItemId() == R.id.menu_log_out)
         {
-            Toast.makeText(ActivityHome.this, "Log Out Clicked", Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityHome.this);
+            dialog.setTitle("Are you sure?");
+            dialog.setMessage("Do you want to log out?");
+            dialog.setIcon(R.drawable.icon_logout_black);
+            dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("LogIn", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("loggedIn", false);
+                    editor.apply();
+                    Intent intent = new Intent(ActivityHome.this, ActivitySignIn.class);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(ActivityHome.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                }
+            });
+            dialog.setNegativeButton("No", null);
+            dialog.setCancelable(true);
+            dialog.show();
+
         }
         return super.onOptionsItemSelected(item);
     }

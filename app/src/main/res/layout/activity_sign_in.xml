@@ -36,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center"
             android:padding="@dimen/lay_pad">
 
 
@@ -47,6 +46,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/icon_profile_24"
                 app:civ_border_width="@dimen/picture_border"
+                android:layout_margin="@dimen/lay_pad"
                 app:civ_border_color="@color/picture_border"/>
 
 
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 app:counterMaxLength="@integer/phone_number"
                 app:endIconMode="custom"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="@dimen/lay_pad"
                 app:endIconTint="@color/black"
                 app:helperText="*"
                 app:prefixText="@string/prefix_number"
@@ -103,42 +103,57 @@
                 android:layout_gravity="center"
                 android:text="Sign In" />
 
-            <CheckBox
-                android:id="@+id/signInRememberMe"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/dark_gray"
-                android:text="Remember Me"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/signInForgetPassword"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="Forget Password?"
-                android:textSize="20sp"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/signInRememberMe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remember me"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/normal_text" />
+
+                <TextView
+                    android:id="@+id/signInForgetPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="Forget password?"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/normal_text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Don't Have An Account?"
-                android:textSize="20sp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Don't have an ccount? "
+                    android:textSize="@dimen/small_text"
 
-            <TextView
-                android:id="@+id/signInSignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="Sign Up"
-                android:textColor="@color/purple_500"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                    />
+
+                <TextView
+                    android:id="@+id/signInSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sign Up"
+                    android:textColor="@color/purple_500"
+                    android:textSize="@dimen/normal_text" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
