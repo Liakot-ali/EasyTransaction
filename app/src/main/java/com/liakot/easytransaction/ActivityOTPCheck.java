@@ -19,6 +19,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -30,6 +31,7 @@ public class ActivityOTPCheck extends AppCompatActivity {
     TextView resendBtn, phone;
 
     String nameSt, phoneSt, passwordSt, verificationCode;
+    long phoneLong;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
 
@@ -55,13 +57,22 @@ public class ActivityOTPCheck extends AppCompatActivity {
                         if(task.isSuccessful()){
                             verifyBtn.setVisibility(View.GONE);
                             progressBar.setVisibility(View.VISIBLE);
-                            //-TODO------put the value in the database
-                            Toast.makeText(ActivityOTPCheck.this, "Verification successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(ActivityOTPCheck.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
+                            //-TODO------put the value in the shared preferences
+                            ClassDatabaseHelper addShopValue = new ClassDatabaseHelper(ActivityOTPCheck.this);
+                            ClassShop newShop = new ClassShop(nameSt, "", "", passwordSt, "", phoneLong, 0, 0, 0, 0 ,null);
+                            addShopValue.updateShopInfo(newShop);
+                            if(addShopValue.shopInfoUpdate){
+                                Intent intent = new Intent(ActivityOTPCheck.this, ActivityHome.class);
+//                                intent.putExtra("phone", phoneLong);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                finish();
+                            }else{
+                                verifyBtn.setVisibility(View.VISIBLE);
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(ActivityOTPCheck.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                            }
                         }else{
                             Toast.makeText(ActivityOTPCheck.this, "Verification code is not matched", Toast.LENGTH_SHORT).show();
                             verifyBtn.setVisibility(View.VISIBLE);
@@ -107,6 +118,7 @@ public class ActivityOTPCheck extends AppCompatActivity {
 
         nameSt = getIntent().getStringExtra("name");
         phoneSt = getIntent().getStringExtra("phone");
+        phoneLong = getIntent().getLongExtra("number", 0);
         passwordSt = getIntent().getStringExtra("password");
         verificationCode = getIntent().getStringExtra("OTP");
 

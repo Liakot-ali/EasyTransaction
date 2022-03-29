@@ -53,16 +53,17 @@ public class FragmentToPay extends Fragment {
             while (toPayCursor.moveToNext())
             {
                 String name, address;
-                long phone, amount;
+                long phone, amount, Id;
                 byte[] picture;
 
-                name = toPayCursor.getString(1);
-                address = toPayCursor.getString(2);
-                phone = toPayCursor.getInt(0);
-                amount = toPayCursor.getInt(4);
-                picture = toPayCursor.getBlob(3);
+                Id = toPayCursor.getLong(0);
+                name = toPayCursor.getString(2);
+                address = toPayCursor.getString(3);
+                phone = toPayCursor.getInt(1);
+                amount = toPayCursor.getInt(5);
+                picture = toPayCursor.getBlob(4);
 
-                ClassAddCustomer toPay = new ClassAddCustomer(name, phone, address, picture, amount);
+                ClassAddCustomer toPay = new ClassAddCustomer(Id, name, phone, address, picture, amount);
                 toPayList.add(toPay);
             }
 

@@ -53,16 +53,17 @@ public class FragmentCustomer extends Fragment {
             while (customerCursor.moveToNext())
             {
                 String name, address;
-                long phone, amount;
+                long phone, amount, Id;
                 byte[] picture;
 
-                name = customerCursor.getString(1);
-                address = customerCursor.getString(2);
-                phone = customerCursor.getInt(0);
-                amount = customerCursor.getInt(4);
-                picture = customerCursor.getBlob(3);
+                Id = customerCursor.getLong(0);
+                name = customerCursor.getString(2);
+                address = customerCursor.getString(3);
+                phone = customerCursor.getInt(1);
+                amount = customerCursor.getInt(5);
+                picture = customerCursor.getBlob(4);
 
-                ClassAddCustomer customer = new ClassAddCustomer(name, phone, address, picture, amount);
+                ClassAddCustomer customer = new ClassAddCustomer(Id, name, phone, address, picture, amount);
                 customerList.add(customer);
             }
             adapter = new AdapterCustomerList(getContext(), customerList);

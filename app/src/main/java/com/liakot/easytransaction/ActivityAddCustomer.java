@@ -36,7 +36,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
     Button recordBtn;
     ArrayAdapter<String> adapter;
     Uri imageUri = null;
-    byte[] imageByte;
+    byte[] imageByte = null;
 
 
     @Override

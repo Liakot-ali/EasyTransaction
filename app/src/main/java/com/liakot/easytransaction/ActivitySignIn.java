@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,6 +23,7 @@ public class ActivitySignIn extends AppCompatActivity {
     TextInputLayout phoneNumberLayout,passwordLayout;
     TextView signInForgotPassword,signInSignUp;
     Button signInBtn;
+    CheckBox rememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class ActivitySignIn extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Intent intent = new Intent(ActivitySignIn.this, ActivityHome.class);
                 startActivity(intent);
                 finish();
@@ -52,6 +56,7 @@ public class ActivitySignIn extends AppCompatActivity {
         phoneNumberLayout = findViewById(R.id.SignInPhoneNumberLayout);
         passwordLayout = findViewById(R.id.signInPasswordLayout);
         signInForgotPassword = findViewById(R.id.signInForgetPassword);
+        rememberMe = findViewById(R.id.signInRememberMe);
         signInSignUp= findViewById(R.id.signInSignUp);
         signInBtn = findViewById(R.id.signInBtn);
     }

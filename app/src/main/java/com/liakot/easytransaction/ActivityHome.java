@@ -12,12 +12,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +35,11 @@ public class ActivityHome extends AppCompatActivity {
     Toolbar toolbar;
     FloatingActionButton homeFab;
     CircleImageView shopPicture;
+    TextView shopName, shopAmount;
+
+    String name;
+    long totalRemain, totalPayble, phone;
+    byte[] picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +53,7 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View v) {
                 customerLay.setBackgroundColor(selectColor);
                 toPayLay.setBackgroundColor(deselectColor);
+                shopAmount.setText(String.valueOf(totalRemain));
                 setFragment(new FragmentCustomer());
             }
         });
@@ -53,6 +63,7 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View v) {
                 toPayLay.setBackgroundColor(selectColor);
                 customerLay.setBackgroundColor(deselectColor);
+                shopAmount.setText(String.valueOf(totalPayble));
                 setFragment(new FragmentToPay());
             }
         });
@@ -87,6 +98,29 @@ public class ActivityHome extends AppCompatActivity {
         toPayLay = findViewById(R.id.homeToPayLayout);
         homeFab = findViewById(R.id.homeFab);
         shopPicture = findViewById(R.id.homeShopPicture);
+        shopName = findViewById(R.id.homeShopName);
+        shopAmount = findViewById(R.id.homeTotalAmount);
+
+//        phone = getIntent().getLongExtra("phone", 0);
+
+        //--------get shopDetails from database and initialize the field---------
+        ClassDatabaseHelper databaseHelper = new ClassDatabaseHelper(ActivityHome.this);
+        Cursor cursor = databaseHelper.showShopInfo();
+        cursor.moveToFirst();
+        name = cursor.getString(0);
+        totalRemain = cursor.getLong(7);
+        totalPayble = cursor.getLong(8);
+        picture = cursor.getBlob(5);
+
+        shopName.setText(name);
+        shopAmount.setText(String.valueOf(totalRemain));
+        if(picture != null){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.length);
+            shopPicture.setImageBitmap(bitmap);
+        }else{
+            shopPicture.setImageResource(R.drawable.icon_profile_24);
+        }
+
 
         selectColor = getResources().getColor(R.color.purple_200);
         deselectColor = getResources().getColor(R.color.white_gray);

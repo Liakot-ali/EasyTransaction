@@ -68,6 +68,10 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     public boolean customerUpdated = true;
     public boolean toPayUpdated = true;
 
+    public boolean shopInfoAdd = true;
+    public boolean shopInfoUpdate = true;
+
+
 
     public ClassDatabaseHelper(@Nullable Context context) {
         super(context, databaseName, null, databaseVersion);
@@ -95,6 +99,21 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(customerDetailsTableQuery);
         db.execSQL(toPayDetailsTableQuery);
         db.execSQL(allTransactionTableQuery);
+
+
+        ContentValues cv = new ContentValues();
+        cv.put(shopName, "Shop Name");
+        cv.put(shopOwnerName, "Owner Name");
+        cv.put(shopCategory, "Category");
+        cv.put(shopPhone, 123456789);
+        cv.put(shopPassword, "123456789");
+        cv.put(shopAddress, "Address");
+        cv.put(shopPicture, (byte[]) null);
+        cv.put(shopTotalRemain, 0);
+        cv.put(shopTotalPayble, 0);
+        cv.put(shopCustomerNumber, 0);
+        cv.put(shopPaybleNumber, 0);
+        db.insert(shopDetailsTable, null, cv);
     }
 
     @Override
@@ -278,6 +297,73 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
             cursor = database.rawQuery(query, null);
         }
 
+        return cursor;
+    }
+
+//    public void addShopInfo(ClassShop newShop){
+//        SQLiteDatabase database = this.getWritableDatabase();
+//        ContentValues cv = new ContentValues();
+//        cv.put(shopName, newShop.getName());
+//        cv.put(shopOwnerName, newShop.getOwner());
+//        cv.put(shopCategory, newShop.getCategory());
+//        cv.put(shopPhone, newShop.getPhone());
+//        cv.put(shopPassword, newShop.getPassword());
+//        cv.put(shopAddress, newShop.getAddress());
+//        cv.put(shopPicture, newShop.getPicture());
+//        cv.put(shopTotalRemain, newShop.getTotalRemain());
+//        cv.put(shopTotalPayble, newShop.getTotalPayble());
+//        cv.put(shopCustomerNumber, newShop.getCustomerNo());
+//        cv.put(shopPaybleNumber, newShop.getPaybleNo());
+//
+//        long result = database.insert(shopDetailsTable, null, cv);
+//        if(result == -1){
+//            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
+//            shopInfoAdd = false;
+//        }else{
+//            Toast.makeText(context, "Information added successfully", Toast.LENGTH_SHORT).show();
+//            shopInfoAdd = true;
+//        }
+//    }
+
+    public  void updateShopInfo(ClassShop newShop){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(shopName, newShop.getName());
+        cv.put(shopOwnerName, newShop.getOwner());
+        cv.put(shopCategory, newShop.getCategory());
+        cv.put(shopPhone, newShop.getPhone());
+        cv.put(shopPassword, newShop.getPassword());
+        cv.put(shopAddress, newShop.getAddress());
+        cv.put(shopPicture, newShop.getPicture());
+        cv.put(shopTotalRemain, newShop.getTotalRemain());
+        cv.put(shopTotalPayble, newShop.getTotalPayble());
+        cv.put(shopCustomerNumber, newShop.getCustomerNo());
+        cv.put(shopPaybleNumber, newShop.getPaybleNo());
+
+        long result = database.update(shopDetailsTable, cv, null, null);
+        if(result == -1){
+            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
+            shopInfoUpdate = false;
+        }else{
+            Toast.makeText(context, "Information added successfully", Toast.LENGTH_SHORT).show();
+            String query1 = "DELETE FROM " + customerDetailsTable + ";";
+            String query2 = "DELETE FROM " + toPayDetailsTable + ";";
+            String query3 = "DELETE FROM " + allTransactionTable + ";";
+            database.execSQL(query1);
+            database.execSQL(query2);
+            database.execSQL(query3);
+            shopInfoUpdate = true;
+        }
+    }
+
+    public Cursor showShopInfo() {
+        Cursor cursor = null;
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT * FROM " + shopDetailsTable + " WHERE " + shopCustomerNumber + " >= " + 0 + ";";
+
+        if(database!=null){
+           cursor = database.rawQuery(query, null);
+        }
         return cursor;
     }
 }

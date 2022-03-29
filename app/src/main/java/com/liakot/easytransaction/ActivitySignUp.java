@@ -104,6 +104,8 @@ public class ActivitySignUp extends AppCompatActivity {
                     }
 
                     String finalPhoneSt = phoneSt;
+
+                    long finalNumber = number;
                     mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                         @Override
                         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
@@ -127,6 +129,7 @@ public class ActivitySignUp extends AppCompatActivity {
                             Intent intent = new Intent(ActivitySignUp.this, ActivityOTPCheck.class);
                             intent.putExtra("name", nameSt);
                             intent.putExtra("phone", finalPhoneSt);
+                            intent.putExtra("number", finalNumber);
                             intent.putExtra("password", passwordSt);
                             intent.putExtra("OTP", verificationCode);
                             startActivity(intent);

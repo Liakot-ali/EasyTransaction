@@ -16,19 +16,4 @@
         android:text="Home"
         android:gravity="center"/>
 
-    <EditText
-        android:id="@+id/firebaseText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp" />
-
-    <Button
-        android:id="@+id/addToFirebase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add" />
-
 </LinearLayout>
