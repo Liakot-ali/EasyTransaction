@@ -35,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ActivityHome extends AppCompatActivity {
 
-    int selectColor, deselectColor;
+    int selectColor, deselectColor, amountSelectColor, amountDeselectColor;
     LinearLayout customerLay, toPayLay;
     Toolbar toolbar;
     FloatingActionButton homeFab;
@@ -58,6 +58,7 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View v) {
                 customerLay.setBackgroundColor(selectColor);
                 toPayLay.setBackgroundColor(deselectColor);
+                shopAmount.setTextColor(amountSelectColor);
                 shopAmount.setText(String.valueOf(totalRemain));
                 setFragment(new FragmentCustomer());
             }
@@ -68,6 +69,7 @@ public class ActivityHome extends AppCompatActivity {
             public void onClick(View v) {
                 toPayLay.setBackgroundColor(selectColor);
                 customerLay.setBackgroundColor(deselectColor);
+                shopAmount.setTextColor(amountDeselectColor);
                 shopAmount.setText(String.valueOf(totalPayble));
                 setFragment(new FragmentToPay());
             }
@@ -147,6 +149,9 @@ public class ActivityHome extends AppCompatActivity {
 
         selectColor = getResources().getColor(R.color.purple_200);
         deselectColor = getResources().getColor(R.color.white_gray);
+
+        amountSelectColor = getResources().getColor(R.color.green);
+        amountDeselectColor = getResources().getColor(R.color.red);
 
         customerLay.setBackgroundColor(selectColor);
         toPayLay.setBackgroundColor(deselectColor);

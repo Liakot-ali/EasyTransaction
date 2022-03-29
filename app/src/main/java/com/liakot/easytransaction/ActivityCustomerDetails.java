@@ -130,7 +130,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         //------ set customer profile----
         detailsName.setText(name);
-        detailsPhone.setText(String.valueOf(phone));
+        detailsPhone.setText("+880" + String.valueOf(phone));
         //--------set picture in circle image view--------------
         Bitmap bitmap;
         if(picture != null) {

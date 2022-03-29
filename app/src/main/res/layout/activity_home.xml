@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="total_amount"
-                android:textColor="@color/toolbar_text"
+                android:textColor="@color/green"
                 android:textSize="@dimen/small_text" />
         </LinearLayout>
 

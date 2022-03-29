@@ -77,9 +77,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:counterMaxLength="@integer/phone_number"
-                app:endIconDrawable="@drawable/icon_verification_black"
-                app:endIconMode="custom"
-                app:endIconTint="@color/black"
                 app:helperText="*"
                 app:prefixText="@string/prefix_number"
                 app:startIconDrawable="@drawable/icon_phone_black">
