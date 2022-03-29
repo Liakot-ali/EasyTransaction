@@ -70,7 +70,6 @@ public class ActivitySignIn extends AppCompatActivity {
 
                     if (userPhone.equals(savePhone) && userPassword.equals(savePassword)) {
                         if(rememberMe.isChecked()){
-                            //-------TODO----put the value into shared preferences---
                             SharedPreferences sharedPreferences = getSharedPreferences("LogIn", MODE_PRIVATE);
                             SharedPreferences.Editor  editor = sharedPreferences.edit();
                             editor.putString("phone", userPhone);

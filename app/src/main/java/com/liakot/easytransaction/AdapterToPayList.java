@@ -83,6 +83,7 @@ public class AdapterToPayList extends RecyclerView.Adapter<AdapterToPayList.View
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activityContext, ActivityTransaction.class);
+                intent.putExtra("Id", arrayList.get(position).getId());
                 intent.putExtra("Name", arrayList.get(position).getName());
                 intent.putExtra("Phone", arrayList.get(position).getPhone());
                 intent.putExtra("Amount", arrayList.get(position).getAmount());

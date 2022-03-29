@@ -28,17 +28,14 @@ public class ActivityCustomerProfile extends AppCompatActivity {
     CircleImageView cusPicture, cusAddPicture;
     TextInputEditText cusName, cusPhone, cusAddress;
     Button updateProfile;
-
     TextInputLayout nameLay, phoneLay, addressLay;
 
     String upName, upAddress, upPhone;
-
     String preName, preAddress, type;
-    long prePhone, amount;
+    long prePhone, amount, id;
     byte[] pictureByte;
 
     private static final int PICK_IMAGE = 1;
-
     Uri imageUri = null;
 
     @Override
@@ -102,17 +99,28 @@ public class ActivityCustomerProfile extends AppCompatActivity {
                         phoneLay.setErrorEnabled(false);
                         nameLay.setErrorEnabled(false);
                     } else {
+                        phoneLay.setErrorEnabled(false);
+                        nameLay.setErrorEnabled(false);
                         //-----------update customerDetails/ToPayDetails table-----------
                         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerProfile.this);
                         ClassAddCustomer upCustomer = new ClassAddCustomer(upName, upNumber, upAddress, pictureByte, amount);
                         if (type.equals("Customer")) {
                             //----------check update number is exist or not----------
                             if (prePhone != upNumber && helper.customerPhoneExist(upNumber)) {
-                                Toast.makeText(ActivityCustomerProfile.this, "This phone is already exist in Customer", Toast.LENGTH_SHORT).show();
+                                phoneLay.setErrorEnabled(true);
+                                phoneLay.setError("This phone is already exist in customer");
+//                                Toast.makeText(ActivityCustomerProfile.this, "This phone is already exist in Customer", Toast.LENGTH_SHORT).show();
                             } else {
-                                helper.updateCustomer(upCustomer, prePhone);
+                                phoneLay.setErrorEnabled(false);
+                                helper.updateCustomer(upCustomer, id);
                                 if (helper.customerUpdated) {
                                     Toast.makeText(ActivityCustomerProfile.this, "Profile updated", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ActivityCustomerProfile.this, ActivityTransaction.class);
+                                    intent.putExtra("Id", id);
+                                    intent.putExtra("Type", type);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(ActivityCustomerProfile.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
@@ -120,11 +128,20 @@ public class ActivityCustomerProfile extends AppCompatActivity {
                         } else {
                             //----------check update number is exist or not----------
                             if (prePhone != upNumber && helper.toPayPhoneExist(upNumber)) {
-                                Toast.makeText(ActivityCustomerProfile.this, "This phone is already exist in To Pay", Toast.LENGTH_SHORT).show();
+                                phoneLay.setErrorEnabled(true);
+                                phoneLay.setError("This phone is already exist in To Pay");
+//                                Toast.makeText(ActivityCustomerProfile.this, "This phone is already exist in To Pay", Toast.LENGTH_SHORT).show();
                             } else {
-                                helper.updateToPay(upCustomer, prePhone);
+                                phoneLay.setErrorEnabled(false);
+                                helper.updateToPay(upCustomer, id);
                                 if (helper.toPayUpdated) {
                                     Toast.makeText(ActivityCustomerProfile.this, "Profile updated", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(ActivityCustomerProfile.this, ActivityTransaction.class);
+                                    intent.putExtra("Id", id);
+                                    intent.putExtra("Type", type);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(ActivityCustomerProfile.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
@@ -138,6 +155,7 @@ public class ActivityCustomerProfile extends AppCompatActivity {
 
     private void InitializeAll() {
 
+        id = getIntent().getLongExtra("Id", -1);
         preName = getIntent().getStringExtra("Name");
         preAddress = getIntent().getStringExtra("Address");
         type = getIntent().getStringExtra("Type");

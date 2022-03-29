@@ -162,6 +162,16 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor showCustomerInfo(long id){
+        Cursor cursor = null;
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT * FROM " + customerDetailsTable + " WHERE " + customerId + " = " + id + ";";
+        if(database != null){
+            cursor = database.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
     //------check customer phone is already exist or not------------
     public boolean customerPhoneExist(long phone) {
         boolean exist = false;
@@ -174,8 +184,8 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return exist;
     }
 
-    //-------for update customer data---------- TODO----change phone to ID-
-    public void updateCustomer(ClassAddCustomer upCustomer, long phone) {
+    //-------for update customer data----------
+    public void updateCustomer(ClassAddCustomer upCustomer, long id) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         if (upCustomer.name.isEmpty() && upCustomer.phone == 0 && upCustomer.address.isEmpty() && upCustomer.picture == null) {
@@ -187,22 +197,18 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
             cv.put(customerPicture, upCustomer.getPicture());
         }
 
-        long result = database.update(customerDetailsTable, cv, customerPhone + "=" + phone, null);
-        if (result == -1) {
-            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-            customerUpdated = false;
-        } else {
-            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
-            customerUpdated = true;
-        }
+        long result = database.update(customerDetailsTable, cv, customerId + "=" + id, null);
+        //            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
+        customerUpdated = result != -1;
     }
+
 
     //----------add To Pay type customer---------
     public void AddNewToPay(ClassAddCustomer customer) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(toPayId, customer.getId());
         cv.put(toPayPhone, customer.getPhone());
         cv.put(toPayName, customer.getName());
         cv.put(toPayAddress, customer.getAddress());
@@ -210,13 +216,9 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(toPayAmount, customer.getAmount());
 
         long result = database.insert(toPayDetailsTable, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Customer not added", Toast.LENGTH_SHORT).show();
-            toPayAdd = false;
-        } else {
-            Toast.makeText(context, "To Pay type Customer added", Toast.LENGTH_SHORT).show();
-            toPayAdd = true;
-        }
+        //            Toast.makeText(context, "Customer not added", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(context, "To Pay type Customer added", Toast.LENGTH_SHORT).show();
+        toPayAdd = result != -1;
     }
 
     //-----------show all To Pay type customer---------------
@@ -225,6 +227,16 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         String query = "SELECT * FROM " + toPayDetailsTable;
         if (database != null) {
+            cursor = database.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
+    public Cursor showTopayInfo(long id){
+        Cursor cursor = null;
+        SQLiteDatabase database = this.getReadableDatabase();
+        String query = "SELECT * FROM " + toPayDetailsTable + " WHERE " + toPayId + " = " + id + ";";
+        if(database != null){
             cursor = database.rawQuery(query, null);
         }
         return cursor;
@@ -243,7 +255,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //-------for updated toPay data----------- TODO-----change phone to ID---
-    public void updateToPay(ClassAddCustomer upToPay, long phone) {
+    public void updateToPay(ClassAddCustomer upToPay, long id) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         if (upToPay.name.isEmpty() && upToPay.phone == 0 && upToPay.address.isEmpty() && upToPay.picture == null) {
@@ -255,14 +267,10 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
             cv.put(toPayPicture, upToPay.getPicture());
         }
 
-        long result = database.update(toPayDetailsTable, cv, toPayPhone + "=" + phone, null);
-        if (result == -1) {
-            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-            toPayUpdated = false;
-        } else {
-            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
-            toPayUpdated = true;
-        }
+        long result = database.update(toPayDetailsTable, cv, toPayId + "=" + id, null);
+        //            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
+        toPayUpdated = result != -1;
     }
 
     //------for add the transaction to transaction table------------
@@ -277,13 +285,9 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(transRemain, transaction.getRemain());
         cv.put(transType, transaction.getType());
         long result = database.insert(allTransactionTable, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Transaction not added", Toast.LENGTH_SHORT).show();
-            transactionAdd = false;
-        } else {
-            Toast.makeText(context, "Transaction added", Toast.LENGTH_SHORT).show();
-            transactionAdd = true;
-        }
+        //            Toast.makeText(context, "Transaction not added", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(context, "Transaction added", Toast.LENGTH_SHORT).show();
+        transactionAdd = result != -1;
     }
 
     public Cursor showTransaction(long id, String type) {
@@ -376,7 +380,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 //            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
             shopInfoUpdate = false;
         }else{
-            Toast.makeText(context, "Shop profile updated", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Shop profile updated", Toast.LENGTH_SHORT).show();
 //            String query1 = "DELETE FROM " + customerDetailsTable + ";";
 //            String query2 = "DELETE FROM " + toPayDetailsTable + ";";
 //            String query3 = "DELETE FROM " + allTransactionTable + ";";

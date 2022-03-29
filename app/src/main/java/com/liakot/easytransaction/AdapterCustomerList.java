@@ -89,6 +89,7 @@ public class AdapterCustomerList extends RecyclerView.Adapter<AdapterCustomerLis
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activityContext, ActivityTransaction.class);
+                intent.putExtra("Id", arrayList.get(position).getId());
                 intent.putExtra("Name", arrayList.get(position).getName());
                 intent.putExtra("Phone", arrayList.get(position).getPhone());
                 intent.putExtra("Address", arrayList.get(position).getAddress());

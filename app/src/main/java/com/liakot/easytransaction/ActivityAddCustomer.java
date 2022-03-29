@@ -128,13 +128,14 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewCustomer(newCustomer);
                             if (helper.customerAdd) {
+                                Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                 customerName.setText("");
                                 customerPhone.setText("");
                                 customerAddress.setText("");
                                 customerType.setText("Select Type", false);
                                 customerPicture.setImageResource(R.drawable.icon_profile_24);
-//                                Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
-
+                            }else{
+                                Toast.makeText(ActivityAddCustomer.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             boolean exist = false;
@@ -150,13 +151,14 @@ public class ActivityAddCustomer extends AppCompatActivity {
                                 ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewCustomer(newCustomer);
                                 if (helper.customerAdd) {
+                                    Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                     customerName.setText("");
                                     customerPhone.setText("");
                                     customerAddress.setText("");
                                     customerType.setText("Select Type", false);
                                     customerPicture.setImageResource(R.drawable.icon_profile_24);
-//                                    Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
-
+                                }else{
+                                    Toast.makeText(ActivityAddCustomer.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }
@@ -169,13 +171,14 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewToPay(newCustomer);
                             if (helper.toPayAdd) {
+                                Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                 customerName.setText("");
                                 customerPhone.setText("");
                                 customerAddress.setText("");
                                 customerType.setText("Select Type", false);
                                 customerPicture.setImageResource(R.drawable.icon_profile_24);
-//                                Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
-
+                            }else{
+                                Toast.makeText(ActivityAddCustomer.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             boolean exist = false;
@@ -191,13 +194,14 @@ public class ActivityAddCustomer extends AppCompatActivity {
                                 ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewToPay(newCustomer);
                                 if (helper.toPayAdd) {
+                                    Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                     customerName.setText("");
                                     customerPhone.setText("");
                                     customerAddress.setText("");
                                     customerType.setText("Select Type", false);
                                     customerPicture.setImageResource(R.drawable.icon_profile_24);
-//                                    Picasso.get().load(R.drawable.icon_profile_24).into(customerPicture);
-
+                                }else{
+                                    Toast.makeText(ActivityAddCustomer.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

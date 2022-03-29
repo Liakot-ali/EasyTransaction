@@ -38,7 +38,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
     TextView emptyText;
 
     String name, address, type;
-    long phone, amount;
+    long phone, amount, id;
     byte[] picture;
 
     Cursor cursor = null;
@@ -55,6 +55,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCustomerDetails.this, ActivityCustomerProfile.class);
+                intent.putExtra("Id", id);
                 intent.putExtra("Name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
@@ -74,7 +75,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
         });
 
         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerDetails.this);
-        cursor = helper.showTransaction(phone, type);
+        cursor = helper.showTransaction(id, type);
         if(cursor.getCount() == 0)
         {
             fieldLayout.setVisibility(View.GONE);
@@ -88,13 +89,13 @@ public class ActivityCustomerDetails extends AppCompatActivity {
                 String date, explanation;
                 long expense, getMoney, remain;
 
-                date = cursor.getString(0);
-                explanation = cursor.getString(1);
-                expense = cursor.getInt(2);
-                getMoney = cursor.getInt(3);
-                remain = cursor.getInt(4);
+                date = cursor.getString(1);
+                explanation = cursor.getString(3);
+                expense = cursor.getInt(4);
+                getMoney = cursor.getInt(5);
+                remain = cursor.getInt(6);
 
-                ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, expense, getMoney, remain, type);
+                ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, id, expense, getMoney, remain, type);
                 arrayList.add(transaction);
             }
 
@@ -105,6 +106,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
     private void InitializeAll() {
 
+        id = getIntent().getLongExtra("Id", -1);
         name = getIntent().getStringExtra("Name");
         address = getIntent().getStringExtra("Address");
         phone = getIntent().getLongExtra("Phone", 0);

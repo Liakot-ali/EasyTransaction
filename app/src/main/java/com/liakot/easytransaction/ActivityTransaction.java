@@ -5,6 +5,7 @@ package com.liakot.easytransaction;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class ActivityTransaction extends AppCompatActivity {
 
 
     String name, address, type;
-    long phone, amount;
+    long phone, amount, id;
     byte[] pictureByte;
 
     long totalCustomerRemain, totalToPayRemain;
@@ -47,6 +48,7 @@ public class ActivityTransaction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerProfile.class);
+                intent.putExtra("Id", id);
                 intent.putExtra("Name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
@@ -61,6 +63,7 @@ public class ActivityTransaction extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerDetails.class);
+                intent.putExtra("Id", id);
                 intent.putExtra("Name", name);
                 intent.putExtra("Phone", phone);
                 intent.putExtra("Address", address);
@@ -105,10 +108,11 @@ public class ActivityTransaction extends AppCompatActivity {
 
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityTransaction.this);
 
-                    ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, phone, totalExpense, totalGet, remain, type);
+                    ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, id, totalExpense, totalGet, remain, type);
                     helper.addTransaction(transaction);
                     if(helper.transactionAdd)
                     {
+                        Toast.makeText(ActivityTransaction.this, "New transaction added", Toast.LENGTH_SHORT).show();
                         expenseET.setText("");
                         getMoneyET.setText("");
                         explanationET.setText("");
@@ -125,15 +129,16 @@ public class ActivityTransaction extends AppCompatActivity {
                             //TODO----totalCustomerRemain amount will be changed-----
                             totalCustomerRemain += amount;
                             ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
-                            helper.updateCustomer(upCustomer, phone);
+                            helper.updateCustomer(upCustomer, id);
                         }
                         else{
                             //TODO----totalToPayRemain amount will be changed-----
                             totalToPayRemain += amount;
                             ClassAddCustomer upToPay = new ClassAddCustomer("", 0, "", null, amount);
-                            helper.updateToPay(upToPay, phone);
+                            helper.updateToPay(upToPay, id);
                         }
-
+                    }else{
+                        Toast.makeText(ActivityTransaction.this, "Transaction failed", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -156,12 +161,23 @@ public class ActivityTransaction extends AppCompatActivity {
         getMonetLayout = findViewById(R.id.transGetMoneyLayout);
         explanationLayout = findViewById(R.id.transExplanationLayout);
 
-        name = getIntent().getStringExtra("Name");
-        phone = getIntent().getLongExtra("Phone", 0);
-        address = getIntent().getStringExtra("Address");
-        amount = getIntent().getLongExtra("Amount", 0);
-        pictureByte = getIntent().getByteArrayExtra("Picture");
+        id = getIntent().getLongExtra("Id", -1);
         type = getIntent().getStringExtra("Type");
+        ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityTransaction.this);
+        Cursor cursor = null;
+        if(type.equals("Customer")){
+            cursor = helper.showCustomerInfo(id);
+        }else{
+            cursor = helper.showTopayInfo(id);
+        }
+        cursor.moveToFirst();
+
+        name = cursor.getString(2);
+        phone = cursor.getLong(1);
+        address = cursor.getString(3);
+        amount = cursor.getLong(5);
+        pictureByte = cursor.getBlob(4);
+
 
         Bitmap bitmap;
         if(pictureByte != null) {

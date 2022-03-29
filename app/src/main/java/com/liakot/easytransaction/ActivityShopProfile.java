@@ -109,6 +109,7 @@ public class ActivityShopProfile extends AppCompatActivity {
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityShopProfile.this);
                     helper.updateShopInfo(updateShop);
                     if(helper.shopInfoUpdate){
+                        Toast.makeText(ActivityShopProfile.this, "Shop profile updated", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ActivityShopProfile.this, ActivityHome.class);
                         startActivity(intent);
                         finish();
