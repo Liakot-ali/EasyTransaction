@@ -50,13 +50,13 @@
                 app:civ_border_color="@color/picture_border"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/shopNameLayout"
+                android:id="@+id/signUpShopNameLayout"
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:counterMaxLength="25"
                 app:endIconMode="clear_text"
-                app:helperText="required*"
+                app:helperText="*"
                 app:startIconDrawable="@drawable/icon_shop_name_black">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -72,15 +72,15 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/shopProfilePhoneLayout"
+                android:id="@+id/signUpPhoneLayout"
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="@integer/shop_name"
+                app:counterMaxLength="@integer/phone_number"
                 app:endIconDrawable="@drawable/icon_verification_black"
                 app:endIconMode="custom"
                 app:endIconTint="@color/black"
-                app:helperText="required*"
+                app:helperText="*"
                 app:prefixText="@string/prefix_number"
                 app:startIconDrawable="@drawable/icon_phone_black">
 
@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
-                app:helperText="required*"
+                app:helperText="*"
                 app:startIconDrawable="@drawable/icon_password_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
-                app:helperText="required*"
+                app:helperText="*"
                 app:startIconDrawable="@drawable/icon_password_24">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -136,12 +136,26 @@
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/signUpBtn"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/button_text"
-                android:text="Sign Up" />
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/signUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Up"
+                    android:textColor="@color/button_text"
+                    android:visibility="visible" />
+
+                <ProgressBar
+                    android:id="@+id/signUpProgressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/toolbar_picture"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

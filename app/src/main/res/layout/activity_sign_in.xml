@@ -55,11 +55,11 @@
                 style="@style/textInputLayoutStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:counterMaxLength="@integer/shop_name"
+                app:counterMaxLength="@integer/phone_number"
                 app:endIconMode="custom"
                 android:layout_marginTop="30dp"
                 app:endIconTint="@color/black"
-                app:helperText="required*"
+                app:helperText="*"
                 app:prefixText="@string/prefix_number"
                 app:startIconDrawable="@drawable/icon_phone_black">
 
@@ -81,7 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:endIconMode="password_toggle"
-                app:helperText="required*"
+                app:helperText="*"
                 app:startIconDrawable="@drawable/icon_password_24">
 
                 <com.google.android.material.textfield.TextInputEditText
