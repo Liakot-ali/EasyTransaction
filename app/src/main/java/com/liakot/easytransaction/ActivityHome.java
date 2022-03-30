@@ -42,8 +42,8 @@ public class ActivityHome extends AppCompatActivity {
     CircleImageView shopPicture;
     TextView shopName, shopAmount;
 
-    String name;
-    long totalRemain, totalPayble, phone;
+    String name = null;
+    long totalRemain = 0, totalPayble = 0 , customerNo = 0 , payableNo = 0;
     byte[] picture;
 
     @Override
@@ -131,11 +131,31 @@ public class ActivityHome extends AppCompatActivity {
         //--------get shopDetails from database and initialize the field---------
         ClassDatabaseHelper databaseHelper = new ClassDatabaseHelper(ActivityHome.this);
         Cursor cursor = databaseHelper.showShopInfo();
-        cursor.moveToFirst();
-        name = cursor.getString(0);
-        totalRemain = cursor.getLong(7);
-        totalPayble = cursor.getLong(8);
-        picture = cursor.getBlob(5);
+        if(cursor!=null) {
+            cursor.moveToFirst();
+            name = cursor.getString(0);
+            totalRemain = cursor.getLong(7);
+            totalPayble = cursor.getLong(8);
+            customerNo = cursor.getLong(9);
+            payableNo = cursor.getLong(10);
+            picture = cursor.getBlob(5);
+        }
+
+        //------if there are no customer----------
+        Cursor cusCursor = databaseHelper.showCustomer();
+        Cursor toPayCursor = databaseHelper.showToPay();
+        if(cusCursor.getCount() == 0){
+            totalRemain = 0;
+            customerNo = 0;
+            ClassShop upShop = new ClassShop("", "", "", "", "", 0, totalRemain, totalPayble, customerNo, payableNo, picture);
+            databaseHelper.updateShopAmount(upShop);
+        }
+        if(toPayCursor.getCount() == 0){
+            totalPayble = 0;
+            payableNo = 0;
+            ClassShop upShop = new ClassShop("", "", "", "", "", 0, totalRemain, totalPayble, customerNo, payableNo, picture);
+            databaseHelper.updateShopAmount(upShop);
+        }
 
         shopName.setText(name);
         shopAmount.setText("Remain: " + '\u09F3' + totalRemain);
@@ -233,7 +253,7 @@ public class ActivityHome extends AppCompatActivity {
     long mBackPressed;
     @Override
     public void onBackPressed() {
-        if (mBackPressed + 1000 > System.currentTimeMillis())
+        if (mBackPressed + 2000 > System.currentTimeMillis())
         {
             super.onBackPressed();
             return;

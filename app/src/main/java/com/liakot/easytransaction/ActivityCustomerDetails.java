@@ -2,10 +2,12 @@ package com.liakot.easytransaction;
 
 //---------Liakot Ali Liton, ID : 1802035---------
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -54,29 +56,6 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         InitializeAll();
 
-        toolbarPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityCustomerDetails.this, ActivityCustomerProfile.class);
-                intent.putExtra("Id", id);
-                intent.putExtra("Name", name);
-                intent.putExtra("Phone", phone);
-                intent.putExtra("Address", address);
-                intent.putExtra("Picture", picture);
-                intent.putExtra("Amount", amount);
-                intent.putExtra("Type", type);
-                startActivity(intent);
-            }
-        });
-
-        detailsDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO---------delete all transaction of the customer--------------
-                Toast.makeText(ActivityCustomerDetails.this, "Delete button clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerDetails.this);
         cursor = helper.showTransaction(id, type);
         if(cursor.getCount() == 0)
@@ -116,6 +95,66 @@ public class ActivityCustomerDetails extends AppCompatActivity {
             totalRemain.setText(getResources().getString(R.string.tk_sign) + remainTotal);
 
         }
+
+        toolbarPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCustomerDetails.this, ActivityCustomerProfile.class);
+                intent.putExtra("Id", id);
+                intent.putExtra("Name", name);
+                intent.putExtra("Phone", phone);
+                intent.putExtra("Address", address);
+                intent.putExtra("Picture", picture);
+                intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
+                startActivity(intent);
+            }
+        });
+
+        detailsDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(ActivityCustomerDetails.this);
+                dialog.setTitle("Are you sure?");
+                dialog.setMessage("Do you want to delete this customer?");
+                dialog.setIcon(R.drawable.icon_delete_black);
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerDetails.this);
+                        if(helper.DeleteCustomer(id, type)){
+                            long totalRemain, totalPayable, customerNo, toPayNo;
+                            Cursor shopCursor = helper.showShopInfo();
+                            shopCursor.moveToFirst();
+                            totalRemain = shopCursor.getLong(7);
+                            totalPayable = shopCursor.getLong(8);
+                            customerNo = shopCursor.getLong(9);
+                            toPayNo = shopCursor.getLong(10);
+                            if(type.equals("Customer")){
+                                totalRemain -= remainTotal;
+                                customerNo--;
+                            }else{
+                                totalPayable -= remainTotal;
+                                toPayNo--;
+                            }
+                            expenseTotal = 0;
+                            getTotal = 0;
+                            ClassShop upShop = new ClassShop("", "", "", "", "", 0, totalRemain, totalPayable, customerNo, toPayNo, null);
+                            helper.updateShopAmount(upShop);
+                            Toast.makeText(ActivityCustomerDetails.this, "Customer deleted successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ActivityCustomerDetails.this, ActivityHome.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                });
+                dialog.setNegativeButton("No", null);
+                dialog.setCancelable(true);
+                dialog.show();
+//                Toast.makeText(ActivityCustomerDetails.this, "Delete button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void InitializeAll() {

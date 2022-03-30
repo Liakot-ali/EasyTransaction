@@ -204,6 +204,26 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         customerUpdated = result != -1;
     }
 
+    public boolean DeleteCustomer(long id, String type){
+        type = "'" + type + "'";
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query, query1;
+        query1 = "DELETE FROM " + allTransactionTable + " WHERE " + transCustomerId + " = " + id + " AND " + transType + " = " + type + ";";
+        if(type.equals("'Customer'")){
+            query = "DELETE FROM " + customerDetailsTable + " WHERE " + customerId + " = " + id + ";";
+        }else{
+            query = "DELETE FROM " + toPayDetailsTable + " WHERE " + toPayId + " = " + id + ";";
+        }
+        if(database!=null)
+        {
+            database.execSQL(query);
+            database.execSQL(query1);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     //----------add To Pay type customer---------
     public void AddNewToPay(ClassAddCustomer customer) {
@@ -402,7 +422,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     public Cursor showShopInfo() {
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
-        String query = "SELECT * FROM " + shopDetailsTable + " WHERE " + shopCustomerNumber + " >= " + 0 + ";";
+        String query = "SELECT * FROM " + shopDetailsTable + ";";
 
         if(database!=null){
            cursor = database.rawQuery(query, null);

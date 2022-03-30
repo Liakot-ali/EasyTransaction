@@ -186,9 +186,9 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
+                android:id="@+id/detailsTotalLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="-45sp"
                 android:orientation="vertical">
                 <View
@@ -196,9 +196,7 @@
                     android:layout_height="2sp"
                     android:layout_marginBottom="@dimen/inner_pad"
                     android:background="@color/black"/>
-
                 <LinearLayout
-                    android:id="@+id/detailsTotalLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
