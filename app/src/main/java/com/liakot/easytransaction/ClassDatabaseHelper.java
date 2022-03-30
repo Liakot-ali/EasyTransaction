@@ -70,6 +70,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     public boolean shopInfoAdd = true;
     public boolean shopInfoUpdate = true;
+    public boolean shopAmountUpdate = true;
 
 
 
@@ -294,8 +295,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         type = "'" + type + "'";
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
-        String query = "SELECT " + transDate + ", " + transExplanation + ", " + transTotalExpense + ", " +
-                transGetMoney + ", " + transRemain + " FROM " + allTransactionTable + " WHERE " + transCustomerId + " = " + id + " AND " + transType + " = " + type + ";";
+        String query = "SELECT * FROM " + allTransactionTable + " WHERE " + transCustomerId + " = " + id + " AND " + transType + " = " + type + ";";
 
         if (database != null) {
             cursor = database.rawQuery(query, null);
@@ -389,6 +389,18 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 //            database.execSQL(query3);
             shopInfoUpdate = true;
         }
+    }
+
+    public  void updateShopAmount(ClassShop newShop){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(shopTotalRemain, newShop.getTotalRemain());
+        cv.put(shopTotalPayble, newShop.getTotalPayble());
+        cv.put(shopCustomerNumber, newShop.getCustomerNo());
+        cv.put(shopPaybleNumber, newShop.getPaybleNo());
+
+        long result = database.update(shopDetailsTable, cv, null, null);
+        shopAmountUpdate = result != -1;
     }
 
     public Cursor showShopInfo() {

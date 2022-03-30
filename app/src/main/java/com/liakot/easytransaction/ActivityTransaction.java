@@ -35,7 +35,7 @@ public class ActivityTransaction extends AppCompatActivity {
     long phone, amount, id;
     byte[] pictureByte;
 
-    long totalCustomerRemain, totalToPayRemain;
+    long totalCustomerRemain, totalToPayRemain, customerNo, paybleNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class ActivityTransaction extends AppCompatActivity {
                 intent.putExtra("Amount", amount);
                 intent.putExtra("Type", type);
                 startActivity(intent);
-                Toast.makeText(ActivityTransaction.this, "Details button clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ActivityTransaction.this, "Details button clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -121,22 +121,21 @@ public class ActivityTransaction extends AppCompatActivity {
                         getMonetLayout.setSelected(false);
                         explanationLayout.setSelected(false);
                         amount = amount + remain;
-                        amountTV.setText("Amount: " + amount);
-                        //TODO-------- get the totalRemainAmount from shopDetails table-------
+                        amountTV.setText("Amount: " + '\u09F3' + amount);
                         //----------add updated amount to database--------
                         if(type.equals("Customer")) {
-
-                            //TODO----totalCustomerRemain amount will be changed-----
-                            totalCustomerRemain += amount;
+                            totalCustomerRemain += remain;
                             ClassAddCustomer upCustomer = new ClassAddCustomer("", 0, "", null, amount);
                             helper.updateCustomer(upCustomer, id);
                         }
                         else{
-                            //TODO----totalToPayRemain amount will be changed-----
-                            totalToPayRemain += amount;
+                            totalToPayRemain += remain;
                             ClassAddCustomer upToPay = new ClassAddCustomer("", 0, "", null, amount);
                             helper.updateToPay(upToPay, id);
                         }
+                        //-------update total amount-----
+                        ClassShop updateShop = new ClassShop("", "", "", "", "", 0, totalCustomerRemain, totalToPayRemain, customerNo, paybleNo, null);
+                        helper.updateShopAmount(updateShop);
                     }else{
                         Toast.makeText(ActivityTransaction.this, "Transaction failed", Toast.LENGTH_SHORT).show();
                     }
@@ -165,9 +164,12 @@ public class ActivityTransaction extends AppCompatActivity {
         type = getIntent().getStringExtra("Type");
         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityTransaction.this);
         Cursor cursor = null;
+        //-----------for customer information---------
         if(type.equals("Customer")){
+            amountTV.setTextColor(getResources().getColor(R.color.green));
             cursor = helper.showCustomerInfo(id);
         }else{
+            amountTV.setTextColor(getResources().getColor(R.color.red));
             cursor = helper.showTopayInfo(id);
         }
         cursor.moveToFirst();
@@ -178,7 +180,17 @@ public class ActivityTransaction extends AppCompatActivity {
         amount = cursor.getLong(5);
         pictureByte = cursor.getBlob(4);
 
+        //---------for shop information----------
+        Cursor shopCursor = null;
+        shopCursor = helper.showShopInfo();
+        shopCursor.moveToFirst();
+        totalCustomerRemain = shopCursor.getLong(7);
+        totalToPayRemain = shopCursor.getLong(8);
+        customerNo = shopCursor.getLong(9);
+        paybleNo = shopCursor.getLong(10);
 
+
+        //------------set the image into imageview------------
         Bitmap bitmap;
         if(pictureByte != null) {
             bitmap = BitmapFactory.decodeByteArray(pictureByte, 0, pictureByte.length);
@@ -189,7 +201,6 @@ public class ActivityTransaction extends AppCompatActivity {
         }
 
         nameTV.setText(name);
-        amountTV.setText("Amount: " + amount);
+        amountTV.setText("Total: " + '\u09F3' + amount);
     }
-    //TODO---------- updated customer profile ----------
 }

@@ -59,7 +59,7 @@ public class ActivityHome extends AppCompatActivity {
                 customerLay.setBackgroundColor(selectColor);
                 toPayLay.setBackgroundColor(deselectColor);
                 shopAmount.setTextColor(amountSelectColor);
-                shopAmount.setText(String.valueOf(totalRemain));
+                shopAmount.setText("Remain: " + '\u09F3' + totalRemain);
                 setFragment(new FragmentCustomer());
             }
         });
@@ -70,7 +70,7 @@ public class ActivityHome extends AppCompatActivity {
                 toPayLay.setBackgroundColor(selectColor);
                 customerLay.setBackgroundColor(deselectColor);
                 shopAmount.setTextColor(amountDeselectColor);
-                shopAmount.setText(String.valueOf(totalPayble));
+                shopAmount.setText("Pay: " + '\u09F3' + totalPayble);
                 setFragment(new FragmentToPay());
             }
         });
@@ -138,7 +138,7 @@ public class ActivityHome extends AppCompatActivity {
         picture = cursor.getBlob(5);
 
         shopName.setText(name);
-        shopAmount.setText(String.valueOf(totalRemain));
+        shopAmount.setText("Remain: " + '\u09F3' + totalRemain);
         if(picture != null){
             Bitmap bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.length);
             shopPicture.setImageBitmap(bitmap);

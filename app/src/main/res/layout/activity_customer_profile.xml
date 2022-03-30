@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 app:counterMaxLength="50"
                 app:endIconMode="clear_text"
-                app:helperText="*required"
+                app:helperText="*"
                 app:helperTextTextColor="@color/red"
                 app:startIconDrawable="@drawable/icon_profile_24"
                 >
@@ -103,7 +103,7 @@
                 android:layout_height="match_parent"
                 app:counterMaxLength="@integer/address"
                 app:endIconMode="clear_text"
-                app:helperText="required*"
+                app:helperText="*"
                 app:helperTextTextColor="@color/red"
                 app:startIconDrawable="@drawable/icon_location_black">
 
@@ -126,7 +126,7 @@
                 app:counterMaxLength="@integer/phone_number"
                 app:endIconMode="custom"
                 app:endIconTint="@color/black"
-                app:helperText="required*"
+                app:helperText="*"
                 app:helperTextTextColor="@color/red"
                 app:prefixText="@string/prefix_number"
                 app:startIconDrawable="@drawable/icon_phone_black">

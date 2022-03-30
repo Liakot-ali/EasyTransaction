@@ -89,13 +89,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:orientation="horizontal"
-                android:weightSum="8">
+                android:weightSum="17">
 
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="5"
+                    android:background="@color/teal_200"
                     android:orientation="vertical"
                     android:weightSum="2">
 
@@ -104,12 +105,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:background="@color/teal_200"
                         android:padding="@dimen/inner_pad"
                         android:text="Date"
                         android:textSize="@dimen/normal_text"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
-
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1sp"
+                        android:background="@color/black"
+                        android:layout_marginLeft="@dimen/inner_pad"
+                        android:layout_marginRight="@dimen/inner_pad"
                         />
 
                     <TextView
@@ -117,10 +126,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:background="@color/teal_200"
                         android:padding="@dimen/inner_pad"
                         android:text="Explanation"
                         android:textSize="@dimen/small_text"
+                        android:textColor="@color/black"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -129,33 +140,39 @@
                     android:id="@+id/Expensemoney_details"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
+                    android:gravity="center"
                     android:background="@color/purple_200"
                     android:padding="@dimen/inner_pad"
-                    android:text="Expense Money"
+                    android:text="Expense"
                     android:textSize="@dimen/normal_text"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/getmoney_details"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
+                    android:gravity="center"
                     android:background="@color/teal_200"
                     android:padding="@dimen/inner_pad"
-                    android:text="Get Money"
+                    android:text="Get"
                     android:textSize="@dimen/normal_text"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/remain_details"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
+                    android:layout_weight="4"
+                    android:gravity="center"
                     android:background="@color/purple_200"
                     android:padding="@dimen/inner_pad"
-                    android:text="Remain amount"
+                    android:text="Remain"
                     android:textSize="@dimen/normal_text"
+                    android:textColor="@color/black"
                     android:textStyle="bold" />
 
             </LinearLayout>
