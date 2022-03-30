@@ -229,4 +229,17 @@ public class ActivityHome extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    long mBackPressed;
+    @Override
+    public void onBackPressed() {
+        if (mBackPressed + 1000 > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(ActivityHome.this, "Press back button again to exit", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
+    }
 }

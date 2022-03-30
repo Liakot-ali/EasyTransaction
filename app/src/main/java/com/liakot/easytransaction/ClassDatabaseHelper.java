@@ -255,7 +255,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return exist;
     }
 
-    //-------for updated toPay data----------- TODO-----change phone to ID---
+    //-------for updated toPay data-----------
     public void updateToPay(ClassAddCustomer upToPay, long id) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -376,19 +376,15 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(shopPaybleNumber, newShop.getPaybleNo());
 
         long result = database.update(shopDetailsTable, cv, null, null);
-        if(result == -1){
-//            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
-            shopInfoUpdate = false;
-        }else{
-//            Toast.makeText(context, "Shop profile updated", Toast.LENGTH_SHORT).show();
-//            String query1 = "DELETE FROM " + customerDetailsTable + ";";
-//            String query2 = "DELETE FROM " + toPayDetailsTable + ";";
-//            String query3 = "DELETE FROM " + allTransactionTable + ";";
-//            database.execSQL(query1);
-//            database.execSQL(query2);
-//            database.execSQL(query3);
-            shopInfoUpdate = true;
-        }
+        //            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
+        //            Toast.makeText(context, "Shop profile updated", Toast.LENGTH_SHORT).show();
+        //            String query1 = "DELETE FROM " + customerDetailsTable + ";";
+        //            String query2 = "DELETE FROM " + toPayDetailsTable + ";";
+        //            String query3 = "DELETE FROM " + allTransactionTable + ";";
+        //            database.execSQL(query1);
+        //            database.execSQL(query2);
+        //            database.execSQL(query3);
+        shopInfoUpdate = result != -1;
     }
 
     public  void updateShopAmount(ClassShop newShop){

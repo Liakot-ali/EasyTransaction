@@ -38,6 +38,8 @@ public class ActivityAddCustomer extends AppCompatActivity {
     Uri imageUri = null;
     byte[] imageByte = null;
 
+    long totalRemain, totalPayable, customerNo, payableNo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +130,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewCustomer(newCustomer);
                             if (helper.customerAdd) {
+                                customerNo++;
                                 Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                 customerName.setText("");
                                 customerPhone.setText("");
@@ -151,6 +154,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                                 ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewCustomer(newCustomer);
                                 if (helper.customerAdd) {
+                                    customerNo++;
                                     Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                     customerName.setText("");
                                     customerPhone.setText("");
@@ -171,6 +175,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewToPay(newCustomer);
                             if (helper.toPayAdd) {
+                                totalPayable++;
                                 Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                 customerName.setText("");
                                 customerPhone.setText("");
@@ -194,6 +199,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                                 ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewToPay(newCustomer);
                                 if (helper.toPayAdd) {
+                                    totalPayable++;
                                     Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                     customerName.setText("");
                                     customerPhone.setText("");
@@ -208,11 +214,12 @@ public class ActivityAddCustomer extends AppCompatActivity {
 
                     }
 
+                    //---------update customer no in shop details--------------
+                    ClassShop upShop = new ClassShop("", "", "", "", "", 0, totalRemain, totalPayable, customerNo, payableNo, null);
+                    helper.updateShopAmount(upShop);
                 }
             }
         });
-
-
     }
 
 
@@ -232,6 +239,17 @@ public class ActivityAddCustomer extends AppCompatActivity {
         nameLayout = findViewById(R.id.addCustomerNameLayout);
         phoneLayout = findViewById(R.id.addCustomerPhoneLayout);
         addressLayout = findViewById(R.id.addCustomerAddressLayout);
+
+        //---------get the shop info---------
+        ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityAddCustomer.this);
+        Cursor cursor = null;
+        cursor = helper.showShopInfo();
+        cursor.moveToFirst();
+
+        totalRemain = cursor.getLong(7);
+        totalPayable = cursor.getLong(8);
+        customerNo = cursor.getLong(9);
+        payableNo = cursor.getInt(10);
 
     }
 

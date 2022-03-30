@@ -80,6 +80,7 @@ public class ActivitySignIn extends AppCompatActivity {
 
                         Toast.makeText(ActivitySignIn.this, "Login successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ActivitySignIn.this, ActivityHome.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                         signInPhoneNumber.setText("");
