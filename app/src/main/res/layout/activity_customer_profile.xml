@@ -59,6 +59,7 @@
                     android:layout_gravity="bottom|right"
                     android:layout_marginLeft="-30sp"
                     android:padding="@dimen/inner_pad"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/icon_camera_black"
                     app:civ_border_color="@color/white_gray"
                     app:civ_border_width="@dimen/picture_border"

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
+        android:background="?attr/selectableItemBackground"
         android:layout_marginBottom="@dimen/inner_pad"
         android:weightSum="17">
 

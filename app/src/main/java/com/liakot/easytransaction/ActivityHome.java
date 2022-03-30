@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +42,7 @@ public class ActivityHome extends AppCompatActivity {
     FloatingActionButton homeFab;
     CircleImageView shopPicture;
     TextView shopName, shopAmount;
+    ImageView searchBar;
 
     String name = null;
     long totalRemain = 0, totalPayble = 0 , customerNo = 0 , payableNo = 0;
@@ -52,6 +54,13 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Initialize();
+
+        searchBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ActivityHome.this, "Under construction", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         customerLay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +92,30 @@ public class ActivityHome extends AppCompatActivity {
             }
         });
 
+        shopName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClassDatabaseHelper databaseHelper = new ClassDatabaseHelper(ActivityHome.this);
+                Cursor cursor = databaseHelper.showShopInfo();
+                cursor.moveToFirst();
+                Intent intent = new Intent(ActivityHome.this, ActivityShopProfile.class);
+
+                intent.putExtra("name", cursor.getString(0));
+                intent.putExtra("owner", cursor.getString(1));
+                intent.putExtra("category", cursor.getString(2));
+                intent.putExtra("password", cursor.getString(6));
+                intent.putExtra("address", cursor.getString(4));
+
+                intent.putExtra("phone", cursor.getLong(3));
+                intent.putExtra("totalRemain", cursor.getLong(7));
+                intent.putExtra("totalPayble", cursor.getLong(8));
+                intent.putExtra("customerNo", cursor.getLong(9));
+                intent.putExtra("paybleNo", cursor.getLong(10));
+
+                intent.putExtra("picture", cursor.getBlob(5));
+                startActivity(intent);
+            }
+        });
         shopPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +158,7 @@ public class ActivityHome extends AppCompatActivity {
         shopPicture = findViewById(R.id.homeShopPicture);
         shopName = findViewById(R.id.homeShopName);
         shopAmount = findViewById(R.id.homeTotalAmount);
+        searchBar = findViewById(R.id.homeSearchBar);
 
 //        phone = getIntent().getLongExtra("phone", 0);
 

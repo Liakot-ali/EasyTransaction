@@ -171,6 +171,7 @@
                     android:id="@+id/signUpSignInBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
                     android:textSize="@dimen/normal_text"
                     android:textColor="@color/purple_700"
                     android:text="Sign In" />

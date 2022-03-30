@@ -96,6 +96,20 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         }
 
+        detailsName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCustomerDetails.this, ActivityCustomerProfile.class);
+                intent.putExtra("Id", id);
+                intent.putExtra("Name", name);
+                intent.putExtra("Phone", phone);
+                intent.putExtra("Address", address);
+                intent.putExtra("Picture", picture);
+                intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
+                startActivity(intent);
+            }
+        });
         toolbarPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

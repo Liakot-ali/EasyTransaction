@@ -44,6 +44,20 @@ public class ActivityTransaction extends AppCompatActivity {
 
         InitializeAll();
 
+        nameTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityTransaction.this, ActivityCustomerProfile.class);
+                intent.putExtra("Id", id);
+                intent.putExtra("Name", name);
+                intent.putExtra("Phone", phone);
+                intent.putExtra("Address", address);
+                intent.putExtra("Picture", pictureByte);
+                intent.putExtra("Amount", amount);
+                intent.putExtra("Type", type);
+                startActivity(intent);
+            }
+        });
         pictureCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

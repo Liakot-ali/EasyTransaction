@@ -42,7 +42,7 @@
                 android:text="Customer Name"
                 android:textColor="@color/toolbar_text"
                 android:textSize="@dimen/toolbar_text"
-
+                android:background="?attr/selectableItemBackground"
                 />
 
             <TextView
@@ -61,6 +61,7 @@
             android:layout_gravity="end"
             android:layout_marginEnd="@dimen/inner_pad"
             android:padding="@dimen/inner_pad"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_delete_outline_24" />
 
     </androidx.appcompat.widget.Toolbar>

@@ -6,19 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="@dimen/inner_pad"
     tools:context=".ActivityOTPCheck">
 
     <EditText
         android:id="@+id/otpCheckOTP"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:gravity="center"
+        android:ems="6"
         android:inputType="number"
+        android:textSize="@dimen/headline_text"
         android:hint="123456" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/inner_pad"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -26,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:layout_weight="1"
             android:textSize="@dimen/normal_text"
             android:textColor="@color/black"
             android:text="Code sent to " />
@@ -35,7 +39,6 @@
             android:id="@+id/otpCheckPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:textSize="@dimen/normal_text"
             android:textColor="@color/black"
             android:text="123456789" />
@@ -44,29 +47,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
             android:text="Didn't get the OTP?  " />
 
         <TextView
             android:id="@+id/otpCheckResendBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="RESEND"
+            android:padding="@dimen/inner_pad"
             android:textSize="@dimen/small_text"
+            android:background="?attr/selectableItemBackground"
             android:textColor="@color/purple_700"/>
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/inner_pad"
         android:orientation="vertical">
 
         <Button

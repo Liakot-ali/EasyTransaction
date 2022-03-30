@@ -111,6 +111,7 @@ public class ActivityShopProfile extends AppCompatActivity {
                     if(helper.shopInfoUpdate){
                         Toast.makeText(ActivityShopProfile.this, "Shop profile updated", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ActivityShopProfile.this, ActivityHome.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
                     }else{

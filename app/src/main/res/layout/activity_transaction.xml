@@ -39,6 +39,7 @@
                 android:id="@+id/transCustomerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:text="Customer_Name"
                 android:textColor="@color/toolbar_text"
