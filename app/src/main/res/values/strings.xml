@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="prefix_number">+880</string>
+    <string name="tk_sign">\u09F3</string>
 
     <string-array name="CustomerType">
         <item>Customer</item>

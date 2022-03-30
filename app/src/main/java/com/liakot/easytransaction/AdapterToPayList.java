@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -75,9 +76,10 @@ public class AdapterToPayList extends RecyclerView.Adapter<AdapterToPayList.View
             holder.picture.setImageResource(R.drawable.icon_profile_24);
         }
 
+
         holder.name.setText(arrayList.get(position).getName());
         holder.address.setText(arrayList.get(position).getAddress());
-        holder.amount.setText(String.valueOf(arrayList.get(position).getAmount()));
+        holder.amount.setText(activityContext.getResources().getString(R.string.tk_sign) + String.valueOf(arrayList.get(position).getAmount()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

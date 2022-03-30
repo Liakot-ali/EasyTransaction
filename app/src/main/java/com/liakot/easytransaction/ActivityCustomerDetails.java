@@ -28,7 +28,8 @@ public class ActivityCustomerDetails extends AppCompatActivity {
     TextView detailsName, detailsPhone;
     CircleImageView toolbarPicture;
     ImageView detailsDelete;
-    LinearLayout fieldLayout;
+    LinearLayout fieldLayout, totalLayout;
+    TextView totalExpense, totalGet, totalRemain;
 
 
     RecyclerView recyclerView;
@@ -42,6 +43,8 @@ public class ActivityCustomerDetails extends AppCompatActivity {
     byte[] picture;
 
     Cursor cursor = null;
+
+    long expenseTotal = 0, getTotal = 0, remainTotal = 0;
 
 
     @Override
@@ -79,10 +82,12 @@ public class ActivityCustomerDetails extends AppCompatActivity {
         if(cursor.getCount() == 0)
         {
             fieldLayout.setVisibility(View.GONE);
+            totalLayout.setVisibility(View.GONE);
             emptyText.setVisibility(View.VISIBLE);
         }
         else {
             fieldLayout.setVisibility(View.VISIBLE);
+            totalLayout.setVisibility(View.VISIBLE);
             emptyText.setVisibility(View.GONE);
             while (cursor.moveToNext())
             {
@@ -95,12 +100,21 @@ public class ActivityCustomerDetails extends AppCompatActivity {
                 getMoney = cursor.getInt(5);
                 remain = cursor.getInt(6);
 
+                expenseTotal += expense;
+                getTotal += getMoney;
+                remainTotal += remain;
+
                 ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, id, expense, getMoney, remain, type);
                 arrayList.add(transaction);
             }
 
             adapter = new AdapterTransactionList(ActivityCustomerDetails.this, arrayList);
             recyclerView.setAdapter(adapter);
+
+            totalExpense.setText(getResources().getString(R.string.tk_sign) + expenseTotal);
+            totalGet.setText(getResources().getString(R.string.tk_sign) + getTotal);
+            totalRemain.setText(getResources().getString(R.string.tk_sign) + remainTotal);
+
         }
     }
 
@@ -124,6 +138,11 @@ public class ActivityCustomerDetails extends AppCompatActivity {
 
         emptyText = findViewById(R.id.detailsEmptyText);
         fieldLayout = findViewById(R.id.detailsFieldHeadlineLayout);
+        totalLayout = findViewById(R.id.detailsTotalLayout);
+
+        totalExpense = findViewById(R.id.detailsTotalExpense);
+        totalGet = findViewById(R.id.detailsTotalGet);
+        totalRemain = findViewById(R.id.detailsTotalRemain);
 
         toolbarPicture = findViewById(R.id.detailsCustomerPicture);
 
