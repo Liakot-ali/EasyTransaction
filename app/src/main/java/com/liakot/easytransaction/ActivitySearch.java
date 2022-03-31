@@ -9,7 +9,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,11 +24,13 @@ public class ActivitySearch extends AppCompatActivity {
     ArrayList<ClassAddCustomer> arrayList, tempList;
     RecyclerView.LayoutManager manager;
     AdapterSearchList adapter;
+    TextView emptyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+//        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
         InitializeAll();
 
@@ -57,24 +62,31 @@ public class ActivitySearch extends AppCompatActivity {
                         filterList.add(customer);
                     }
                 }
-                adapter.filterList(filterList);
+                if(filterList.size() == 0){
+                    emptyText.setVisibility(View.VISIBLE);
+                    searchView.setVisibility(View.GONE);
+                }else{
+                    emptyText.setVisibility(View.GONE);
+                    searchView.setVisibility(View.VISIBLE);
+                    adapter.filterList(filterList);
+                }
+
             }
         });
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void Filter(String s) {
-
-    }
 
     private void InitializeAll() {
 
         search = findViewById(R.id.searchView);
         searchView = findViewById(R.id.searchRecyclerView);
+        emptyText = findViewById(R.id.searchEmptyText);
         manager = new LinearLayoutManager(ActivitySearch.this);
 
         searchView.setHasFixedSize(true);
         searchView.setLayoutManager(manager);
+
+
 
         arrayList = new ArrayList<>();
         tempList = new ArrayList<>();
@@ -111,6 +123,14 @@ public class ActivitySearch extends AppCompatActivity {
                 ClassAddCustomer customer = new ClassAddCustomer(name, address, picture, id, phone, amount, "ToPay");
                 arrayList.add(customer);
             }
+        }
+
+        if(arrayList.size() == 0){
+            emptyText.setVisibility(View.VISIBLE);
+            searchView.setVisibility(View.GONE);
+        }else{
+            emptyText.setVisibility(View.GONE);
+            searchView.setVisibility(View.VISIBLE);
         }
     }
 }

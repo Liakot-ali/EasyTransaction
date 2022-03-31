@@ -1,6 +1,7 @@
 package com.liakot.easytransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -42,7 +43,6 @@ public class AdapterSearchList extends RecyclerView.Adapter<AdapterSearchList.Vi
         }
     }
 
-
     @NonNull
     @Override
     public AdapterSearchList.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,6 +54,7 @@ public class AdapterSearchList extends RecyclerView.Adapter<AdapterSearchList.Vi
     @Override
     public void onBindViewHolder(@NonNull AdapterSearchList.ViewHolder holder, int position) {
         byte[] pictureByte;
+        position = holder.getAdapterPosition();
 
         holder.itemView.setTag(arrayList.get(position));
         Bitmap bitmap = null;
@@ -64,7 +65,7 @@ public class AdapterSearchList extends RecyclerView.Adapter<AdapterSearchList.Vi
         }else{
             holder.picture.setImageResource(R.drawable.icon_profile_24);
         }
-        if(arrayList.get(position).getType() == "Customer"){
+        if(arrayList.get(position).getType().equals("Customer")){
             holder.amount.setTextColor(context.getResources().getColor(R.color.green));
         }else{
             holder.amount.setTextColor(context.getResources().getColor(R.color.red));
@@ -73,10 +74,20 @@ public class AdapterSearchList extends RecyclerView.Adapter<AdapterSearchList.Vi
         holder.phone.setText("0" + arrayList.get(position).getPhone());
         holder.amount.setText(context.getResources().getString(R.string.tk_sign) + arrayList.get(position).getAmount());
 
+        int finalPosition = position;
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Under construction", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ActivityTransaction.class);
+                intent.putExtra("Id", arrayList.get(finalPosition).getId());
+                intent.putExtra("Name", arrayList.get(finalPosition).getName());
+                intent.putExtra("Phone", arrayList.get(finalPosition).getPhone());
+                intent.putExtra("Amount", arrayList.get(finalPosition).getAmount());
+                intent.putExtra("Address", arrayList.get(finalPosition).getAddress());
+                intent.putExtra("Picture", arrayList.get(finalPosition).getPicture());
+                intent.putExtra("Type", arrayList.get(finalPosition).getType());
+                context.startActivity(intent);
+//                Toast.makeText(context, "Under construction", Toast.LENGTH_SHORT).show();
             }
         });
     }

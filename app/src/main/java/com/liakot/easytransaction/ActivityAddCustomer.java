@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -45,6 +46,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_customer);
+        InputMethodManager imm = (InputMethodManager)getSystemService(ActivityAddCustomer.INPUT_METHOD_SERVICE);
 
         InitializeAll();
 
@@ -96,21 +98,29 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     addressLayout.setErrorEnabled(false);
                 } else if (name.isEmpty()) {
                     nameLayout.setError("Name is empty");
+                    nameLayout.requestFocus();
+                    imm.toggleSoftInput(1, 1);
                     phoneLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
                 } else if (phone.isEmpty()) {
                     phoneLayout.setError("Phone is empty");
+                    phoneLayout.requestFocus();
+                    imm.toggleSoftInput(1, 1);
                     nameLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
                 } else if (phone.length() != 10 || number > 1999999999 || number < 999999999) {
                     phoneLayout.setError("Invalid phone number");
+                    phoneLayout.requestFocus();
+                    imm.toggleSoftInput(1, 1);
                     nameLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
                 } else if (address.isEmpty()) {
                     addressLayout.setError("Address is empty");
+                    addressLayout.requestFocus();
+                    imm.toggleSoftInput(1, 1);
                     phoneLayout.setErrorEnabled(false);
                     nameLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
@@ -120,6 +130,13 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     phoneLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+
+                    //-------hide keyboard--------
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                    nameLayout.clearFocus();
+                    phoneLayout.clearFocus();
+                    addressLayout.clearFocus();
 
                     if (type.equals("Customer")) {
                         //------------for customer type--------
@@ -175,7 +192,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                             ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                             helper.AddNewToPay(newCustomer);
                             if (helper.toPayAdd) {
-                                totalPayable++;
+                                payableNo++;
                                 Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                 customerName.setText("");
                                 customerPhone.setText("");
@@ -199,7 +216,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                                 ClassAddCustomer newCustomer = new ClassAddCustomer(name, number, address, imageByte, 0);
                                 helper.AddNewToPay(newCustomer);
                                 if (helper.toPayAdd) {
-                                    totalPayable++;
+                                    payableNo++;
                                     Toast.makeText(ActivityAddCustomer.this, "New customer added", Toast.LENGTH_SHORT).show();
                                     customerName.setText("");
                                     customerPhone.setText("");
