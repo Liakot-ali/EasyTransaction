@@ -116,15 +116,22 @@
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/normal_text" />
 
-                <TextView
-                    android:id="@+id/signInForgetPassword"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Forget password?"
-                    android:background="?attr/selectableItemBackground"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/normal_text" />
+                    android:layout_height="match_parent"
+                    android:gravity="center|right"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/signInForgetPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="right"
+                        android:text="Forget password?"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/normal_text" />
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "282444894382",
+    "firebase_url": "https://easy-transaction-692e5-default-rtdb.firebaseio.com",
     "project_id": "easy-transaction-692e5",
     "storage_bucket": "easy-transaction-692e5.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "282444894382-7nn7ep816ap9lgfolr60m80usaf4nd9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.liakot.easytransaction",
+            "certificate_hash": "a25f05e66c22210df6e69cf65cbfafa972088670"
+          }
+        },
         {
           "client_id": "282444894382-bknv8g9lv11abv4fr5ckh3k4meudjqr2.apps.googleusercontent.com",
           "client_type": 3

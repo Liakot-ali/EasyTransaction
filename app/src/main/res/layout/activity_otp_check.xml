@@ -54,17 +54,34 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Didn't get the OTP?  " />
+            android:text="Didn't get the OTP? " />
 
-        <TextView
-            android:id="@+id/otpCheckResendBtn"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RESEND"
-            android:padding="@dimen/inner_pad"
-            android:textSize="@dimen/small_text"
-            android:background="?attr/selectableItemBackground"
-            android:textColor="@color/purple_700"/>
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/resentProgressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="70sp"
+                android:layout_height="33sp"
+                android:padding="@dimen/inner_pad"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/otpCheckResendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/inner_pad"
+                android:text="RESEND"
+                android:textColor="@color/purple_700"
+                android:textSize="@dimen/small_text"
+                android:visibility="visible"/>
+        </FrameLayout>
+
     </LinearLayout>
 
     <FrameLayout

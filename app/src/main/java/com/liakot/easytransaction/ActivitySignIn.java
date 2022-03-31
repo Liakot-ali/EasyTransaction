@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class ActivitySignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        InputMethodManager imm = (InputMethodManager)getSystemService(ActivityAddCustomer.INPUT_METHOD_SERVICE);
 
         InitializeAll();
         signInBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +63,10 @@ public class ActivitySignIn extends AppCompatActivity {
                 }else {
                     passwordLayout.setErrorEnabled(false);
                     phoneNumberLayout.setErrorEnabled(false);
+                    phoneNumberLayout.clearFocus();
+                    passwordLayout.clearFocus();
+
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivitySignIn.this);
                     Cursor cursor = helper.showShopInfo();
@@ -77,7 +83,6 @@ public class ActivitySignIn extends AppCompatActivity {
                             editor.putBoolean("loggedIn", true);
                             editor.apply();
                         }
-
                         Toast.makeText(ActivitySignIn.this, "Login successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(ActivitySignIn.this, ActivityHome.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -87,8 +92,10 @@ public class ActivitySignIn extends AppCompatActivity {
                         signInPassword.setText("");
                     } else if (!userPhone.equals(savePhone)) {
                         Toast.makeText(ActivitySignIn.this, "Phone number not matched", Toast.LENGTH_SHORT).show();
+                        phoneNumberLayout.setError("Not registered yet");
                     } else {
-                        Toast.makeText(ActivitySignIn.this, "Password not matched", Toast.LENGTH_SHORT).show();
+                        passwordLayout.setError("Password not matched");
+//                        Toast.makeText(ActivitySignIn.this, "Password not matched", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -98,6 +105,15 @@ public class ActivitySignIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ActivitySignIn.this, ActivitySignUp.class));
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        });
+        signInForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivitySignIn.this, ActivityPhoneVerify.class);
+                startActivity(intent);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             }
         });
     }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class ActivitySignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        InputMethodManager imm = (InputMethodManager)getSystemService(ActivityAddCustomer.INPUT_METHOD_SERVICE);
         InitializeAll();
 
 
@@ -96,6 +97,12 @@ public class ActivitySignUp extends AppCompatActivity {
                     phoneLay.setErrorEnabled(false);
                     passwordLay.setErrorEnabled(false);
                     conPasswordLay.setErrorEnabled(false);
+                    nameLay.clearFocus();
+                    phoneLay.clearFocus();
+                    passwordLay.clearFocus();
+                    conPasswordLay.clearFocus();
+
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                     if(phoneSt.length() == 10){
                         phoneSt = "+880" + phoneSt;
@@ -116,7 +123,7 @@ public class ActivitySignUp extends AppCompatActivity {
 
                         @Override
                         public void onVerificationFailed(@NonNull FirebaseException e) {
-                            Toast.makeText(ActivitySignUp.this, "Verification failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivitySignUp.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             signUpBtn.setVisibility(View.VISIBLE);
                             progressBar.setVisibility(View.GONE);
 
@@ -132,6 +139,7 @@ public class ActivitySignUp extends AppCompatActivity {
                             intent.putExtra("number", finalNumber);
                             intent.putExtra("password", passwordSt);
                             intent.putExtra("OTP", verificationCode);
+                            intent.putExtra("status", "new");
                             startActivity(intent);
                             finish();
                         }
@@ -146,6 +154,7 @@ public class ActivitySignUp extends AppCompatActivity {
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 Intent intent = new Intent(ActivitySignUp.this, ActivitySignIn.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity
+            android:name=".ActivitySetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityPhoneVerify"
+            android:exported="false" />
+        <activity
             android:name=".ActivitySearch"
             android:exported="false" />
         <activity
