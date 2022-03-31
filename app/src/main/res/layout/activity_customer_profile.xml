@@ -62,7 +62,6 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/icon_camera_black"
                     app:civ_border_color="@color/white_gray"
-                    app:civ_border_width="@dimen/picture_border"
                     tools:ignore="RtlHardcoded" />
 
             </LinearLayout>

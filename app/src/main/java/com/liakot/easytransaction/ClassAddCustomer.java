@@ -6,6 +6,9 @@ public class ClassAddCustomer {
     String name, address;
     byte[] picture;
     long id, phone, amount;
+    String type;
+
+
 
     public ClassAddCustomer(String name, long phone, String address, byte[] picture, long amount) {
         this.name = name;
@@ -24,6 +27,15 @@ public class ClassAddCustomer {
         this.amount = amount;
     }
 
+    public ClassAddCustomer(String name, String address, byte[] picture, long id, long phone, long amount, String type) {
+        this.name = name;
+        this.address = address;
+        this.picture = picture;
+        this.id = id;
+        this.phone = phone;
+        this.amount = amount;
+        this.type = type;
+    }
 
     //---------For show the value together-------
     @Override
@@ -83,5 +95,13 @@ public class ClassAddCustomer {
 
     public void setPicture(byte[] picture) {
         this.picture = picture;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

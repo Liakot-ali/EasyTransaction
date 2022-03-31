@@ -58,7 +58,8 @@ public class ActivityHome extends AppCompatActivity {
         searchBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ActivityHome.this, "Under construction", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(ActivityHome.this, ActivitySearch.class));
+//                Toast.makeText(ActivityHome.this, "Under construction", Toast.LENGTH_SHORT).show();
             }
         });
 

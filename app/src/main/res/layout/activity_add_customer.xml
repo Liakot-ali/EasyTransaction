@@ -78,6 +78,17 @@
                     android:src="@drawable/icon_profile_24"
                     app:civ_border_color="@color/picture_border"
                     app:civ_border_width="@dimen/picture_border" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/addCustomerAddPicture"
+                    android:layout_width="@dimen/toolbar_picture"
+                    android:layout_height="@dimen/toolbar_picture"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginLeft="-30sp"
+                    android:padding="@dimen/inner_pad"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/icon_camera_black"
+                    app:civ_border_color="@color/white_gray"
+                    tools:ignore="RtlHardcoded" />
 
             </LinearLayout>
 
