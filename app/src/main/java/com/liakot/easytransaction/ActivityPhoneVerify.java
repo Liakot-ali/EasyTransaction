@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -35,6 +36,9 @@ public class ActivityPhoneVerify extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_verify);
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(ActivityAddCustomer.INPUT_METHOD_SERVICE);
+
         InitializeAll();
         verifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +68,7 @@ public class ActivityPhoneVerify extends AppCompatActivity {
                     }else{
                         phoneLay.clearFocus();
                         phoneLay.setErrorEnabled(false);
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                         progressBar.setVisibility(View.VISIBLE);
                         verifyBtn.setVisibility(View.GONE);
