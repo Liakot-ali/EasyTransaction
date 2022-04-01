@@ -8,12 +8,26 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/homeBtn"
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="@dimen/profile_picture"
+        android:layout_height="@dimen/profile_picture"
+        app:srcCompat="@drawable/ic_baseline_compare_arrows_24" />
+
+    <TextView
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Home"
-        android:gravity="center"/>
+        android:textSize="@dimen/headline_text"
+        android:textColor="@color/purple_700"
+        android:text="EasyTransaction" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:indeterminateTint="@color/dark_gray"/>
 </LinearLayout>

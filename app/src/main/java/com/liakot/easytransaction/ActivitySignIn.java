@@ -36,6 +36,13 @@ public class ActivitySignIn extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager)getSystemService(ActivityAddCustomer.INPUT_METHOD_SERVICE);
 
         InitializeAll();
+        rememberMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                phoneNumberLayout.clearFocus();
+                passwordLayout.clearFocus();
+            }
+        });
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

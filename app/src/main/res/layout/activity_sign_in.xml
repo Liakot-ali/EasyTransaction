@@ -44,10 +44,8 @@
                 android:layout_width="@dimen/profile_picture"
                 android:layout_height="@dimen/profile_picture"
                 android:layout_gravity="center"
-                android:src="@drawable/icon_profile_24"
-                app:civ_border_width="@dimen/picture_border"
-                android:layout_margin="@dimen/lay_pad"
-                app:civ_border_color="@color/picture_border"/>
+                android:src="@drawable/ic_app_logo_black"
+                android:layout_margin="@dimen/lay_pad" />
 
 
             <com.google.android.material.textfield.TextInputLayout

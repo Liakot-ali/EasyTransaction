@@ -67,6 +67,7 @@
                 android:layout_height="33sp"
                 android:padding="@dimen/inner_pad"
                 android:layout_gravity="center"
+                android:indeterminateTint="@color/purple_700"
                 android:visibility="gone"
                 />
 
@@ -102,6 +103,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_picture"
+            android:indeterminateTint="@color/purple_700"
             android:visibility="gone"/>
     </FrameLayout>
 </LinearLayout>

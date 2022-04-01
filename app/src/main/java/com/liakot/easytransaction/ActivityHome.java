@@ -246,7 +246,8 @@ public class ActivityHome extends AppCompatActivity {
         }
         else if(item.getItemId() == R.id.menu_about_us)
         {
-            Toast.makeText(ActivityHome.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ActivityHome.this, "About Us Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ActivityHome.this, ActivityAboutUs.class));
         }
         else if(item.getItemId() == R.id.menu_log_out)
         {

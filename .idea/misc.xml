@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/drawable/ic_app_logo_black.xml" value="0.279" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/drawable/ic_baseline_shopping_bag_24.xml" value="0.264" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/activity_about_us.xml" value="0.264" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/activity_add_customer.xml" value="0.27447916666666666" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/activity_customer_details.xml" value="0.27447916666666666" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/activity_customer_profile.xml" value="0.27447916666666666" />
@@ -26,6 +28,7 @@
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/item_transaction_details.xml" value="0.27447916666666666" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/layout/layout_fab.xml" value="0.27447916666666666" />
         <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/menu/home_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/All App/Databse Project/Easy Transaction Updated/EasyTransaction/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.279" />
       </map>
     </option>
   </component>

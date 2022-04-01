@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
         <activity
+            android:name=".ActivityAboutUs"
+            android:exported="false" />
+        <activity
             android:name=".ActivitySetPassword"
             android:exported="false" />
         <activity
