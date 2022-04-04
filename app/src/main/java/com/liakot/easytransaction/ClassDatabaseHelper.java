@@ -1,6 +1,5 @@
 package com.liakot.easytransaction;
 
-//---------Liakot Ali Liton, ID : 1802035----------
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,5 +1,4 @@
 package com.liakot.easytransaction;
-//--------Liakot Ali liton, ID: 1802035------------
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

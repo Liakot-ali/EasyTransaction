@@ -1,6 +1,5 @@
 package com.liakot.easytransaction;
 
-//-------------Jannatul ferdouse,  ID : 1702010------------
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,6 +1,5 @@
 package com.liakot.easytransaction;
 
-//---------Liakot Ali Liton, ID : 1802035----------
 
 public class ClassAddCustomer {
     String name, address;

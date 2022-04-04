@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Search here.."
+        android:backgroundTint="@color/purple_700"
         android:inputType="text">
         <requestFocus/>
     </EditText>
