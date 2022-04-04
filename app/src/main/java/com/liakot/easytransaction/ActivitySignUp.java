@@ -2,8 +2,11 @@ package com.liakot.easytransaction;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.arch.core.executor.TaskExecutor;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -12,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseException;
@@ -60,6 +64,10 @@ public class ActivitySignUp extends AppCompatActivity {
                     number = Long.parseLong(phoneSt);
                 }
 
+                Cursor regCursor = new ClassDatabaseHelper(ActivitySignUp.this).showShopInfo();
+                regCursor.moveToFirst();
+                long regNumber = regCursor.getLong(3);
+
                 if (nameSt.isEmpty()) {
                     nameLay.setError("Name is empty");
                     phoneLay.setErrorEnabled(false);
@@ -72,6 +80,11 @@ public class ActivitySignUp extends AppCompatActivity {
                     conPasswordLay.setErrorEnabled(false);
                 } else if ((phone.length() < 10  && phone.length() > 11) || number > 1999999999 || number < 999999999) {
                     phoneLay.setError("Invalid phone number");
+                    nameLay.setErrorEnabled(false);
+                    passwordLay.setErrorEnabled(false);
+                    conPasswordLay.setErrorEnabled(false);
+                } else if(regNumber ==  number){
+                    phoneLay.setError("This number is already registered");
                     nameLay.setErrorEnabled(false);
                     passwordLay.setErrorEnabled(false);
                     conPasswordLay.setErrorEnabled(false);
