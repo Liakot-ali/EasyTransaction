@@ -323,6 +323,19 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public boolean deleteTransaction(long id, String type){
+        type = "'" + type + "'";
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "DELETE FROM " + allTransactionTable + " WHERE " + transTransactionNo + " = " + id + " AND " + transType + " = " + type + ";";
+        if(database != null){
+            database.execSQL(query);
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
 //    public void addShopInfo(ClassShop newShop){
 //        SQLiteDatabase database = this.getWritableDatabase();
 //        ContentValues cv = new ContentValues();
@@ -379,7 +392,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public  void updateShopInfo(ClassShop newShop){
+    public void updateShopInfo(ClassShop newShop){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(shopName, newShop.getName());

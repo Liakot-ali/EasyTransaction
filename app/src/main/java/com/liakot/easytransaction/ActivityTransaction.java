@@ -43,6 +43,8 @@ public class ActivityTransaction extends AppCompatActivity {
 
         InitializeAll();
 
+
+
         nameTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
