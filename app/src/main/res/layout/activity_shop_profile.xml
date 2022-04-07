@@ -47,8 +47,8 @@
                     android:id="@+id/pictureLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="bottom">
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/shopProfilePicture"
@@ -56,22 +56,30 @@
                         android:layout_height="@dimen/profile_picture"
                         android:src="@drawable/icon_profile_default_black"
                         app:civ_border_color="@color/picture_border"
-                        app:civ_border_width="@dimen/picture_border"
-                        />
+                        app:civ_border_width="@dimen/picture_border" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/shopProfileAddImage"
                         android:layout_width="@dimen/toolbar_picture"
                         android:layout_height="@dimen/toolbar_picture"
-                        android:padding="@dimen/inner_pad"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:layout_marginLeft="-30sp"
                         android:layout_gravity="bottom|right"
+                        android:layout_marginLeft="-30sp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="@dimen/inner_pad"
                         android:src="@drawable/icon_camera_black"
                         app:civ_border_color="@color/white_gray"
                         tools:ignore="RtlHardcoded" />
 
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/shopProfileImageText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:gravity="center"
+                    android:text="*Image size must be less than 500Kb"
+                    android:visibility="gone"/>
 
             </LinearLayout>
 
