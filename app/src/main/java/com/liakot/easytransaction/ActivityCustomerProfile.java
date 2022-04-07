@@ -10,8 +10,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -29,10 +31,11 @@ public class ActivityCustomerProfile extends AppCompatActivity {
     TextInputEditText cusName, cusPhone, cusAddress;
     Button updateProfile;
     TextInputLayout nameLay, phoneLay, addressLay;
+    TextView imageSizeTv;
 
     String upName, upAddress, upPhone;
     String preName, preAddress, type;
-    long prePhone, amount, id;
+    long prePhone, amount, id, imageSize;
     byte[] pictureByte;
 
     private static final int PICK_IMAGE = 1;
@@ -86,21 +89,30 @@ public class ActivityCustomerProfile extends AppCompatActivity {
                         nameLay.setError("Name is empty");
                         phoneLay.setErrorEnabled(false);
                         addressLay.setErrorEnabled(false);
-                    } else if (upPhone.isEmpty()) {
+                        imageSizeTv.setVisibility(View.GONE);
+                    } else if(imageSize >= 500){
+                        imageSizeTv.setVisibility(View.VISIBLE);
+                        Toast.makeText(ActivityCustomerProfile.this, "Your image size is " + imageSize + "Kb", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (upPhone.isEmpty()) {
                         phoneLay.setError("Phone is empty");
                         nameLay.setErrorEnabled(false);
                         addressLay.setErrorEnabled(false);
+                        imageSizeTv.setVisibility(View.GONE);
                     } else if (upPhone.length() != 10 || upNumber > 1999999999 || upNumber < 999999999) {
                         phoneLay.setError("Invalid phone number");
                         nameLay.setErrorEnabled(false);
                         addressLay.setErrorEnabled(false);
+                        imageSizeTv.setVisibility(View.GONE);
                     } else if (upAddress.isEmpty()) {
                         addressLay.setError("Address is empty");
                         phoneLay.setErrorEnabled(false);
                         nameLay.setErrorEnabled(false);
+                        imageSizeTv.setVisibility(View.GONE);
                     } else {
                         phoneLay.setErrorEnabled(false);
                         nameLay.setErrorEnabled(false);
+                        imageSizeTv.setVisibility(View.GONE);
                         //-----------update customerDetails/ToPayDetails table-----------
                         ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityCustomerProfile.this);
                         ClassAddCustomer upCustomer = new ClassAddCustomer(upName, upNumber, upAddress, pictureByte, amount);
@@ -169,6 +181,8 @@ public class ActivityCustomerProfile extends AppCompatActivity {
         cusPhone = findViewById(R.id.customerProfilePhone);
         cusAddress = findViewById(R.id.customerProfileAddress);
         updateProfile = findViewById(R.id.customerProfileUpdateBtn);
+        imageSizeTv = findViewById(R.id.customerProfileImageText);
+
         nameLay = findViewById(R.id.customerProfileNameLayout);
         phoneLay = findViewById(R.id.customerProfilePhoneLayout);
         addressLay = findViewById(R.id.customerProfileAddressLayout);
@@ -195,6 +209,19 @@ public class ActivityCustomerProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data.getData() != null) {
             imageUri = data.getData();
+
+            //------for calculate the image size----------
+            Cursor returnCursor = this.getContentResolver().query(imageUri, null, null, null, null);
+            int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+            returnCursor.moveToFirst();
+            imageSize = (returnCursor.getLong(sizeIndex)) / 1024;
+
+            if(imageSize > 500){
+                imageSizeTv.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Upload a new image", Toast.LENGTH_SHORT).show();
+            }else{
+                imageSizeTv.setVisibility(View.GONE);
+            }
             Picasso.get().load(imageUri).into(cusPicture);
         } else {
             imageUri = null;

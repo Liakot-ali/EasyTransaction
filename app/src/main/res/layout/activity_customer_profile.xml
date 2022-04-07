@@ -57,13 +57,22 @@
                     android:layout_height="@dimen/toolbar_picture"
                     android:layout_gravity="bottom|right"
                     android:layout_marginLeft="-30sp"
-                    android:padding="@dimen/inner_pad"
                     android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="@dimen/inner_pad"
                     android:src="@drawable/icon_camera_black"
                     app:civ_border_color="@color/white_gray"
                     tools:ignore="RtlHardcoded" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/customerProfileImageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/red"
+                android:text="*image size must be less than 500Kb"
+                android:visibility="gone"/>
 
         </LinearLayout>
         <LinearLayout

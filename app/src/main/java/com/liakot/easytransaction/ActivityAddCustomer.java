@@ -310,9 +310,9 @@ public class ActivityAddCustomer extends AppCompatActivity {
             int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
             returnCursor.moveToFirst();
             imageSize = (returnCursor.getLong(sizeIndex)) / 1024;
+
             if(imageSize > 500){
                 imageSizeTv.setVisibility(View.VISIBLE);
-                imageSizeTv.setText("Image size is greater than 500 KB");
                 Toast.makeText(this, "Upload a new image", Toast.LENGTH_SHORT).show();
             }else{
                 imageSizeTv.setVisibility(View.GONE);
