@@ -92,11 +92,13 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/addCustomerImageSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="* picture size must be less than 500kB"
+                android:text="*image size must be less than 500kB"
                 android:textColor="@color/red"
+                android:visibility="gone"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/addCustomerNameLayout"

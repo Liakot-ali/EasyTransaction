@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -20,6 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -33,12 +36,13 @@ public class ActivityAddCustomer extends AppCompatActivity {
     CircleImageView customerPicture, addPicture;
     TextInputEditText customerName, customerPhone, customerAddress;
     TextInputLayout nameLayout, phoneLayout, addressLayout, typeLayout;
+    TextView imageSizeTv;
     Button recordBtn;
     ArrayAdapter<String> adapter;
     Uri imageUri = null;
     byte[] imageByte = null;
 
-    long totalRemain, totalPayable, customerNo, payableNo;
+    long totalRemain, totalPayable, customerNo, payableNo, imageSize = 0;
 
 
     @Override
@@ -95,13 +99,19 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     nameLayout.setErrorEnabled(false);
                     phoneLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
-                } else if (name.isEmpty()) {
+                    imageSizeTv.setVisibility(View.GONE);
+                } else if(imageSize >= 500){
+                    imageSizeTv.setVisibility(View.VISIBLE);
+                    Toast.makeText(ActivityAddCustomer.this, "This image size is " + imageSize + "Kb", Toast.LENGTH_SHORT).show();
+                }
+                else if (name.isEmpty()) {
                     nameLayout.setError("Name is empty");
                     nameLayout.requestFocus();
                     imm.toggleSoftInput(1, 1);
                     phoneLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+                    imageSizeTv.setVisibility(View.GONE);
                 } else if (phone.isEmpty()) {
                     phoneLayout.setError("Phone is empty");
                     phoneLayout.requestFocus();
@@ -109,6 +119,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     nameLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+                    imageSizeTv.setVisibility(View.GONE);
                 } else if (phone.length() != 10 || number > 1999999999 || number < 999999999) {
                     phoneLayout.setError("Invalid phone number");
                     phoneLayout.requestFocus();
@@ -116,6 +127,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     nameLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+                    imageSizeTv.setVisibility(View.GONE);
                 } else if (address.isEmpty()) {
                     addressLayout.setError("Address is empty");
                     addressLayout.requestFocus();
@@ -123,12 +135,14 @@ public class ActivityAddCustomer extends AppCompatActivity {
                     phoneLayout.setErrorEnabled(false);
                     nameLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+                    imageSizeTv.setVisibility(View.GONE);
                 } else {
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityAddCustomer.this);
                     nameLayout.setErrorEnabled(false);
                     phoneLayout.setErrorEnabled(false);
                     addressLayout.setErrorEnabled(false);
                     typeLayout.setErrorEnabled(false);
+                    imageSizeTv.setVisibility(View.GONE);
 
                     //-------hide keyboard--------
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -250,6 +264,7 @@ public class ActivityAddCustomer extends AppCompatActivity {
         customerAddress = findViewById(R.id.addCustomerAddress);
         addPicture = findViewById(R.id.addCustomerAddPicture);
         recordBtn = findViewById(R.id.addCustomerRecordBtn);
+        imageSizeTv = findViewById(R.id.addCustomerImageSize);
 
         typeLayout = findViewById(R.id.addCustomerTypeLayout);
         nameLayout = findViewById(R.id.addCustomerNameLayout);
@@ -289,6 +304,19 @@ public class ActivityAddCustomer extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data.getData() != null) {
             imageUri = data.getData();
+
+            //------for calculate the image size----------
+            Cursor returnCursor = this.getContentResolver().query(imageUri, null, null, null, null);
+            int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+            returnCursor.moveToFirst();
+            imageSize = (returnCursor.getLong(sizeIndex)) / 1024;
+            if(imageSize > 500){
+                imageSizeTv.setVisibility(View.VISIBLE);
+                imageSizeTv.setText("Image size is greater than 500 KB");
+                Toast.makeText(this, "Upload a new image", Toast.LENGTH_SHORT).show();
+            }else{
+                imageSizeTv.setVisibility(View.GONE);
+            }
             Picasso.get().load(imageUri).into(customerPicture);
         }
         else{
