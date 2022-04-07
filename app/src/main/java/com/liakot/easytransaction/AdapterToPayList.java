@@ -94,6 +94,7 @@ public class AdapterToPayList extends RecyclerView.Adapter<AdapterToPayList.View
                 activityContext.startActivity(intent);
             }
         });
+
     }
     @Override
     public int getItemCount() {
