@@ -216,4 +216,16 @@ public class ActivityCustomerDetails extends AppCompatActivity {
             toolbarPicture.setImageResource(R.drawable.icon_profile_24);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ActivityCustomerDetails.this, ActivityTransaction.class);
+        intent.putExtra("Id", id);
+        intent.putExtra("Type", type);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
 }

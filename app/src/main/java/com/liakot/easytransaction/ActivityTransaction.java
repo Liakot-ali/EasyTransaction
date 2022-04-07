@@ -86,6 +86,7 @@ public class ActivityTransaction extends AppCompatActivity {
                 intent.putExtra("Amount", amount);
                 intent.putExtra("Type", type);
                 startActivity(intent);
+                finish();
 //                Toast.makeText(ActivityTransaction.this, "Details button clicked", Toast.LENGTH_SHORT).show();
             }
         });
