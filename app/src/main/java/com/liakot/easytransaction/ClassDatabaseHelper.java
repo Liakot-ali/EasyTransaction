@@ -180,6 +180,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             if (phone == cursor.getInt(0)) {
                 exist = true;
+                break;
             }
         }
         return exist;
