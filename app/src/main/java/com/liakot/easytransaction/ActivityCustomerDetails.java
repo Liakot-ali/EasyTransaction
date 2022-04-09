@@ -70,8 +70,9 @@ public class ActivityCustomerDetails extends AppCompatActivity {
             while (cursor.moveToNext())
             {
                 String date, explanation;
-                long expense, getMoney, remain;
+                long transId, expense, getMoney, remain;
 
+                transId = cursor.getLong(0);
                 date = cursor.getString(1);
                 explanation = cursor.getString(3);
                 expense = cursor.getInt(4);
@@ -82,7 +83,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
                 getTotal += getMoney;
                 remainTotal += remain;
 
-                ClassAddTransaction transaction = new ClassAddTransaction(date, explanation, id, expense, getMoney, remain, type);
+                ClassAddTransaction transaction = new ClassAddTransaction(transId, date, explanation, id, expense, getMoney, remain, type);
                 arrayList.add(transaction);
             }
 
@@ -94,6 +95,7 @@ public class ActivityCustomerDetails extends AppCompatActivity {
             totalRemain.setText(getResources().getString(R.string.tk_sign) + remainTotal);
 
         }
+
 
         detailsName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,5 +215,17 @@ public class ActivityCustomerDetails extends AppCompatActivity {
         else{
             toolbarPicture.setImageResource(R.drawable.icon_profile_24);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ActivityCustomerDetails.this, ActivityTransaction.class);
+        intent.putExtra("Id", id);
+        intent.putExtra("Type", type);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

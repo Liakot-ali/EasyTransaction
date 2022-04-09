@@ -3,7 +3,9 @@ package com.liakot.easytransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -94,6 +97,51 @@ public class AdapterToPayList extends RecyclerView.Adapter<AdapterToPayList.View
                 activityContext.startActivity(intent);
             }
         });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(activityContext);
+                dialog.setTitle("Are you sure?");
+                dialog.setMessage("Do you want to delete this customer?");
+                dialog.setIcon(activityContext.getResources().getDrawable(R.drawable.icon_delete_black));
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ClassDatabaseHelper helper = new ClassDatabaseHelper(activityContext);
+                        long cusId = arrayList.get(position).getId();
+                        long cusRemain = arrayList.get(position).getAmount();
+                        String cusType = "ToPay";
+                        if (helper.DeleteCustomer(cusId, cusType)) {
+                            long totalRemain, totalPayable, customerNo, toPayNo;
+                            Cursor shopCursor = helper.showShopInfo();
+                            shopCursor.moveToFirst();
+                            totalRemain = shopCursor.getLong(7);
+                            totalPayable = shopCursor.getLong(8);
+                            customerNo = shopCursor.getLong(9);
+                            toPayNo = shopCursor.getLong(10);
+                            totalPayable -= cusRemain;
+                            toPayNo--;
+
+                            ClassShop upShop = new ClassShop("", "", "", "", "", 0, totalRemain, totalPayable, customerNo, toPayNo, null);
+                            helper.updateShopAmount(upShop);
+                            Toast.makeText(activityContext, "Payable customer deleted successfully", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(activityContext, ActivityHome.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            activityContext.startActivity(intent);
+                        }
+                    }
+                });
+                dialog.setNegativeButton("No", null);
+                dialog.setCancelable(true);
+                dialog.show();
+
+                return  true;
+            }
+        });
+
     }
     @Override
     public int getItemCount() {

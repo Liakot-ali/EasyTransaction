@@ -162,6 +162,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //-------show specific customer info-----------
     public Cursor showCustomerInfo(long id){
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
@@ -179,6 +180,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             if (phone == cursor.getInt(0)) {
                 exist = true;
+                break;
             }
         }
         return exist;
@@ -198,11 +200,10 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
 
         long result = database.update(customerDetailsTable, cv, customerId + "=" + id, null);
-        //            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
         customerUpdated = result != -1;
     }
 
+    //----------delete a specific customer/toPay type---------
     public boolean DeleteCustomer(long id, String type){
         type = "'" + type + "'";
         SQLiteDatabase database = this.getWritableDatabase();
@@ -236,8 +237,6 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(toPayAmount, customer.getAmount());
 
         long result = database.insert(toPayDetailsTable, null, cv);
-        //            Toast.makeText(context, "Customer not added", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(context, "To Pay type Customer added", Toast.LENGTH_SHORT).show();
         toPayAdd = result != -1;
     }
 
@@ -252,6 +251,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    //------show all data of a specific customer---------
     public Cursor showTopayInfo(long id){
         Cursor cursor = null;
         SQLiteDatabase database = this.getReadableDatabase();
@@ -288,8 +288,6 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
 
         long result = database.update(toPayDetailsTable, cv, toPayId + "=" + id, null);
-        //            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(context, "Database updated", Toast.LENGTH_SHORT).show();
         toPayUpdated = result != -1;
     }
 
@@ -305,11 +303,10 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(transRemain, transaction.getRemain());
         cv.put(transType, transaction.getType());
         long result = database.insert(allTransactionTable, null, cv);
-        //            Toast.makeText(context, "Transaction not added", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(context, "Transaction added", Toast.LENGTH_SHORT).show();
         transactionAdd = result != -1;
     }
 
+    //---------show all transaction of a customer-----------
     public Cursor showTransaction(long id, String type) {
         type = "'" + type + "'";
         Cursor cursor = null;
@@ -319,35 +316,23 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         if (database != null) {
             cursor = database.rawQuery(query, null);
         }
-
         return cursor;
     }
 
-//    public void addShopInfo(ClassShop newShop){
-//        SQLiteDatabase database = this.getWritableDatabase();
-//        ContentValues cv = new ContentValues();
-//        cv.put(shopName, newShop.getName());
-//        cv.put(shopOwnerName, newShop.getOwner());
-//        cv.put(shopCategory, newShop.getCategory());
-//        cv.put(shopPhone, newShop.getPhone());
-//        cv.put(shopPassword, newShop.getPassword());
-//        cv.put(shopAddress, newShop.getAddress());
-//        cv.put(shopPicture, newShop.getPicture());
-//        cv.put(shopTotalRemain, newShop.getTotalRemain());
-//        cv.put(shopTotalPayble, newShop.getTotalPayble());
-//        cv.put(shopCustomerNumber, newShop.getCustomerNo());
-//        cv.put(shopPaybleNumber, newShop.getPaybleNo());
-//
-//        long result = database.insert(shopDetailsTable, null, cv);
-//        if(result == -1){
-//            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
-//            shopInfoAdd = false;
-//        }else{
-//            Toast.makeText(context, "Information added successfully", Toast.LENGTH_SHORT).show();
-//            shopInfoAdd = true;
-//        }
-//    }
+    //-------delete specific transaction---------
+    public boolean deleteTransaction(long id, String type){
+        type = "'" + type + "'";
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "DELETE FROM " + allTransactionTable + " WHERE " + transTransactionNo + " = " + id + " AND " + transType + " = " + type + ";";
+        if(database != null){
+            database.execSQL(query);
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    //-----------update existing shop--------
     public  void updateShop(ClassShop newShop){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -365,7 +350,6 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
         long result = database.update(shopDetailsTable, cv, null, null);
         if(result == -1){
-//            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
             shopInfoAdd = false;
         }else{
             Toast.makeText(context, "Information added successfully", Toast.LENGTH_SHORT).show();
@@ -379,7 +363,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public  void updateShopInfo(ClassShop newShop){
+    public void updateShopInfo(ClassShop newShop){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(shopName, newShop.getName());
@@ -395,14 +379,6 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
         cv.put(shopPaybleNumber, newShop.getPaybleNo());
 
         long result = database.update(shopDetailsTable, cv, null, null);
-        //            Toast.makeText(context, "Information not added", Toast.LENGTH_SHORT).show();
-        //            Toast.makeText(context, "Shop profile updated", Toast.LENGTH_SHORT).show();
-        //            String query1 = "DELETE FROM " + customerDetailsTable + ";";
-        //            String query2 = "DELETE FROM " + toPayDetailsTable + ";";
-        //            String query3 = "DELETE FROM " + allTransactionTable + ";";
-        //            database.execSQL(query1);
-        //            database.execSQL(query2);
-        //            database.execSQL(query3);
         shopInfoUpdate = result != -1;
     }
 

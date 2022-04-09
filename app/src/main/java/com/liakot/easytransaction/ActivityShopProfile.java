@@ -8,14 +8,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,11 +39,13 @@ public class ActivityShopProfile extends AppCompatActivity {
     TextInputEditText shopName, shopOwner, shopCategory, shopPhone, shopAddress;
     TextInputLayout shopNameLay, shopPhoneLay, shopOwnerLay, shopCategoryLay, shopAddressLay;
     Button updateBtn;
+    TextView imageTextView;
     CircleImageView shopPicture, addPicture;
 
     String name, owner, category, password, address;
     long phone, totalRemain, totalPayble, customerNo, paybleNo;
     byte[] picture = null;
+    long imageSize = 0;
 
     Uri imageUri = null;
 
@@ -90,19 +95,27 @@ public class ActivityShopProfile extends AppCompatActivity {
                     shopNameLay.setError("Name is empty");
                     shopNameLay.setErrorEnabled(true);
                     shopPhoneLay.setErrorEnabled(false);
+                    imageTextView.setVisibility(View.GONE);
 
-                } else if (phoneSt.isEmpty()) {
+                } else if(imageSize >= 500){
+                    imageTextView.setVisibility(View.VISIBLE);
+                    Toast.makeText(ActivityShopProfile.this, "Your image size is " + imageSize + "Kb", Toast.LENGTH_SHORT).show();
+                }
+                else if (phoneSt.isEmpty()) {
                     shopPhoneLay.setError("Phone is empty");
                     shopPhoneLay.setErrorEnabled(true);
                     shopNameLay.setErrorEnabled(false);
+                    imageTextView.setVisibility(View.GONE);
 
                 } else if (phoneSt.length()!=10 || number > 1999999999 || number < 999999999) {
                     shopPhoneLay.setError("Invalid phone number");
                     shopNameLay.setErrorEnabled(false);
                     shopPhoneLay.setErrorEnabled(true);
+                    imageTextView.setVisibility(View.GONE);
                 }else{
                     shopPhoneLay.setErrorEnabled(false);
                     shopNameLay.setErrorEnabled(false);
+                    imageTextView.setVisibility(View.GONE);
 
                     ClassShop updateShop = new ClassShop(nameSt, ownerSt, categorySt, password, addressSt, number, totalRemain, totalPayble, customerNo, paybleNo, picture);
                     ClassDatabaseHelper helper = new ClassDatabaseHelper(ActivityShopProfile.this);
@@ -148,6 +161,7 @@ public class ActivityShopProfile extends AppCompatActivity {
         shopPhone = findViewById(R.id.shopProfilePhone);
         shopOwner = findViewById(R.id.shopProfileOwnerName);
         shopAddress = findViewById(R.id.shopProfileAddress);
+        imageTextView = findViewById(R.id.shopProfileImageText);
 
         shopNameLay = findViewById(R.id.shopProfileShopNameLayout);
         shopCategoryLay = findViewById(R.id.shopProfileCategoryLayout);
@@ -193,6 +207,19 @@ public class ActivityShopProfile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data.getData() != null) {
             imageUri = data.getData();
+
+            //------for calculate the image size----------
+            Cursor returnCursor = this.getContentResolver().query(imageUri, null, null, null, null);
+            int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+            returnCursor.moveToFirst();
+            imageSize = (returnCursor.getLong(sizeIndex)) / 1024;
+
+            if(imageSize > 500){
+                imageTextView.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Upload a new image", Toast.LENGTH_SHORT).show();
+            }else{
+                imageTextView.setVisibility(View.GONE);
+            }
             Picasso.get().load(imageUri).into(shopPicture);
         }
         else{
