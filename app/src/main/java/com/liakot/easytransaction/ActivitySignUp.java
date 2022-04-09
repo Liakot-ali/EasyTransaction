@@ -67,7 +67,6 @@ public class ActivitySignUp extends AppCompatActivity {
                 Cursor regCursor = new ClassDatabaseHelper(ActivitySignUp.this).showShopInfo();
                 regCursor.moveToFirst();
                 long regNumber = regCursor.getLong(3);
-
                 if (nameSt.isEmpty()) {
                     nameLay.setError("Name is empty");
                     phoneLay.setErrorEnabled(false);
