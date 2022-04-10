@@ -19,7 +19,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String customerDetailsTable = "CustomerDetails";
 
-    private final static String customerId = "ID";
+    private final static String customerId = "Customer_Id";
     private final static String customerPhone = "Phone_Number";
     private final static String customerName = "Name";
     private final static String customerAddress = "Address";
@@ -28,7 +28,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String toPayDetailsTable = "ToPayDetails";
 
-    private final static String toPayId = "ID";
+    private final static String toPayId = "ToPay_Id";
     private final static String toPayPhone = "Phone_Number";
     private final static String toPayName = "Name";
     private final static String toPayAddress = "Address";
@@ -53,7 +53,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String transTransactionNo = "Transaction_Id";
     private final static String transDate = "Date";
-    private final static String transCustomerId = "Customer_ID";
+    private final static String transCustomerId = "Customer_Id";
     private final static String transExplanation = "Explanation";
     private final static String transTotalExpense = "Total_Expense";
     private final static String transGetMoney = "Get_Money";
