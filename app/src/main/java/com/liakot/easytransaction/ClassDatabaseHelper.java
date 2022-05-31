@@ -53,7 +53,7 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
 
     private final static String transTransactionNo = "Transaction_Id";
     private final static String transDate = "Date";
-    private final static String transCustomerId = "Customer_Id";
+    private final static String transCustomerId = "ID";
     private final static String transExplanation = "Explanation";
     private final static String transTotalExpense = "Total_Expense";
     private final static String transGetMoney = "Get_Money";
