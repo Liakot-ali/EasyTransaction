@@ -110,6 +110,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Remember me"
+                    android:checked="true"
+                    android:buttonTint="@color/purple_700"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/normal_text" />
 
