@@ -30,12 +30,11 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#481F5D7E">
+        android:background="@color/body_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="vertical"
             android:padding="@dimen/lay_pad">
 
@@ -113,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:text="Remember me"
                     android:checked="true"
-                    android:buttonTint="@color/purple_700"
+                    android:buttonTint="@color/button_background"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/normal_text" />
 
@@ -159,7 +158,7 @@
                     android:layout_gravity="center"
                     android:background="?attr/selectableItemBackground"
                     android:text="Sign Up"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/button_background"
                     android:textSize="@dimen/normal_text" />
 
             </LinearLayout>

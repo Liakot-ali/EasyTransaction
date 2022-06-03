@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="48sp"
             android:layout_marginBottom="60sp"
-            android:backgroundTint="@color/purple_200"
-            android:foregroundTint="@color/white"
+            android:backgroundTint="@color/toolbar_background"
             android:clickable="true"
+            app:tint="@color/white"
             android:src="@drawable/icon_add_black"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>

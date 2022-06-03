@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="@dimen/inner_pad"
+    android:background="@color/body_background"
     tools:context=".ActivityOTPCheck">
 
     <EditText
@@ -78,7 +79,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:padding="@dimen/inner_pad"
                 android:text="RESEND"
-                android:textColor="@color/purple_700"
+                android:textColor="@color/button_background"
                 android:textSize="@dimen/small_text"
                 android:visibility="visible"/>
         </FrameLayout>
