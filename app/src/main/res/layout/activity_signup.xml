@@ -30,7 +30,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#6D1F5D7E"
+        android:background="@color/body_background"
         android:layout_gravity="center">
 
         <LinearLayout
@@ -172,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:textSize="@dimen/normal_text"
-                    android:textColor="@color/purple_700"
+                    android:textColor="@color/button_background"
                     android:text="Sign In" />
             </LinearLayout>
         </LinearLayout>

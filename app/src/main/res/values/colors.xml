@@ -12,18 +12,21 @@
 
     <color name="white_gray">#D5D5D5</color>
     <color name="dark_gray">#555555</color>
-    <color name="red">#BD0A0A</color>
+    <color name="red">#F20707</color>
+    <color name="yellow">#D9B13B</color>
     <color name="green">#047C41</color>
 
     <color name="item_background">#F6F6F6</color>
 
 
-    <color name="toolbar_text">#FF000000</color>
-    <color name="toolbar_background">#D5D5D5</color>
-    <color name="button_text">#FFFFFFFF</color>
+    <color name="toolbar_text">#FFFFFF</color>
+    <color name="toolbar_background">#085CA6</color>
+    <color name="body_background">#BFA8BF</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="button_background">#085CA6</color>
 
-    <color name="picture_border">#FF3700B3</color>
-    <color name="layout_border">#FF000000</color>
+    <color name="picture_border">#BFA8BF</color>
+    <color name="layout_border">#BFA8BF</color>
 
 
     <!-- Dimen Section !-->

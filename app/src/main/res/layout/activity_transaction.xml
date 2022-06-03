@@ -78,13 +78,12 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -98,10 +97,10 @@
                         style="@style/textInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingBottom="@dimen/lay_pad"
                         android:layout_weight="1"
-                        app:helperText="."
-                        app:counterEnabled="false">
+                        android:paddingBottom="@dimen/lay_pad"
+                        app:counterEnabled="false"
+                        app:helperText=".">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/transExpense"
@@ -116,10 +115,10 @@
                         style="@style/textInputLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingBottom="@dimen/lay_pad"
                         android:layout_weight="1"
-                        app:helperText="."
-                        app:counterEnabled="false">
+                        android:paddingBottom="@dimen/lay_pad"
+                        app:counterEnabled="false"
+                        app:helperText=".">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/transGetMoney"
@@ -134,8 +133,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/lay_pad"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/lay_pad">
 
 
                     <com.google.android.material.textfield.TextInputLayout
