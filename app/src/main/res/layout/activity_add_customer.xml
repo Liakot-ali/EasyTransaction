@@ -169,6 +169,10 @@
                 android:id="@+id/addCustomerRecordBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                style="@android:style/Widget.Button.Small"
+                android:textColor="@color/button_text"
+                android:textSize="@dimen/button_text"
+                android:background="@drawable/design_button_back"
                 android:text="Record" />
 
         </LinearLayout>
