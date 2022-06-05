@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Remain_amount"
-                android:textColor="@color/green"
+                android:textColor="@color/red"
                 android:textSize="@dimen/small_text" />
 
 
